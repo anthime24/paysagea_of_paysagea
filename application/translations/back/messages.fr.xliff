@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="messages.fr.xliff">
+        <body>
+            <trans-unit id="link_breadcrumb_dashboard">
+                <source>breadcrumb.link_dashboard</source>
+                <target>&#8962;</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_client_list">
+                <source>Client List</source>
+                <target>Clients</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_projet_list">
+                <source>Projet List</source>
+                <target>Projets</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_creation_list">
+                <source>Creation List</source>
+                <target>Créations</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_offre_list">
+                <source>Offre List</source>
+                <target>Offres</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_entite_list">
+                <source>Entite List</source>
+                <target>Entités</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_style_list">
+                <source>Style List</source>
+                <target>Styles</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_couleur_list">
+                <source>Couleur List</source>
+                <target>Couleurs</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_categorie_list">
+                <source>Categorie List</source>
+                <target>Catégories</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_entite_photo_list">
+                <source>Entite Photo List</source>
+                <target>Photos</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_rusticite_list">
+                <source>Rusticite List</source>
+                <target>Rusticités</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_entretien_list">
+                <source>Entretien List</source>
+                <target>Entretiens</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_ph_list">
+                <source>Ph List</source>
+                <target>Ph</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_precipitation_list">
+                <source>Precipitation List</source>
+                <target>Précipitations</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_type_sol_list">
+                <source>Type Sol List</source>
+                <target>Type Sol</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_matiere_list">
+                <source>Matiere List</source>
+                <target>Matières</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_marque_list">
+                <source>Marque List</source>
+                <target>Marques</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_code_promo_list">
+                <source>Code Promo List</source>
+                <target>Codes Promo.</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_client_paiement_list">
+                <source>Client Paiement List</source>
+                <target>Client Paiements</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_client_code_promo_list">
+                <source>Client Code Promo List</source>
+                <target>Client Codes Promo</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_client_offre_list">
+                <source>Client Offre List</source>
+                <target>Client Offres</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_entite_sous_type_list">
+                <source>Entite Sous Type List</source>
+                <target>Entite Sous Types</target>
+            </trans-unit>
+            <trans-unit id="action_application">
+                <source>action_application</source>
+                <target>Application</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

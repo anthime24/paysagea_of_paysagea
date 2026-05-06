@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Composition visualisation</title>
+</head>
+<body style="text-align:center">
+<h4>Avant</h4>
+<p><img src="{{ object.getWebPath('avant') | imagine_filter('thumb_app_contenu_entite') }}"/></p>
+
+<h4>Arrière</h4>
+<p><img src="{{ object.getWebPath('arriere') | imagine_filter('thumb_app_contenu_entite') }}"/></p>
+
+<h4>Droit</h4>
+<p><img src="{{ object.getWebPath('droite') | imagine_filter('thumb_app_contenu_entite') }}"/></p>
+
+<h4>Gauche</h4>
+<p><img src="{{ object.getWebPath('gauche') | imagine_filter('thumb_app_contenu_entite') }}"/></p>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div id="popin-lasso-content-contenu-filtre"></div>
+
+<div class="clear"></div>
+
+<div data-url="{{ url('mjmt_application_recherche_lasso', {'creationId': creation.getId()}) }}"
+     id="popin-lasso-content-contenu-resultat">
+    <p class="popin-lasso-titre">{% trans %}Choisissez un motif pour remplir la zone sélectionnée{% endtrans %}</p>
+
+    <div class="filtre-resultat-info-lasso">
+        <p class="filtre-resultat-nombre-lasso">
+
+            {% trans %}Résultats affichés :{% endtrans %}<br/><span class="nbrEntitesAffichees"></span> sur <span
+                    class="nbrEntitesTrouvees"></span> {% trans %}trouvés{% endtrans %}
+        </p>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="filtre-resultat-lasso">
+
+    </div>
+
+    <div class="clear"></div>
+</div>

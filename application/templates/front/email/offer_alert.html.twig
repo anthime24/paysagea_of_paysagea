@@ -1,0 +1,16 @@
+{% trans %}Bonjour,{% endtrans %}
+<br/><br/>
+{% trans %}Une commande nécessite votre intervention :{% endtrans %}
+<br/><br/>
+{% trans %}Client :{% endtrans %} {{ client.getNom() }} {{ client.getPrenom() }} ({{ client.getEmail() }})<br/>
+{% trans %}Offre :{% endtrans %} {{ offer.getNom() }}<br/>
+{% trans %}Date :{% endtrans %} {{ clientOffer.getDateAjout()|date("m/d/Y") }}
+<br/><br/>
+<a href="{{ app.request.getSchemeAndHttpHost() }}/admin/mjmt/core/client/list?filter[email][type]=&filter[email][value]={{ client.getEmail()|url_encode }}&filter[nom][type]=&filter[nom][value]=&filter[prenom][type]=&filter[prenom][value]=&filter[confirmer][type]=&filter[confirmer][value]=&filter[_page]=1&filter[_sort_by]=date_inscription&filter[_sort_order]=DESC&filter[_per_page]=25">
+    {% trans %}Voir ce client dans l'administration{% endtrans %}
+</a>
+<br/><br/>
+{% trans %}Cordialement,{% endtrans %}<br/>
+{% trans %}L'équipe de Mon Jardin Ma Terrasse.{% endtrans %}
+<br/><br/>
+<a href="{{ app.request.getSchemeAndHttpHost() }}">{{ app.request.getSchemeAndHttpHost() }}</a>

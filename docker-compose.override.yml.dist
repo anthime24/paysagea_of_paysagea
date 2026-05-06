@@ -1,0 +1,61 @@
+# docker-compose.override.yml
+services:
+    php:
+        restart: 'no'
+        networks:
+            - tkwmailcatcher_tkwmailcatcher-net
+        volumes:
+            - "./application/:/var/www/html"
+        environment:
+            APP_ENV: 'dev'
+            LOG_PATH: '/var/www/log'
+            CACHE_PATH: '/var/www/cache'
+            VENDOR_PATH: '/var/www/vendor'
+            COMPOSER_VENDOR_DIR: '/var/www/vendor'
+            MAILER_DSN: 'smtp://tkwmailpit:1025?encryption=&auth_mode='
+            DATABASE_URL: 'mysql://root:@db:3306/mygardendesigner_paysagea?serverVersion=mariadb-10.1.48'
+            GIS_DATABASE_URL: 'pgsql:host=gisdb;port=5432;dbname=gis;user=gis_user;password=gis_user_passwd!'
+            GOOGLE_API_KEY: ''
+            PAYMENT_PROXIES_TEST: '["127.0.0.1"]'
+            PAYPAL_ACTIVATE: '1'
+            PAYPAL_USER: ''
+            PAYPAL_PASSWORD: ''
+            PAYPAL_SIGNATURE: ''
+            PAYPAL_SANDBOX_USER: ''
+            PAYPAL_SANDBOX_PASSWORD: ''
+            PAYPAL_SANDBOX_SIGNATURE: ''
+            STRIPE_ACTIVATE: '1'
+            STRIPE_PUBLIC_KEY: ''
+            STRIPE_SECRET_KEY: ''
+            STRIPE_TEST_PUBLIC_KEY: ''
+            STRIPE_TEST_SECRET_KEY: ''
+            SIPS_ACTIVATE: '0'
+        labels:
+            - "traefik.enable=true"
+            - "traefik.docker.network=tkwtraefik_tkwtraefik-net"
+            - "traefik.http.routers.mygardendesigner_paysagea_web.entrypoints=web"
+            - "traefik.http.routers.mygardendesigner_paysagea_websecure.entrypoints=websecure"
+            - "traefik.http.routers.mygardendesigner_paysagea_websecure.tls.certresolver=mytlschallenge"
+            - "traefik.http.routers.mygardendesigner_paysagea_web.rule=Host(`local.app.monjardin-materrasse.com`) || Host(`local.app.virtualgardenplanner.com`)"
+            - "traefik.http.routers.mygardendesigner_paysagea_websecure.rule=Host(`local.app.monjardin-materrasse.com`) || Host(`local.app.virtualgardenplanner.com`)"
+
+    db:
+        restart: 'no'
+        environment:
+#            MYSQL_ROOT_PASSWORD: 'n58Z3NFbCiT4gYzpE3T8mh3kACmM83xfEPLrvA25QxJsXyzRf9cYT6Vk3SYYJHc4'
+            MYSQL_DATABASE: 'mygardendesigner_paysagea'
+            MYSQL_USER: 'mygardendesigner_paysagea'
+            MYSQL_PASSWORD: 'znwnzngoa2D8Awo678fnw5Hhse9Sjy'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+    gisdb:
+        restart: 'no'
+        shm_size: 128mb
+        environment:
+            POSTGRES_DB: 'gis'
+            POSTGRES_USER: 'gis_user'
+            POSTGRES_PASSWORD: 'gis_user_passwd!'
+
+networks:
+    tkwmailcatcher_tkwmailcatcher-net:
+        external: true

@@ -1,0 +1,91 @@
+<?php
+
+namespace App\Back\Admin;
+
+use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
+
+use App\Back\Form\Type\TranslatedType;
+
+class VideoAdmin extends AbstractAdmin
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected $datagridValues = array(
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'ordre'
+    );
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('nom')
+            ->add('outils');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $listMapper
+            ->add('nom')
+            ->add('description')
+            ->add('webPath', null, array('label' => 'URL'))
+            ->add('outils')
+            ->add('ordre')
+            ->add(
+                '_action',
+                'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                )
+            );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->add('nom', TranslatedType::class, array(
+                'propertyName' => 'nom'
+            ))
+            ->add('description', TranslatedType::class, array(
+                'propertyName' => 'description',
+                'propertyOptions' => array(
+                    'required' => false
+                )
+            ))
+            ->add(
+                'webPath',
+                null,
+                array(
+                    'label' => 'URL',
+                    'help' => '&#8593; ( URL au format "//www.youtube.com/embed/_B-c9ryq6e4", comme indiqué dans Partager/Intégrer dans youtube)'
+                )
+            )
+            ->add('outils')
+            ->add('ordre');
+    }
+
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array(
+                'back/form/translatedField.html.twig'
+            )
+        );
+    }
+}

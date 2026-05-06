@@ -1,0 +1,97 @@
+{% if nouvelleRechercheSurNom %}
+    <p class="resultat-entite-message-nouvelle-recherche">{% trans %}La recherche n'ayant rien trouvé en raison de critères trop restrictifs, une nouvelle recherche a été effectuée sur le nom uniquement.{% endtrans %}</p>
+{% endif %}
+{% if entites|length > 0 %}
+    {% for entite in entites %}
+        {% if ( accesCompletPlantesObjets==false ) and ( entite.getGratuit()==false ) %}
+            <div class="resultat-entite" id="entite-{{ entite.getId() }}">
+                <img src="{{ asset('application/images/icon-ms-description.png') }}"
+                     id="resultat-entite-infos-loupe-{{ entite.getId() }}" class="resultat-entite-infos-loupe"
+                     original-title="Plus d'informations"/>
+                {% if entite.getMarque() %}
+                    <img src="{{ entite.getMarque().getWebPath() | imagine_filter('thumb_app_entite_marque_apercu') }}"
+                         id="resultat-entite-marque-{{ entite.getId() }}" class="resultat-entite-marque"
+                         alt="{{ entite.getMarque().getNom() }}"/>
+                {% endif %}
+                <a href="{{ path('mjmt_app_ajout_HTML_entite', {'entite': entite.getId()}) }}"
+                   class="resultat-entite-ajout-indisponible">
+                    <div class="resultat-entite-photo">
+                        <img src="{% if entite.getPhotoPrincipale() %}{{ entite.getPhotoPrincipale().getWebPath()| imagine_filter('thumb_app_resultat_filtre') }}{% endif %}"
+                             onmousedown="return false" onmousemove="return false"/>
+                    </div>
+
+                    {# Affichage du nom vernaculaire & nom normal #}
+                    {% if entite.getNomVernaculaire() %}
+                        <h2>{{ entite.getNomVernaculaire()|truncate(30, true, '...') }}</h2>
+                        {% if entite.getNom() %}<p>{{ entite.getNom() }}</p>{% endif %}
+                    {% else %}
+                        {% if entite.getNom() %}<h2>{{ entite.getNom() }}</h2>{% endif %}
+                    {% endif %}
+                    {# Si il y a ensoleillements, on l'affiche #}
+                    {% set ensoleillements = 0 %}{% for soleil in entite.getEnsoleillements() %}{% set ensoleillements = 1 %}{% endfor %}
+                    {% if ensoleillements==1 %}<span>
+                        ({% for soleil in entite.getEnsoleillements() %}{% if loop.first %}{% else %}, {% endif %}{{ soleil.getNom() }}{% endfor %})</span>
+                        <br/>{% endif %}
+
+                    <span>
+                            {% if entite.getEntiteType().getId() == 1 %}
+                                {{ entite.getHauteurPotAvecUnite() }}
+                            {% else %}
+                                {{ entite.getDimensions() }}
+                            {% endif %}
+                        {% if entite.getPrixMini() %}- {{ entite.getPrixMini() }}€{% endif %}
+                        </span>
+                    <div class="resultat-entite-grisage-non-gratuit"></div>
+                </a>
+            </div>
+        {% else %}
+            <div class="resultat-entite" id="entite-{{ entite.getId() }}">
+                <a href="{{ path('mjmt_app_ma_selection_description', {'entite': entite.getId()}) }}"
+                   class="resultat-entite-infos">
+                    <img src="{{ asset('application/images/icon-ms-description.png') }}"
+                         id="resultat-entite-infos-loupe-{{ entite.getId() }}" class="resultat-entite-infos-loupe"
+                         original-title="Plus d'informations"/>
+                </a>
+                {% if entite.getMarque() %}
+                    <img src="{{ entite.getMarque().getWebPath() | imagine_filter('thumb_app_entite_marque_apercu') }}"
+                         id="resultat-entite-marque-{{ entite.getMarque().getId() }}" class="resultat-entite-marque"/>
+                {% endif %}
+                <a href="{{ path('mjmt_app_ajout_HTML_entite', {'entite': entite.getId()}) }}"
+                   class="resultat-entite-ajout">
+                    <div class="resultat-entite-photo">
+                        <img src="{% if entite.getPhotoPrincipale() %}{{ entite.getPhotoPrincipale().getWebPath()| imagine_filter('thumb_app_resultat_filtre') }}{% endif %}"
+                             alt="{{ entite.getNom() }}" onmousedown="return false" onmousemove="return false"/>
+                    </div>
+                    {# Affichage du nom vernaculaire & nom normal #}
+                    {% if entite.getNomVernaculaire() %}
+                        <h2>{{ entite.getNomVernaculaire()|truncate(30, true, '...') }}</h2>
+                        {% if entite.getNom() %}<p>{{ entite.getNom() }}</p>{% endif %}
+                    {% else %}
+                        {% if entite.getNom() %}<h2>{{ entite.getNom() }}</h2>{% endif %}
+                    {% endif %}
+                    {# Si il y a ensoleillements, on l'affiche #}
+                    {% set ensoleillements = 0 %}{% for soleil in entite.getEnsoleillements() %}{% set ensoleillements = 1 %}{% endfor %}
+                    {% if ensoleillements==1 %}<span>
+                        ({% for soleil in entite.getEnsoleillements() %}{% if loop.first %}{% else %}, {% endif %}{{ soleil.getNom() }}{% endfor %})</span>
+                        <br/>{% endif %}
+
+                    <span>
+                        {% if entite.getEntiteType().getId() == 1 %}
+                            {{ entite.getHauteurPotAvecUnite() }}
+                        {% else %}
+                            {{ entite.getDimensions() }}
+                        {% endif %}
+                        {% if entite.getPrixMini() %}- {{ entite.getPrixMini() }}€{% endif %}
+                    </span>
+                </a>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <p class="resultat-entite-message-aucun-resultat">{% trans %}Désolé, nous n’avons pas encore de résultat pour cette recherche, veuillez changer un ou plusieurs critère de sélection.{% endtrans %}</p>
+{% endif %}
+<script>
+    jQuery('.filtre-resultat-nombre').css('display', 'none');
+    jQuery('#filtre-resultat-nombre-{{ entiteType.getSlug() }}').html('Résultats affichés : <span>' + {{ nbEntitesAffichees }} +'</span> sur ' + {{ nbTotalResult }} +' trouvés');
+    jQuery('#filtre-resultat-nombre-{{ entiteType.getSlug() }}').css('display', 'block');
+</script>

@@ -1,0 +1,206 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block title %}
+    {% trans %}Mon aménagement extérieur - Etape 4 - Compte{% endtrans %}
+{% endblock %}
+
+{% block content %}
+    <div id="page-inscription-client" class="content-center container-fluid">
+        <h1 class="green">{% trans %}Préparation du paiement{% endtrans %}</h1>
+
+        <div class="row">
+            <div id="bloc-steps" class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h3 class="active">1) Inscription / Connection</h3>
+
+                            <div class="step-content">
+                                {% if client and client.getId() %}
+                                    <div id="choice-only-promo-content">
+                                        {{ form_start(form) }}
+
+                                        {{ form_errors(form) }}
+
+                                        <p class="text-aide">
+                                            {{ client.getPrenom() }}, indiquez ci-contre vote code promo si vous en
+                                            avez un et passez à l'étape suivante.
+                                        </p>
+
+                                        {{ form_widget(form.codePromo) }}
+
+                                        <input type="submit" class="d-none"/>
+
+                                        {{ form_end(form) }}
+                                    </div>
+                                {% else %}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button class="choice-register-connexion active" data-value="register">
+                                                S'enregistrer
+                                            </button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="choice-register-connexion" data-value="connexion">
+                                                Se connecter
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div id="choice-register-content" class="">
+                                        {{ form_start(form) }}
+
+                                        <div class="row line-type-person">
+                                            <div class="col-md-12">
+                                                {{ form_label(form.typePersonne) }}
+                                            </div>
+
+                                            {% for child in form.typePersonne %}
+                                                <div class="col-md-6">
+                                                    <label class="form-check-label">
+                                                        {{ form_widget(child, {'attr': {'class': 'form-check-input'}}) }}
+                                                        {{ form_label(child, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                                                    </label>
+                                                </div>
+                                            {% endfor %}
+
+                                            <div class="col-md-12">
+                                                {{ form_errors(form.typePersonne) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">{{ form_row(form.nom) }}</div>
+                                            <div class="col-md-6">{{ form_row(form.prenom) }}</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">{{ form_row(form.email) }}</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">{{ form_row(form.password.first) }}</div>
+                                            <div class="col-md-6">{{ form_row(form.password.second) }}</div>
+                                        </div>
+
+                                        {% if form['cgu'] is defined %}
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    {{ form_row(form.cgu) }}
+
+                                                    <a id="lien-cgu" href="{{ app.request.getSchemeAndHttpHost() ~ '/cgu' }}" target="_blank">
+                                                        Voir les CGU
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                        {% if form['recevoirInformations'] is defined %}
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    {{ form_row(form.recevoirInformations) }}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                        {{ form_widget(form.common.codePromo) }}
+
+                                        <input type="submit" class="d-none"/>
+
+                                        {{ form_end(form) }}
+                                    </div>
+
+                                    <div id="choice-connexion-content" class="d-none">
+                                        {{ form_start(loginForm, {'action': path('mjmt_front_client_login')}) }}
+
+                                        {% if error %}
+                                            <div class="row">
+                                                <div class="alert alert-dismissible alert-danger col-md-12"
+                                                     role="alert">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close"><span
+                                                                aria-hidden="true">&times;</span></button>
+                                                    <strong>{% trans %}Erreur !{% endtrans %}</strong>
+                                                    {% trans %}Email et/ou mot de passe incorrect{% endtrans %}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="row line-login-password">
+                                            <div class="col-md-6">{{ form_row(loginForm._username) }}</div>
+                                            <div class="col-md-6">{{ form_row(loginForm._password) }}</div>
+                                        </div>
+
+                                        <a target="_blank" href="{{ path('mjmt_front_client_lost_password') }}">
+                                            Mot de passe oublié
+                                        </a>
+
+                                        <input type="hidden" name="_target_path"
+                                               value="{{ path('mjmt_front_payment_selection') }}"/>
+
+                                        <input type="hidden" name="_failure_path"
+                                               value="{{ path('mjmt_front_inscription_client') }}"/>
+
+                                        <input type="hidden" name="_csrf_token"
+                                               value="{{ csrf_token('authenticate') }}">
+
+                                        {{ form_widget(loginForm.common.codePromo) }}
+
+                                        <input type="submit" class="d-none"/>
+
+                                        {{ form_end(loginForm) }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div>
+                            <h3 class="position-relative">
+                                2) Mode de paiement
+                                <img class="logo-paiement" src="{{ asset('/front/images/paiement/logo-paiement.jpg') }}">
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bloc-summary" class="col-md-5">
+                <div class="bloc-title">
+                    Récapitulatif
+                </div>
+
+                <table class="table">
+                    <tbody>
+
+                    {% if offer %}
+                        <tr>
+                            <th>Offre choisie</th>
+                            <td>{{ offer.getNom() }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if priceToPay > 0 %}
+                        <tr>
+                            <th>Montant à payer</th>
+                            <td>{{ priceToPay | number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                    {% endif %}
+
+                    <tr>
+                        <th>J'ai un code promo</th>
+                        <td>
+                            <input type="text" id="summary-promo-code"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <button class="button-inscription-next" type="submit">
+                    <span>{% trans %}Suivant{% endtrans %}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

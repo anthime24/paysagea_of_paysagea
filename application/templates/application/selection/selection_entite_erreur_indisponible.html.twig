@@ -1,0 +1,26 @@
+<div id="fenetre-info-selection-entite-indisponible">
+    <div id="croix-fermer">
+        <img src="{{ asset('application/images/boutton-croix.png') }}" alt="{% trans %}Fermer{% endtrans %}"
+             title="{% trans %}Fermer{% endtrans %}"/>
+    </div>
+    <h2>
+        {% trans %}Attention{% endtrans %}
+    </h2>
+    <div class="description-texte">
+        {% if (app.user == null) and (creation.getProjet().getClient()) %}
+            <p>{% trans %}Cet article n'est pas disponible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.{% endtrans %}</p>
+        {% elseif (creation.getProjet().getClient()) and (app.user != creation.getProjet().getClient()) %}
+            <p>{% trans %}Cet article n'est pas disponible en mode gratuit.
+                    <br/>Cette création est attaché à un autre compte que celui-avec lequel vous êtes connecté. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous avec le bon compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.{% endtrans %}
+            </p>
+        {% else %}
+            <p>{% trans %}Cet article n'est pas disponible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, créer un compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.{% endtrans %}</p>
+        {% endif %}
+    </div>
+    <div class="boutons">
+        <button onclick="location.href='{{ path('mjmt_front_client_offer_selection_from_application', {'creationId' : creation.getId(), 'hash': creation.getReferenceEcriture()}) }}'"
+                id="confirmation-oui" class="vert">{% trans %}Choisir une offre{% endtrans %}</button>
+        <button id="quitter-non" class="rouge">{% trans %}Fermer{% endtrans %}</button>
+    </div>
+</div>
+<div id="fond-grise"></div>

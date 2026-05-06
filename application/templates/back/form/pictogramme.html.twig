@@ -1,0 +1,55 @@
+{% block mjmt_pictogramme_type_widget %}
+    <div class="row pictogramme-row">
+        <div class="col-md-2">
+            {{ form_label(form.children.pictoNouveau) }}
+            {{ form_widget(form.children.pictoNouveau) }}
+            {{ form_errors(form.children.pictoNouveau) }}
+        </div>
+        <div class="col-md-5">
+            {{ form_label(form.children.dateDebutPictoNouveau) }}
+            {{ form_widget(form.children.dateDebutPictoNouveau) }}
+            {{ form_errors(form.children.dateDebutPictoNouveau) }}
+        </div>
+        <div class="col-md-5">
+            {{ form_label(form.children.dateFinPictoNouveau) }}
+            {{ form_widget(form.children.dateFinPictoNouveau) }}
+            {{ form_errors(form.children.dateFinPictoNouveau) }}
+        </div>
+    </div>
+
+    <div class="row pictogramme-row">
+        <div class="col-md-2">
+            {{ form_label(form.children.pictoPromo) }}
+            {{ form_widget(form.children.pictoPromo) }}
+            {{ form_errors(form.children.pictoPromo) }}
+        </div>
+        <div class="col-md-5">
+            {{ form_label(form.children.dateDebutPictoPromo) }}
+            {{ form_widget(form.children.dateDebutPictoPromo) }}
+            {{ form_errors(form.children.dateDebutPictoPromo) }}
+        </div>
+        <div class="col-md-5">
+            {{ form_label(form.children.dateFinPictoPromo) }}
+            {{ form_widget(form.children.dateFinPictoPromo) }}
+            {{ form_errors(form.children.dateFinPictoPromo) }}
+        </div>
+    </div>
+
+    <div class="row pictogramme-row">
+        <div class="col-md-2">
+            {{ form_label(form.children.pictoCoupCoeur) }}
+            {{ form_widget(form.children.pictoCoupCoeur) }}
+            {{ form_errors(form.children.pictoCoupCoeur) }}
+        </div>
+        <div class="col-md-5">
+            {{ form_label(form.children.dateDebutPictoCoupCoeur) }}
+            {{ form_widget(form.children.dateDebutPictoCoupCoeur) }}
+            {{ form_errors(form.children.dateDebutPictoCoupCoeur) }}
+        </div>
+        <div class="col-md-5">
+            {{ form_label(form.children.dateFinPictoCoupCoeur) }}
+            {{ form_widget(form.children.dateFinPictoCoupCoeur) }}
+            {{ form_errors(form.children.dateFinPictoCoupCoeur) }}
+        </div>
+    </div>
+{% endblock %}

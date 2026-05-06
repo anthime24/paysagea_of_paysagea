@@ -1,0 +1,20 @@
+<div id="popin-parametrage-contenu">
+    <form class="form-menu form-menu-parametrage" method="POST"
+          action="{{ path('mjmt_application_parametrage_creation', {'creationId': creation.getId(), 'hash': creation.getReferenceEcriture()}) }}">
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.nom) }}
+        {{ form_row(form.creationType) }}
+        {{ form_row(form.ensoleillement) }}
+        {{ form_row(form.style) }}
+
+        <div class="form-group fullWidthLabel">
+            {{ form_row(form.arrosageDeuxFoisSemaine) }}
+        </div>
+        
+        <input type="hidden" id="form-menu-type-creation" value="{{ creation.getCreationType().getNom() }}"/>
+        <input type="submit" value="{% trans %}Modifier{% endtrans %}"/>
+        {{ form_end(form) }}
+    </form>
+</div>

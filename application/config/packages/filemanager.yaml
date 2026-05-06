@@ -1,0 +1,23 @@
+stfalcon_tinymce:
+    include_jquery: false
+    tinymce_jquery: true
+    selector: ".tinymce"
+    language: fr
+    external_plugins:
+      filemanager:
+        url: "asset[/filemanager/plugin.min.js]"
+      responsivefilemanager:
+        url: "asset[/filemanager/tinymce/plugins/responsivefilemanager/plugin.min.js]"
+    theme:
+      simple:
+        plugins:
+          - "advlist autolink lists link image charmap print preview anchor"
+          - "searchreplace visualblocks code fullscreen"
+          - "insertdatetime media table contextmenu paste responsivefilemanager"
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | responsivefilemanager"
+        external_filemanager_path: "/filemanager/"
+        filemanager_access_key: "KrTs-_WXz_999357"
+        filemanager_title: "Fichiers"
+        convert_urls: false
+        relative_urls: false
+        image_advtab: true

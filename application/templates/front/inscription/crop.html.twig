@@ -1,0 +1,50 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block title %}
+    {% trans %}Mon aménagement extérieur - Etape 3 - Recadrage{% endtrans %}
+{% endblock %}
+
+{% block content %}
+    <div id="page-inscription-crop" class="content-center container-fluid" style="padding-left: 0px; padding-right: 0px;">
+        <div class="left">
+            <div class="accroche-outils" style="top: 148px;">
+                <div class="tool-button">
+                    <div id="btn-rotation"></div><label>Rotation</label>
+                </div>
+                <div class="tool-button">
+                    <div id="btn-crop"></div><label>Recadrer</label>
+                </div>
+                <div class="tool-button">
+                    <div id="btn-cancel"></div><label>Annuler</label>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <h1 class="green" style="margin-bottom: 10px; position:relative; top: -5px;">{% trans %}Recadrage de l'image{% endtrans %}</h1>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    {{ form_start(form) }}
+                    <p style="margin-bottom: 5px; font-size: 13px;">{% trans %}Si nécessaire</span> utilisez le bouton rotation <span class="icone-text-rotation"></span>  pour faire pivoter l'image{% endtrans %}</p>
+                    <p style="margin-bottom: 5px; font-size: 13px;">{% trans %}Vous pouvez également recadrer la photo en cliquant sur le bouton recadrer <span class="iconetextecrop"></span> puis en déplacant  la sélection sur la partie de la photo que vous souhaitez conserver{% endtrans %}</p>
+                    <p style="margin-bottom: 5px; font-size: 13px;">{% trans %}Pour enregistrer les modifications ou passer cette étape, cliquez directemment sur le bouton <span style="font-weight: bold;">étape suivante</span></p>{% endtrans %}
+
+                    {#
+                    <div class="text-center">
+                        <a href="#" class="button button-pivot"><i class="fa fa-repeat"
+                                                                   aria-hidden="true"></i> {% trans %}Pivoter{% endtrans %}
+                        </a>
+                    </div>
+                    #}
+                    <div id="mjmt_frontbundle_creation_inscription_3_crop_image_contenaire">
+                        <img style="margin:auto; display:block;" src="{{ creation.getWebPath()|imagine_filter('thumb_front_fond_contenu_image') }}"
+                             id="crop-image-target" alt="Image de la création"/>
+                        <canvas id="canvas" width="100" height="100" style="display: none;"></canvas>
+                    </div>
+                    <button style="margin-top: 20px;" class="button-validate" type="submit"><span>{% trans %}Etape suivante{% endtrans %}</span>
+                    </button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

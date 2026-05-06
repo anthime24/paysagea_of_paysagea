@@ -1,0 +1,38 @@
+@media screen and (max-width: 768px) {
+    #header {
+        padding: 0 50px;
+    }
+
+    #header #header-menu-mobile {
+        float: left;
+        margin-top: 30px;
+        margin-bottom: 0;
+        background: #FFF;
+    }
+
+    #header #header-account-content {
+        margin-top: 30px;
+    }
+
+    #header .icon-bar {
+        background: #598000;
+    }
+
+    #menu {
+        /*height: 0px;*/
+        overflow: hidden;
+        border: none;
+    }
+
+    #menu #menu-content-mobile {
+        display :none;
+    }
+
+    #menu #menu-content-mobile ul li {
+        float: none;
+    }
+
+    .zopim {
+        display: none !important;
+    }
+}

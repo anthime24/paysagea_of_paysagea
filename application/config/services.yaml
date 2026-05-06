@@ -1,0 +1,405 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    snapshotKey : '!9Mukrn=Yed,US(F4:{o)nVGK4dGg*'
+    projectDir: '%kernel.project_dir%'
+
+    #if the param doesn't exist the value is null and puppeeter is used to make pdf screenshot (production settings not working with docker)
+    html2CanvasScreenshot: '%env(default::HTML2CANVASSCREENSHOT)%'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Core/Entity,Core/Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Back\Controller\:
+        resource: '../src/Back/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+    App\Front\Controller\:
+        resource: '../src/Front/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+    App\Application\Controller\:
+        resource: '../src/Application/Controller'
+        tags: ['controller.service_arguments']
+
+    mjmt.twig.file_exists.extension:
+        class: App\Core\Twig\FileExistsExtension
+        tags:
+            - { name: twig.extension }
+
+    App\Core\Twig\FileExistsExtension: '@mjmt.twig.file_exists.extension'
+
+    mjmt.twig.domain.extension:
+        class: App\Core\Twig\DomainExtension
+        tags:
+            - { name: twig.extension }
+
+    App\Core\Twig\DomainExtension: '@mjmt.twig.domain.extension'
+
+    mjmt.twig.file_exists_relative.extension:
+        class: App\Core\Twig\FileExistsRelativeExtension
+        arguments:
+            $kernelProjectDir: "%kernel.project_dir%"
+            $requestStack: "@request_stack"
+        tags:
+            - { name: twig.extension }
+
+    App\Core\Twig\FileExistsRelativeExtension: '@mjmt.twig.file_exists_relative.extension'
+
+    mjmt.twig.image_dimension_extension:
+        class: App\Core\Twig\ImageDimensionExtension
+        tags:
+            - { name: twig.extension }
+
+    App\Core\Twig\ImageDimensionExtension: '@mjmt.twig.image_dimension_extension'
+
+    mjmt.front.inscription:
+        alias: App\Front\Service\InscriptionService
+        public: true
+
+    mjmt.front.paypal_payment:
+        class: App\Front\Payment\PaypalPayment
+        arguments:
+            $projectDir: "%kernel.project_dir%"
+            $entityManager: "@doctrine.orm.entity_manager"
+            $mailer: "@mailer"
+            $session: "@session"
+            $requestStack: "@request_stack"
+            $inscriptionService: "@mjmt.front.inscription"
+            $paymentProxiesTest: "%env(json:PAYMENT_PROXIES_TEST)%"
+            $paypalUser: "%env(PAYPAL_USER)%"
+            $paypalPassword: "%env(PAYPAL_PASSWORD)%"
+            $paypalSignature: "%env(PAYPAL_SIGNATURE)%"
+            $paypalSandboxUser: "%env(PAYPAL_SANDBOX_USER)%"
+            $paypalSandboxPassword: "%env(PAYPAL_SANDBOX_PASSWORD)%"
+            $paypalSandboxSignature: "%env(PAYPAL_SANDBOX_SIGNATURE)%"
+
+    App\Front\Payment\PaypalPayment: '@mjmt.front.paypal_payment'
+
+    mjmt.front.stripe_payment:
+        class: App\Front\Payment\StripePayment
+        arguments:
+            $projectDir: "%kernel.project_dir%"
+            $entityManager: "@doctrine.orm.entity_manager"
+            $mailer: "@mailer"
+            $session: "@session"
+            $requestStack: "@request_stack"
+            $inscriptionService: "@mjmt.front.inscription"
+            $paymentProxiesTest: "%env(json:PAYMENT_PROXIES_TEST)%"
+            $stripePublicKey: "%env(STRIPE_PUBLIC_KEY)%"
+            $stripeSecretKey: "%env(STRIPE_SECRET_KEY)%"
+            $stripeTestPublicKey: "%env(STRIPE_TEST_PUBLIC_KEY)%"
+            $stripeTestSecretKey: "%env(STRIPE_TEST_SECRET_KEY)%"
+
+    App\Front\Payment\StripePayment: '@mjmt.front.stripe_payment'
+
+
+    ### CLIENT ###
+
+    mjmt_back.admin.client:
+        class: App\Back\Admin\ClientAdmin
+        arguments: [~, App\Core\Entity\Client, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Clients, label: Clients}
+        calls:
+            - [ addChild, ['@mjmt_back.admin.projet', 'client']]
+            - [ addChild, ['@mjmt_back.admin.client_paiement', 'client']]
+            - [ addChild, ['@mjmt_back.admin.client_code_promo', 'client']]
+            - [ addChild, ['@mjmt_back.admin.client_offre', 'client']]
+
+    mjmt_back.admin.projet:
+        class: App\Back\Admin\ProjetAdmin
+        arguments: [~, App\Core\Entity\Projet, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Clients, label: Projets }
+        calls:
+            - [ addChild, ['@mjmt_back.admin.creation', 'projet']]
+
+    mjmt_back.admin.client_paiement:
+        class: App\Back\Admin\ClientPaiementAdmin
+        arguments: [~, App\Core\Entity\ClientPaiement, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Clients, label: Client paiements}
+
+    mjmt_back.admin.client_code_promo:
+        class: App\Back\Admin\ClientCodePromoAdmin
+        arguments: [~, App\Core\Entity\ClientCodePromo, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Clients, label: Client code promo}
+
+    mjmt_back.admin.client_offre:
+        class: App\Back\Admin\ClientOffreAdmin
+        arguments: [~, App\Core\Entity\ClientOffre, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Clients, label: Client offre}
+
+
+    ### ENTITE ###
+
+    mjmt_back.admin.entite:
+        class: App\Back\Admin\EntiteAdmin
+        arguments: [~, App\Core\Entity\Entite, App\Back\Controller\EntiteAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Entités, label: Entités}
+        calls:
+            - [addChild, ['@mjmt_back.admin.entite_photo']]
+            - [addChild, ['@mjmt_back.admin.creation_entite']]
+        
+    mjmt_back.admin.entite_photo:
+        class: App\Back\Admin\EntitePhotoAdmin
+        arguments: [~, App\Core\Entity\EntitePhoto, App\Back\Controller\EntitePhotoAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Entités, label: Entités photos}
+
+    mjmt_back.admin.composition:
+        class: App\Back\Admin\CompositionAdmin
+        arguments: [~, App\Core\Entity\Composition, App\Back\Controller\CompositionAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Entités, label: Compositions}
+
+    mjmt_back.admin.import:
+        class: App\Back\Admin\ImportAdmin
+        arguments: [~, ~, App\Back\Controller\ImportAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Entités, label: Import}
+
+    mjmt_back.admin.creation_entite:
+        class: App\Back\Admin\CreationEntiteAdmin
+        arguments: [~, App\Core\Entity\CreationEntite, App\Back\Controller\CreationEntiteAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Entités, label: Créations}
+
+
+    ### ADMIN ###
+
+    mjmt_back.admin.categorie:
+        class: App\Back\Admin\CategorieAdmin
+        arguments: [~, App\Core\Entity\Categorie, App\Back\Controller\CategorieAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Catégories}
+
+    mjmt_back.admin.style:
+        class: App\Back\Admin\StyleAdmin
+        arguments: [~, App\Core\Entity\Style, App\Back\Controller\StyleAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Styles}
+
+    mjmt_back.admin.couleur:
+        class: App\Back\Admin\CouleurAdmin
+        arguments: [~, App\Core\Entity\Couleur, App\Back\Controller\CouleurAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Couleurs}
+
+    mjmt_back.admin.rusticite:
+        class: App\Back\Admin\RusticiteAdmin
+        arguments: [~, App\Core\Entity\Rusticite, App\Back\Controller\RusticiteAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Rusticité}
+
+    mjmt_back.admin.ph:
+        class: App\Back\Admin\PhAdmin
+        arguments: [~, App\Core\Entity\Ph, App\Back\Controller\PhAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Ph}
+
+    mjmt_back.admin.precipitation:
+        class: App\Back\Admin\PrecipitationAdmin
+        arguments: [~, App\Core\Entity\Precipitation, App\Back\Controller\PrecipitationAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Précipitation}
+
+    mjmt_back.admin.ensoleillement:
+        class: App\Back\Admin\EnsoleillementAdmin
+        arguments: [~, App\Core\Entity\Ensoleillement, App\Back\Controller\EnsoleillementAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Ensoleillement}
+
+    mjmt_back.admin.type_sol:
+        class: App\Back\Admin\TypeSolAdmin
+        arguments: [~, App\Core\Entity\TypeSol, App\Back\Controller\TypeSolAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Type de Sol}
+
+    mjmt_back.admin.besoin_eau:
+        class: App\Back\Admin\BesoinEauAdmin
+        arguments: [~, App\Core\Entity\BesoinEau, App\Back\Controller\BesoinEauAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Besoin en Eau}
+
+    mjmt_back.admin.entretien:
+        class: App\Back\Admin\EntretienAdmin
+        arguments: [~, App\Core\Entity\Entretien, App\Back\Controller\EntretienAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Entretien}
+
+    mjmt_back.admin.matiere:
+        class: App\Back\Admin\MatiereAdmin
+        arguments: [~, App\Core\Entity\Matiere, App\Back\Controller\MatiereAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Matiere}
+
+    mjmt_back.admin.marque:
+        class: App\Back\Admin\MarqueAdmin
+        arguments: [~, App\Core\Entity\Marque, App\Back\Controller\MarqueAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Marque}
+
+    mjmt_back.admin.entite_sous_type:
+        class: App\Back\Admin\EntiteSousTypeAdmin
+        arguments: [~, App\Core\Entity\EntiteSousType, App\Back\Controller\EntiteSousTypeAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Sous Type}
+
+    # mjmt_back.admin.mois:
+    #     class: App\Back\Admin\MoisAdmin
+    #     arguments: [~, App\Back\Entity\Mois, App\Back\Admin\MoisAdmin]
+    #     tags:
+    #         - {name: sonata.admin, manager_type: orm, group: Admin, label: Mois}
+
+    form.type.mjmt_list_type:
+        class: App\Back\Form\Type\listType
+        tags:
+            - {name: form.type, alias: mjmt_list_type}
+
+    mjmt_back.admin.creation_type:
+        class: App\Back\Admin\CreationTypeAdmin
+        arguments: [~, App\Core\Entity\CreationType, App\Back\Controller\CreationTypeAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Type de créations / projets}
+
+    mjmt_back.admin.entite_type:
+        class: App\Back\Admin\EntiteTypeAdmin
+        arguments: [~, App\Core\Entity\EntiteType, App\Back\Controller\EntiteTypeAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Type d'entité}
+
+    mjmt_back.admin.entite_photo_etat:
+        class: App\Back\Admin\EntitePhotoEtatAdmin
+        arguments: [~, App\Core\Entity\EntitePhotoEtat, App\Back\Controller\EntitePhotoEtatAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Etat des photos d'entités}
+
+    mjmt_back.admin.banque_photo:
+        class: App\Back\Admin\BanquePhotoAdmin
+        arguments: [~, App\Core\Entity\BanquePhoto, App\Back\Controller\BanquePhotoAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Banque de photos}
+
+    mjmt_back.admin.annee:
+        class: App\Back\Admin\AnneeAdmin
+        arguments: [~, App\Core\Entity\Annee, App\Back\Controller\AnneeAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Années}
+
+    mjmt_back.admin.creation:
+        class: App\Back\Admin\CreationAdmin
+        arguments: [~, App\Core\Entity\Creation, App\Back\Controller\CreationAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Creations}
+
+    mjmt_back.admin.offre:
+        class: App\Back\Admin\OffreAdmin
+        arguments: [~, App\Core\Entity\Offre, App\Back\Controller\OffreAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Offre}
+
+    mjmt_back.admin.code_promo:
+        class: App\Back\Admin\CodePromoAdmin
+        arguments: [~, App\Core\Entity\CodePromo, App\Back\Controller\CodePromoAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Code Promo}
+
+    mjmt_back.admin.video:
+        class: App\Back\Admin\VideoAdmin
+        arguments: [~, App\Core\Entity\Video, App\Back\Controller\VideoAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Vidéos}
+
+    mjmt_back.admin.cms:
+        class: App\Back\Admin\CmsAdmin
+        arguments: [~, App\Core\Entity\Cms, App\Back\Controller\CmsAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Contenu texte}
+
+    mjmt_back.admin.pub:
+        class: App\Back\Admin\PubAdmin
+        arguments: [~, App\Core\Entity\Pub, App\Back\Controller\PubAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Pub}
+
+    mjmt_back.admin.enumeration_alimentaire:
+        class: App\Back\Admin\EnumerationToxiqueAlimentaireAdmin
+        arguments: [~, App\Core\Entity\EnumerationAlimentaire , App\Back\Controller\EnumerationToxiqueAlimentaireAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Toxique / Alimentaire }
+
+    mjmt_back.admin.enumeration_caduc:
+        class: App\Back\Admin\EnumerationCaducAdmin
+        arguments: [~, App\Core\Entity\EnumerationCaduc , App\Back\Controller\EnumerationCaducAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Caduc / Persistant }
+
+    mjmt_back.admin.enumeration_type_personne:
+        class: App\Back\Admin\EnumerationTypePersonneAdmin
+        arguments: [~, App\Core\Entity\EnumerationTypePersonne , App\Back\Controller\EnumerationTypePersonneAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Particulier / Professionnel }
+
+    mjmt_back.admin.enumeration_methode_paiement:
+        class: App\Back\Admin\EnumerationMethodePaiementAdmin
+        arguments: [~, App\Core\Entity\EnumerationMethodePaiement , App\Back\Controller\EnumerationMethodePaiementAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Methode de paiement }
+
+    mjmt_back.admin.enumeration_js:
+        class: App\Back\Admin\EnumerationJsAdmin
+        arguments: [~, App\Core\Entity\EnumerationJs , App\Back\Controller\EnumerationJsAdminController]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Admin, label: Javascript }
+
+    mjmt_front.blog:
+        class:  App\Front\Service\BlogService
+        arguments: ['@service_container']
+
+    App\Front\Service\BlogService: '@mjmt_front.blog'
+
+    mjmt_application.html2pdf:
+        class: App\Application\Service\Html2PdfService
+        arguments: ['@doctrine.orm.entity_manager']
+
+    mjmt_core.pictogrammeListener:
+        class: App\Core\Listener\PictogrammeListener
+        tags:
+            - { name: doctrine.event_listener, event: onFlush }
+    mjmt_core.localeListener:
+        class: App\Core\Listener\LocaleListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, priority: 20 }
+        
+    mjmt_core.service.copy:
+        class: App\Core\Service\CopyService
+        arguments: ['@doctrine.orm.entity_manager']
+        public: true
+
+    App\Core\Service\CopyService: '@mjmt_core.service.copy'
+
+    app.entite.service:
+        class: App\Core\Service\EntiteService

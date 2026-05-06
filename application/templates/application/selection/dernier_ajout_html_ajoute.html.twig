@@ -1,0 +1,28 @@
+<div id="dernier-article-ajout-{{ entite.getId() }}">
+    <img src="{{ entitePhoto.getWebPath() | imagine_filter('thumb_app_ma_selection') }}" alt="{{ entite.getNom() }}"
+         title="{{ entite.getNom() }}"/>
+
+    <p>
+        {% if entite.getNomVernaculaire() %}
+            {{ entite.getNomVernaculaire()|truncate(30, true, '...') }}
+        {% else %}
+            {{ entite.getNom() }}
+        {% endif %}
+    </p>
+
+    {% if not entite.getLasso() %}
+        <p>
+            <strong>
+                {% if entite.getComposition() %}
+                    {% if entite.getComposition().getTotal()>0 %}
+                        {{ entite.getComposition().getTotal() }} €
+                    {% endif %}
+                {% else %}
+                    {% if entite.getPrixMini() %}
+                        {{ entite.getPrixMini() }} €
+                    {% endif %}
+                {% endif %}
+            </strong>
+        </p>
+    {% endif %}
+</div>

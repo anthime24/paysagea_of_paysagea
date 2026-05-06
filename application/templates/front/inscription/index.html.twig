@@ -1,0 +1,59 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block title %}
+    {% trans %}Mon aménagement extérieur{% endtrans %}
+{% endblock %}
+
+{% block content %}
+    <div id="page-inscription">
+        {{ form_start(form) }}
+        <div id="tete" class="content-center container-fluid">
+            {% include 'front/inscription/partials/index/header.html.twig' %}
+        </div>
+
+        <div id="localisation" class="fragment-form">
+            {% include 'front/inscription/partials/index/location.html.twig' %}
+        </div>
+
+        <div id="photo" class="fragment-form">
+            {% include 'front/inscription/partials/index/photo.html.twig' %}
+        </div>
+
+        <div id="photo" class="fragment-form">
+            {% include 'front/inscription/partials/index/mes-photo.html.twig' %}
+        </div>
+
+        <div class="content-center container-fluid">
+            <div class="row">
+                {% if client is not null %}
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button type="submit" id="boutton-acceder-application">{% trans %}Accéder à l'application{% endtrans %}</button>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <a href="" id="boutton-voir-offres" data-toggle="modal"
+                           data-target="#myModal">{% trans %}Changer mon offre{% endtrans %}</a>
+                    </div>
+                {% else %}
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <a href="{{ path('mjmt_front_client') }}" id="boutton-acceder-tableau-bord">{% trans %}Se connecter{% endtrans %}</a>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <a href="" id="boutton-voir-offres" data-toggle="modal"
+                           data-target="#myModal">{% trans %}Voir toutes les offres et continuer{% endtrans %}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div id="option" class="fragment-form">
+            {% include 'front/inscription/partials/index/offer.html.twig' %}
+        </div>&
+
+        {#        <div id="pied" class="content-center container-fluid"> #}
+        {#            {% include 'front/inscription/partials/index/footer.html.twig' %} #}
+        {#        </div> #}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

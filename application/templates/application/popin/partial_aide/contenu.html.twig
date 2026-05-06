@@ -1,0 +1,22 @@
+<div id="popin-aide-contenu">
+    {% for video in listVideos %}
+        <p id="mjmt-app-aide-titre-video-{{ video.getId() }}" class="mjmt-app-aide-titre-video"
+           attr-video-id="{{ video.getId() }}">
+            {{ video.getNom() }}
+        <p>
+        <div id="mjmt-app-aide-video-{{ video.getId() }}" class="mjmt-app-aide-video" attr-video-outils="{{ video.getOutils() }}">
+            <p id="mjmt-app-aide-description-video-{{ video.getId() }}" class="mjmt-app-aide-description-video">
+                {% if video.getDescription() %}
+                    {{ video.getDescription() }}
+                {% endif %}
+            </p>
+            <p id="mjmt-app-aide-video-{{ video.getId() }}-video" class="mjmt-app-aide-video">
+                <iframe id="iframe-video-{{ video.getId() }}" class="iframe-video"
+                        src="{{ video.getWebPath() }}?enablejsapi=1&rel=0" frameborder="0" allowfullscreen
+                        enablejsapi="1"></iframe>
+            </p>
+        </div>
+    {% endfor %}
+</div>
+
+<button id="popin-aide-fermer">{% trans %}Commencer ma création{% endtrans %}</button>

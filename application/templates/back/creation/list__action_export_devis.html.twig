@@ -1,0 +1,7 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('exportDevis') %}
+    <a href="{{ admin.generateObjectUrl('exportDevis', object) }}" class="btn btn-sm btn-default edit_link"
+       title="Exporter Devis" target="_blank">
+        <i class="fa fa-download" aria-hidden="true"></i>
+        Export Devis
+    </a>
+{% endif %}

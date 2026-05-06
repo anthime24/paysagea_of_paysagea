@@ -1,0 +1,8 @@
+<div id="popin-rendu-contenu">
+    <form class="form-menu form-menu-option-rendu" method="POST"
+          action="{{ path('mjmt_application_options_rendu', {'creationId': creation.getId(), 'hash': creation.getReferenceEcriture()}) }}">
+        {{ form_widget(form) }}
+        <input type="submit" value="{% trans %}Modifier{% endtrans %}"/>
+    </form>
+
+</div>

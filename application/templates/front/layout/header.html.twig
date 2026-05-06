@@ -1,0 +1,44 @@
+<button id="header-menu-mobile" type="button" class="navbar-toggle collapsed visible-xs" data-toggle="collapse" aria-expanded="false">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
+
+<div id="header-logo">
+    <a href="{{ path('mjmt_front_home') }}">
+        <img src="/front/images/logo{{ app.request.getLocale() == 'en' ? '-en' : '' }}.png"/>
+    </a>
+</div>
+
+<div id="header-account">
+    <div id="header-account-flag">
+        {% set currentRoute = app.request.attributes.get('_route') %}
+        {% set currentRouteParams = app.request.attributes.get('_route_params') | merge(app.request.query.all) %}
+
+        {% if app.request.getLocale() != 'fr' %}
+            {% set urlDomainSwitch = 'fr' | domain_switch %}
+            <a href="{{ urlDomainSwitch ~ path(currentRoute, currentRouteParams) }}">
+                <img src="/front/images/flag-fr.png"/>
+            </a>
+        {% endif %}
+        {% if app.request.getLocale() != 'en' %}
+            {% set urlDomainSwitch = 'en' | domain_switch %}
+            <a href="{{ urlDomainSwitch ~ path(currentRoute, currentRouteParams) }}">
+                <img src="/front/images/flag-en.png"/>
+            </a>
+        {% endif %}
+    </div>
+
+    <a href="{{ app.user is null ? path('mjmt_front_client_login') : path('mjmt_front_client') }}">
+        <img src="/front/images/icone-mon-compte.png"/>
+
+        {% if app.user is null %}
+            <span id="header-account-content">{% trans %}Mon compte{% endtrans %}</span>
+        {% else %}
+            <span id="header-account-content">{{ app.user.getPrenom()|capitalize ~ ' ' ~ app.user.getNom()|upper }}</span>
+        {% endif %}
+        <span class="clear"></span>
+    </a>
+</div>
+
+<div class="clear"></div>

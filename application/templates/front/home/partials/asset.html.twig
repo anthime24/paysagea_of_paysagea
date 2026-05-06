@@ -1,0 +1,47 @@
+<h2>{% trans %}Les atouts de Mygarden designer{% endtrans %}</h2>
+
+<div class="row">
+    <div class="an-asset col-md-3 col-sm-6 col-xs-12">
+        <p class="an-asset-title">{% trans %}Simple{% endtrans %}</p>
+        <img src="/front/images/accueil/atouts-abc.png"/>
+        <p class="an-asset-text">
+            {% trans %}Un outil à la portée de tous, intuitif et ludique.{% endtrans %}
+        </p>
+    </div>
+
+    <div class="an-asset col-md-3 col-sm-6 col-xs-12">
+        <p class="an-asset-title">{% trans %}Rapide{% endtrans %}</p>
+        <img src="/front/images/accueil/atouts-souris.png"/>
+        <p class="an-asset-text">
+            {% trans %}Créez votre projet personnalisé en quelques clics.{% endtrans %}
+        </p>
+    </div>
+
+    <div class="an-asset col-md-3 col-sm-6 col-xs-12">
+        <p class="an-asset-title">{% trans %}Malin{% endtrans %}</p>
+        <img src="/front/images/accueil/atouts-ampoule.png"/>
+        <p class="an-asset-text">
+            {% trans %}Recevez votre plan de plantation détaillé, votre liste de plantes et nos conseils.{% endtrans %}
+        </p>
+    </div>
+
+    <div class="an-asset col-md-3 col-sm-6 col-xs-12">
+        <p class="an-asset-title">{% trans %}&Eacute;conomique{% endtrans %}</p>
+        <img src="/front/images/accueil/atouts-euro.png"/>
+        <p class="an-asset-text">
+            {% trans %}L'utilisation de base est gratuite. Nous vous aidons à trouver le  bon jardinier près de chez vous.{% endtrans %}
+        </p>
+    </div>
+</div>
+
+{% if pub is not null %}
+    <div id="asset-block-pub">
+        {% if (pub.getLien() is not null) and (pub.getLien() != '') %}
+        <a target="_blank" href="{{ pub.getLien() }}">
+            {% endif %}
+            <img src="{{ ('/uploads/photos/pub/' ~ pub.getId() ~ '/' ~ pub.getPhoto()) | imagine_filter('thumb_front_accueil_pub') }}"/>
+            {% if (pub.getLien() is not null) and (pub.getLien() != '') %}
+        </a>
+        {% endif %}
+    </div>
+{% endif %}

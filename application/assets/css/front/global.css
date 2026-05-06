@@ -1,0 +1,402 @@
+/* CSS GENERAUX */
+.clear {
+    clear: both;
+}
+
+button {
+    border: none;
+}
+
+a {
+    color: #598000;
+}
+
+a:hover {
+    color: #598000;
+}
+
+
+body {
+    font-family: 'open_sansregular';
+    font-size: 16px;
+    color: #4c4c4c;
+    background: #FFF;
+}
+
+#body-home {
+    font-family: 'open_sansregular';
+    font-size: 16px;
+    color: #4c4c4c;
+    background: #FFF url('/front/images/header-herbe.jpg') repeat-x top center;
+}
+
+h1 {
+    font-weight: normal;
+    font-family: 'open_sanssemibold';
+    font-size: 48px;
+    color: #FFF;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 0;
+}
+
+h1 span {
+    background: url('/front/images/fond-lien-mon-compte.png') repeat;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+h1.green {
+    color: #598000;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-weight: normal;
+    font-family: 'open_sanssemibold';
+    font-size: 48px;
+    color: #4c463d;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.fixedGrassHeader {
+    background: url(/front/images/header-herbe-haut.jpg);
+    background-position: top center !important;
+    background-size: contain;
+}
+
+.fixedGrassOuterBorder {
+    display: block;
+    height: 80px;
+    width: 100%;
+    border: 0px;
+    background: url(/front/images/header-herbe-bordure.jpg);
+    background-position: top center;
+    background-size: contain;
+    background-repeat-y: no-repeat;
+}
+
+form > div > div {
+    margin-bottom: 25px;
+}
+
+form textarea.form-control {
+    resize: vertical;
+    height: 160px;
+}
+
+form ul li {
+    color: #a94442;
+}
+
+#body {
+    background-position: center -580px;
+}
+
+.content-center {
+    max-width: 980px;
+    margin: auto;
+}
+
+#page-inscription-crop {
+    width: 1080px;
+}
+
+#page-inscription-crop .left {
+    display: table-cell;
+    width: 100px;
+    padding-right: 7px;
+}
+
+#page-inscription-crop .right {
+    display: table-cell;
+}
+
+#page-inscription-crop .accroche-outils {
+    border: 1px solid #ddd;
+    background-color: #89897c0d;
+    position: relative;
+    top: 210px !important;
+}
+
+#page-inscription-crop .accroche-outils .tool-button {
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+#page-inscription-crop #btn-rotation {
+    width: 64px;
+    height: 64px;
+    background: url('/application/images/icone/icon-rotation.png') no-repeat center center;
+}
+
+#page-inscription-crop .icone-text-rotation {
+    width: 14px;
+    height: 14px;
+    background: url('/application/images/icone/icon-rotation.png') no-repeat center center;
+    background-size: 13px;
+    display: inline-block;
+
+    margin-right: 5px;
+}
+
+#page-inscription-crop #btn-crop {
+    width: 64px;
+    height: 64px;
+    background: url('/application/images/icone/icon-crop.png') no-repeat center center;
+}
+
+#page-inscription-crop .iconetextecrop {
+    width: 14px;
+    height: 14px;
+    background: url('/application/images/icone/icon-crop.png') no-repeat center center;
+    background-size: 14px;
+    display: inline-block;
+
+    margin-right: 5px;
+}
+
+#page-inscription-crop #btn-cancel {
+    width: 64px;
+    height: 64px;
+    background: url(/application/images/icone/icon-annulation.png) no-repeat center center;
+}
+
+#header {
+    padding-bottom: 28px;
+    position: relative;
+}
+
+#header-account-flag {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+}
+
+#header-account-flag span {
+    display: inline-block;
+}
+
+#header-account-flag img {
+    border: 1px solid #FFF
+}
+
+#header-account-flag span > img {
+    opacity: 0.5;
+}
+
+#header #header-logo {
+    margin-top: 20px;
+    float: left;
+}
+
+#header #header-account {
+    margin-top: 45px;
+    float: right;
+}
+
+#header #header-account img {
+    float: left;
+}
+
+#header #header-account #header-account-content {
+    display: block;
+    float: left;
+    margin-top: 5px;
+    padding: 0 10px;
+    background: url('/front/images/fond-lien-mon-compte.png') repeat;
+    font-family: 'open_sanssemibold';
+    font-size: 16px;
+    color: #FFF;
+}
+
+#menu {
+    border-top: 1px solid #6c7c56;
+    border-bottom: 1px solid #6c7c56;
+    margin-bottom: 0px;
+}
+
+#body-home #menu {
+    margin-bottom: 30px;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin-bottom: 0;
+}
+
+#menu ul li {
+    float: left;
+    height: 52px;
+    line-height: 52px;
+    margin-right: 22px;
+    margin-bottom: 4px;
+}
+
+#menu ul li a {
+    font-family: 'open_sanssemibold';
+    font-size: 18px;
+    color: #FFF;
+    display: block;
+}
+
+#menu ul li a:hover {
+    text-decoration: none;
+    border-bottom: 4px solid #FFF;
+}
+
+#menu ul li .active {
+    border-bottom: 4px solid #FFF;
+}
+
+#menu ul li a span {
+    background: url('/front/images/fond-lien-mon-compte.png') repeat;
+    padding: 0 5px;
+}
+
+#footer {
+    background: #4d473d;
+    min-height: 325px;
+}
+
+#footer .row {
+    margin: 0;
+}
+
+#footer #footer-content {
+    margin: 50px auto 0 auto;
+    padding-top: 50px;
+}
+
+#footer #footer-plan {
+    margin-bottom: 35px;
+}
+
+#footer #footer-legal-notice {
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    color: #FFF;
+    text-align: center;
+}
+
+#footer #footer-description-title {
+    font-family: 'open_sanssemibold';
+    font-size: 20px;
+    color: #FFF;
+}
+
+#footer #footer-description-content {
+    font-family: 'open_sansregular';
+    font-size: 15px;
+    color: #FFF;
+}
+
+#footer #footer-description-content .text-bold {
+    font-family: 'open_sanssemibold';
+}
+
+#footer #footer-plan-title {
+    font-family: 'open_sanssemibold';
+    font-size: 20px;
+    color: #FFF;
+}
+
+#footer #footer-plan-content-left {
+    padding: 0;
+}
+
+#footer #footer-plan-content-right {
+    padding: 0;
+}
+
+#footer #footer-plan-content a {
+    font-family: 'open_sansregular';
+    font-size: 15px;
+    color: #FFF;
+}
+
+#cookie-law-info-bar {
+    background: #bf5900 !important;
+    bottom: 0px !important;
+    color: #FFF !important;
+}
+
+#cookie-law-info-bar p {
+    padding: 10px 10px 20px 10px !important;
+}
+
+#cookie-law-info-bar a {
+    color: #4c4c4c !important;
+    font-weight: bold !important;
+}
+
+.button-validate {
+    display: block;
+    height: 58px;
+    background: #6f996e;
+    border-radius: 2px;
+    font-family: 'open_sanssemibold';
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 58px;
+    width: 40%;
+    margin: auto;
+}
+
+.button-validate:hover {
+    background: #597a58;
+    text-decoration: none;
+}
+
+.button-validate span {
+    background: url('/front/images/accueil/puce-fleche-bouton.png') no-repeat left center;
+    padding-left: 25px;
+}
+
+.button-validate-mini {
+    display: block;
+    height: 30px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 20px;
+    font-family: 'open_sanssemibold';
+    background: #bf5900;
+    color: #fff;
+    font-size: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.button-validate-mini:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #cca300;
+}
+
+.button-validate-mini span {
+    background: url('/front/images/puce-fleche-bouton.png') no-repeat left center;
+    padding-left: 25px;
+}
+
+.button-validate-green {
+    display: block;
+    height: 36px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 36px;
+    padding: 0 10px;
+    margin-top: 26px;
+    margin-left: 50px;
+    background: #598000;
+    font-family: 'open_sanssemibold';
+    color: #fff;
+}
+
+.button-validate-green:hover {
+    color: #fff;
+    text-decoration: none;
+}

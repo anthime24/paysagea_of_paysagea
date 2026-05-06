@@ -1,0 +1,230 @@
+#page-home #e-grounds {
+    margin-bottom: 100px;
+}
+
+#page-home #e-grounds h1 span:first-child {
+    padding-top: 5px;
+}
+
+#page-home #e-grounds h1 span:last-child {
+    padding-bottom: 5px;
+}
+
+#page-home #e-grounds #e-grounds-list-content {
+    background: #FFF;
+    padding: 18px 30px;
+    border-radius: 2px;
+}
+
+#page-home #e-grounds #e-grounds-list-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#page-home #e-grounds #e-grounds-list li {
+    margin-bottom: 25px;
+    min-height: 49px;
+    font-family: 'open_sansregular';
+    font-size: 18px;
+    color: #4c4c4c;
+}
+
+#page-home #e-grounds #e-grounds-list li:last-child {
+    margin-bottom: 0;
+}
+
+#page-home #e-grounds li a {
+    display: block;
+    height: 58px;
+    background: #bf5900;
+    border-radius: 2px;
+    font-family: 'open_sanssemibold';
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#page-home #e-grounds li a:hover {
+    background: #cca300;
+    text-decoration: none;
+}
+
+#page-home #e-grounds li a span {
+    background: url('/front/images/accueil/puce-fleche-bouton.png') no-repeat left center;
+    padding-left: 25px;
+}
+
+#page-home #e-grounds #e-grounds-list-1 {
+    background: url('/front/images/accueil/numero-liste-1.png') no-repeat left center;
+    padding-left: 60px;
+    padding-top: 4px;
+}
+
+#page-home #e-grounds #e-grounds-list-2 {
+    background: url('/front/images/accueil/numero-liste-2.png') no-repeat left center;
+    padding-left: 60px;
+    padding-top: 4px;
+}
+
+#page-home #e-grounds #e-grounds-list-3 {
+    background: url('/front/images/accueil/numero-liste-3.png') no-repeat left center;
+    padding-left: 60px;
+    padding-top: 4px;
+}
+
+#page-home #e-grounds #e-grounds-image {
+    text-align: center;
+    position: relative;
+}
+
+#page-home #e-grounds #e-grounds-image-main {
+    height: 339px;
+    position: absolute;
+    top: -42px;
+    left: 270px;
+    background: url('/front/images/accueil/main.png') no-repeat top left;
+}
+
+#page-home #asset .an-asset {
+    text-align: center;
+}
+
+#page-home #asset .an-asset-title {
+    font-family: 'open_sanssemibold';
+    font-size: 36px;
+    color: #598000;
+}
+
+#page-home #asset .an-asset-text {
+    margin-top: 20px;
+}
+
+#page-home #asset #asset-bloc-pub {
+    max-width: 728px;
+    margin: 50px auto 0 auto;
+}
+
+#page-home #asset #asset-bloc-pub img {
+    width: 100%;
+}
+
+#page-home #historic {
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: #faf9f7;
+}
+
+#page-home #historic .historic-title {
+    font-family: 'open_sanssemibold';
+    font-size: 24px;
+    color: #598000;
+}
+
+#page-home #historic #historic-talk-about-us > div {
+    width: 152px;
+    height: 136px;
+    border: 1px solid #e7e7e7;
+    background: #FFF;
+}
+
+#page-home #historic #historic-talk-about-us {
+    padding-bottom: 20px;
+    margin-bottom: 17px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#page-home #historic .historic-bloc-buttons a:hover {
+    text-decoration: none;
+}
+
+#page-home #historic .historic-bloc-buttons .historic-bloc-buttons-left {
+    display: block;
+    width: 157px;
+    height: 36px;
+    border: 2px solid #598000;
+    border-radius: 2px;
+    font-family: 'open_sanssemibold';
+    color: #598000;
+    text-align: center;
+    line-height: 36px;
+    float: left;
+}
+
+#page-home #historic .historic-bloc-buttons .historic-bloc-buttons-right {
+    display: none;
+    width: 119px;
+    height: 36px;
+    background: #598000;
+    border-radius: 2px;
+    font-family: 'open_sanssemibold';
+    color: #FFF;
+    text-align: center;
+    line-height: 36px;
+    float: right;
+}
+
+#page-home #historic #historic-link-start {
+    display: block;
+    height: 58px;
+    background: #bf5900;
+    border-radius: 2px;
+    font-family: 'open_sanssemibold';
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 58px;
+    width: 60%;
+    margin: 30px auto 0 auto;
+}
+
+#page-home #historic #historic-link-start:hover {
+    background: #cca300;
+    text-decoration: none;
+}
+
+#page-home #historic #historic-link-start span {
+    background: url('/front/images/accueil/puce-fleche-bouton.png') no-repeat left center;
+    padding-left: 25px;
+}
+
+#page-home #historic .full-article {
+    display: none;
+}
+
+#page-home #historic #historic-slider img {
+    max-width: 642px;
+    max-height: 306px;
+    margin: auto;
+}
+
+#page-home .bx-wrapper .bx-viewport {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    border: none;
+    background: none;
+}
+
+#page-home #testimony .testimony-photo {
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+}
+
+#page-home #testimony .testimony-name {
+    font-family: 'open_sanssemibold';
+    font-size: 24px;
+    color: #598000;
+    text-align: center;
+}
+
+#page-home #testimony .testimony-text {
+    font-family: 'open_sansitalic';
+    font-size: 20px;
+    color: #4c4c4c;
+    text-align: center;
+    height: 120px;
+    overflow-y: auto;
+}

@@ -1,0 +1,83 @@
+sonata_admin:
+    templates:
+        edit: '/bundles/SonataAdmin/CRUD/edit.html.twig'
+    assets:
+        extra_stylesheets:
+            - back/css/tooltipster.bundle.min.css
+            - back/css/style.css
+        extra_javascripts:
+            - back/js/tooltipster.bundle.min.js
+            - back/js/general.js
+    title: 'MJMT Admin'
+    dashboard:
+        groups:
+            mjmt_back.admin.group.client:
+                label: Clients
+                label_catalogue: messages
+                items:
+                    - mjmt_back.admin.client
+                    - mjmt_back.admin.projet
+                    - mjmt_back.admin.creation
+                    - mjmt_back.admin.client_paiement
+
+            mjmt_back.admin.group.entite:
+                label: Entités
+                label_catalogue: messages
+                items:
+                    - mjmt_back.admin.entite
+                    - mjmt_back.admin.composition
+                    - mjmt_back.admin.style
+                    - mjmt_back.admin.couleur
+                    - mjmt_back.admin.categorie
+                    - mjmt_back.admin.rusticite
+                    - mjmt_back.admin.ph
+                    - mjmt_back.admin.precipitation
+                    - mjmt_back.admin.type_sol
+                    - mjmt_back.admin.ensoleillement
+                    - mjmt_back.admin.entretien
+                    - mjmt_back.admin.besoin_eau
+                    - mjmt_back.admin.entite_photo_etat
+                    - mjmt_back.admin.banque_photo
+                    - mjmt_back.admin.annee
+                    - mjmt_back.admin.matiere
+                    - mjmt_back.admin.marque
+                    - mjmt_back.admin.entite_sous_type
+                    - mjmt_back.admin.creation_type
+
+            mjmt_back.admin.group.offre:
+                label: Offres / CP
+                label_catalogue: messages
+                items:
+                    - mjmt_back.admin.offre
+                    - mjmt_back.admin.code_promo
+
+            sonata_admin.admin.group.admin:
+                label: Admin
+                label_catalogue: messages
+                items:
+                    - mjmt_back.admin.import
+                    - sonata.user.admin.user
+                    - sonata.user.admin.group
+
+            mjmt_back.admin.group.autre:
+                label: Autre
+                label_catalogue: messages
+                items:
+                    - mjmt_back.admin.video
+                    - mjmt_back.admin.cms
+                    - mjmt_back.admin.pub
+
+            mjmt_back.admin.group.enumeration:
+                label: Enumeration
+                label_catalogue: messages
+                items:
+                    - mjmt_back.admin.enumeration_alimentaire
+                    - mjmt_back.admin.enumeration_caduc
+                    - mjmt_back.admin.enumeration_type_personne
+                    - mjmt_back.admin.enumeration_methode_paiement
+                    - mjmt_back.admin.enumeration_js
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]

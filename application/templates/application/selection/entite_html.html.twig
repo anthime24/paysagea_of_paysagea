@@ -1,0 +1,42 @@
+<div id="entite-photo-{{ creation_entite.getId() }}-{{ creation_entite.getCreated().getTimestamp() }}"
+     class="entite-accroche"
+     attr-creation-entite-id="{{ creation_entite.getId() }}"
+     attr-entite-id="{{ creation_entite.getEntite().getId() }}"
+        {% if creation_entite.getComposition() %}
+            attr-composition-id="{{ creation_entite.getComposition().getId() }}"
+            attr-composition-vue-id="{{ creation_entite.getCompositionVue().getId() }}"
+            attr-rotation-composition-href="{{ path('mjmt_application_ajout_html_entite',{'entiteId':creation_entite.getEntite().getId()}) }}"
+        {% else %}
+            attr-composition-id="0"
+            attr-composition-vue-id="0"
+        {% endif %}
+     attr-entite-id="{{ creation_entite.getEntite().getId() }}"
+     attr-date-ajout="{{ creation_entite.getCreated().getTimestamp() }}"
+     attr-taille-fixe="{{ creation_entite.getTailleFixe()|default('0') }}"
+     attr-envoyer-image="0"
+     attr-lasso="{{ creation_entite.getLasso()|default('0') }}"
+     attr-symetrie="{{ creation_entite.getSymetrie()|default('0') }}"
+     attr-visible="{{ creation_entite.getVisibilite()|default('0') }}"
+     attr-entity-height="{{ creation_entite.getEntitePhoto().getHauteurEntite() }}"
+     attr-width="{{ creation_entite.getLargeurPhoto() }}"
+     attr-height="{{ creation_entite.getHauteurPhoto() }}"
+     attr-adaptive-width="{{ creation_entite.getLargeur() }}"
+     attr-adaptive-height="{{ creation_entite.getHauteur() }}"
+     attr-rotation="{{ creation_entite.getRotation() }}"
+     attr-transformation="{{ creation_entite.getTransformation() }}"
+     attr-resize-min-height="0"
+     attr-resize-max-height="0"
+     attr-zindex="{{ creation_entite.getZindex() }}"
+     attr-top="{{ creation_entite.getCoordonneeY()|default('0') }}"
+     attr-left="{{ creation_entite.getCoordonneeX()|default('0') }}">
+    <div id="entite-photo-position-{{ creation_entite.getId() }}-{{ creation_entite.getCreated().getTimestamp() }}"
+         style="position: relative; z-index: 1; width: {{ creation_entite.getLargeur() }}px; height: {{ creation_entite.getHauteur() }}px">
+        {% if creation_entite.getLasso() == false %}
+            <img style=""
+                 src="{{ creation_entite.getWebPath() | imagine_filter((creation_entite.getComposition() ? 'thumb_app_contenu_entite_composition' : 'thumb_app_contenu_entite')) }}"
+                 class="entite"/>
+        {% else %}
+            <img style="" src="{{ creation_entite.getWebPath() }}" class="entite"/>
+        {% endif %}
+    </div>
+</div>

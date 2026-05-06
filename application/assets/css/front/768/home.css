@@ -1,0 +1,46 @@
+@media screen and (max-width: 768px) {
+    #page-home #e-grounds {
+        margin-bottom: 50px;
+    }
+
+    #page-home #e-grounds h1 {
+        font-size: 30px;
+    }
+
+    #page-home #e-grounds li a {
+        font-size: 17px;
+    }
+
+    #page-home #e-grounds-image li a span {
+        background: none;
+        padding-left: 0px;
+    }
+
+    #page-home #historic #historique-lien-amenagement span {
+        background: none;
+        padding-left: 0px;
+    }
+
+    #page-home #historic #historique-parle-de-nous-images > div {
+        float: none !important;
+        margin: 0 auto;
+    }
+
+    #page-home #historic #historique-parle-de-nous-images > div:first-child {
+        margin-bottom: 10px;
+    }
+
+    #page-home .an-asset {
+        margin-bottom: 20px;
+    }
+
+    #page-home #historique #historique-lien-amenagement {
+        font-size: 17px;
+        margin: 30px auto;
+        width: 80%;
+    }
+
+    #page-home #temoignage .temoignage-text {
+        margin-bottom: 50px;
+    }
+}

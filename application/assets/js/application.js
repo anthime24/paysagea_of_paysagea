@@ -1,0 +1,30 @@
+require('../css/application/lib/ui-darkness/jquery-ui-1.10.3.custom.min.css');
+require('../css/application/lib/jquery.tipsy.css');
+require('../css/core/font.css');
+require('../css/front/lib/multiple-select.css');
+require('../css/application/application.less');
+
+//const jquery = require('jquery');
+//window.$ = window.jQuery = jquery;
+//const jquery_ui = require('jquery-ui');
+//const jquery_ui_touch = require('jquery-ui-touch-punch');
+//const jquery_ui_rotatable = require('jquery-ui-rotatable');
+//const html2canvas = require('html2canvas');
+//const fabric = require('fabric');
+
+//const jquery_eraser = require('./application/lib/jquery.eraser.js');
+//const pixastic = require('./application/lib/pixastic.custom.js');
+//const global = require('./application/global.js');
+//const contenu = require('./application/contenu.js');
+//const action = require('./application/action.js');
+//const action_parametrage = require('./application/action-parametrage.js');
+//const menu = require('./application/menu.js');
+//const ma_selection = require('./application/ma-selection.js');
+//const selection = require('./application/selection.js');
+//const proportion = require('./application/proportion.js');
+//const rotation = require('./application/rotation.js');
+//const tampon = require('./application/tampon.js');
+//const tampon_parametrage = require('./application/tampon-parametrage.js');
+// const html2canvas = require('./application/lib/html2canvas.min.js');
+//const lasso = require('./application/lasso.js');
+//const promise_prototype_new = require('./application/lib/promise-prototype-new.js');

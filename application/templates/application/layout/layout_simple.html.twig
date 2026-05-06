@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no"/>
+    <meta name="p:domain_verify" content="3a7e13181547ccd06198a65beaec944d"/>
+    <meta name="robots" content="noindex, nofollow"/>
+    {% block title %}
+    {% endblock %}
+    <meta property="og:url"
+          content="{{ (app.request.getSchemeAndHttpHost() ~ path('mjmt_application_homepage', {'creationId' : creation.getId, 'hash' : creation.getReferenceLecture})) }}"/>
+    <meta property="og:image"
+          content="{{ (app.request.getSchemeAndHttpHost() ~ path('mjmt_application_image', {'creationId' : creation.getId, 'hash' : creation.getReferenceLecture, 'timestamp': ("now"|date('U')) })) }}"/>
+    <meta property="og:title" content="Mon Jardin Ma Terrasse"/>
+    <meta property="og:description"
+          content="{% trans %}Que pensez-vous de mon projet d'aménagement extérieur réalisé sur monjardin-materrasse.com ?{% endtrans %}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('application') }}
+    {% endblock %}
+</head>
+<body class="{{ app.environment }}">
+<div id="contenu">
+    {% block contenu %}
+    {% endblock %}
+</div>
+</body>
+</html>

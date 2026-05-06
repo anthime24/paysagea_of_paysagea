@@ -1,0 +1,7 @@
+{% if admin.hasRoute('visualiser') %}
+    <a href="javascript:window.open('{{ admin.generateObjectUrl('visualiser', object) }}','','resizable=no,location=no,width=900,height=600,menubar=no,status=no,scrollbars=no,menubar=no')"
+       class="btn btn-sm btn-default edit_link" title="Visualiser" target="_blank">
+        <i class="icon-zoom-in"></i>
+        Visualiser
+    </a>
+{% endif %}

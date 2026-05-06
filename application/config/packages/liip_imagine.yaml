@@ -1,0 +1,81 @@
+# See dos how to configure the bundle: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
+liip_imagine:
+    # valid drivers options include "gd" or "gmagick" or "imagick"
+    driver: "gd"
+    loaders:
+        default:
+            filesystem:
+                data_root: "%kernel.project_dir%/public"
+                locator: filesystem_insecure
+    resolvers:
+        default:
+            web_path: ~
+    filter_sets:
+        my_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [120, 90], mode: outbound }
+        thumb_app_resultat_filtre:
+            quality: 75
+            filters:
+                thumbnail: { size: [190, 120], mode: inset }
+        thumb_app_resultat_pdf:
+            quality: 100
+            filters:
+                thumbnail: { size: [130, 100], mode: inset }
+        thumb_app_ma_selection:
+            quality: 100
+            filters:
+                thumbnail: { size: [100, 75], mode: inset }
+        thumb_app_picto:
+            quality: 100
+            filters:
+                thumbnail: { size: [80, 80], mode: inset }
+        thumb_app_ma_selection_description:
+            quality: 100
+            filters:
+                thumbnail: { size: [290, 220], mode: inset }
+        thumb_app_ma_selection_description_apercu:
+            quality: 100
+            filters:
+                thumbnail: { size: [80, 80], mode: outbound }
+        thumb_app_contenu_fond_image:
+            quality: 85
+            filters:
+                thumbnail: { size: [1200, 720], mode: inset }
+        thumb_app_entite_marque_apercu:
+            quality: 100
+            filters:
+                thumbnail: { size: [50, 50], mode: inset }
+        thumb_front_vignette_inscription:
+            quality: 100
+            filters:
+                thumbnail: { size: [200, 200], mode: outbound }
+        thumb_app_contenu_entite_composition:
+            quality: 100
+            filters:
+                thumbnail: { size: [800, 800], mode: inset, quality: 90 }
+        thumb_app_contenu_entite:
+            quality: 100
+            filters:
+                thumbnail: { size: [400, 400], mode: inset, quality: 90 }
+        thumb_front_fond_contenu_image:
+            quality: 100
+            filters:
+                thumbnail: { size: [900, 550], mode: inset }
+        thumb_front_inscription_apercu_style:
+            quality: 100
+            filters:
+                thumbnail: { size: [300, 300], mode: inset }
+        thumb_front_accueil_historique:
+            quality: 85
+            filters:
+                thumbnail: { size: [457, 306], mode: outbound }
+        thumb_front_accueil_temoignage:
+            quality: 100
+            filters:
+                thumbnail: { size: [210, 210], mode: outbound }
+        thumb_front_accueil_pub:
+            quality: 100
+            filters:
+                thumbnail: { size: [728, 90], mode: inset }

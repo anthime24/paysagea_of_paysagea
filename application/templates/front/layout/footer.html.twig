@@ -1,0 +1,81 @@
+<div id="footer-content" class="content-center container-fluid">
+    <div class="row">
+        <div id="footer-description" class="col-md-8 col-sm-6 col-xs-12">
+            <p id="footer-description-title">{% trans %}Description{% endtrans %}</p>
+
+            <p id="footer-description-content">
+                {% trans %}
+                    <span class="text-bold">Monjardin-materrasse.com</span> dévoile un logiciel d'<span
+                        class="text-bold">aménagement paysager</span>
+                    simple
+                    d'utilisation pour la <span class="text-bold">conception d'un jardin</span>,
+                                                                                               la <span
+                        class="text-bold">création d'une terrasse</span> ou l'aménagement d'un balcon.
+                                                                         Avec notre <span class="text-bold">logiciel paysagiste</span>, vous pourrez créer un
+                    <span
+                            class="text-bold">plan de jardin</span> paysager en toute simplicité.
+                                                                    Et en plus de notre <span class="text-bold">logiciel pour terrasse</span>, balcon et pour
+                    <span
+                            class="text-bold">aménager un jardin</span>, en tant que <span class="text-bold">jardiniers paysagistes</span>
+                    reconnus,
+                    nous vous apportons de nombreux conseils pour l'aménagement de votre jardin, ainsi que des trucs et
+                    astuces pour la décoration de votre jardin.
+                {% endtrans %}
+            </p>
+        </div>
+
+        <div id="footer-plan" class="col-md-4 col-sm-6 col-xs-12">
+            <p id="footer-plan-title">{% trans %}Pages du site{% endtrans %}</p>
+
+            <div id="footer-plan-content">
+                <div class="pull-left" id="piedpage-plan-content-left">
+                    <ul class="list-unstyled">
+                        <li>
+                            {% set urlPlanDuSite = translate_url(app.request, 'plan-du-site', true) %}
+                            <a href="{{ urlPlanDuSite|raw }}">{% trans %}Plan du site{% endtrans %}</a>
+                        </li>
+                        <li>
+                            {% set urlMentionsLegales = translate_url(app.request, 'mentions-legales', true) %}
+                            <a href="{{ urlMentionsLegales|raw }}">{% trans %}Mentions légales{% endtrans %}</a>
+                        </li>
+                        <li>
+                            {% set urlFaq = translate_url(app.request, 'faq', true) %}
+                            <a href="{{ urlFaq|raw }}">{% trans %}FAQ{% endtrans %}</a>
+                        </li>
+                        <li>
+                            {% set urlCgu = translate_url(app.request, 'cgu', true) %}
+                            <a href="{{ urlCgu|raw }}">{% trans %}CGU{% endtrans %}</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pull-right" id="footer-plan-content-right">
+                    <ul class="list-unstyled">
+                        <li>
+                            {% set urlOnParleDeNous = translate_url(app.request, 'on-parle-de-nous', true) %}
+                            <a href="{{ urlOnParleDeNous|raw }}">{% trans %}Ils parlent de nous{% endtrans %}</a>
+                        </li>
+                        <li>
+                            {% set urlEspacePresse = translate_url(app.request, 'espace-presse', true) %}
+                            <a href="{{ urlEspacePresse|raw }}">{% trans %}Espace presse{% endtrans %}</a>
+                        </li>
+                        <li>
+                            {% set urlAPropos = translate_url(app.request, 'a-propos', true) %}
+                            <a href="{{ urlAPropos|raw }}">{% trans %}A propos{% endtrans %}</a>
+                        </li>
+                        <li>
+                            {% set urlContact = translate_url(app.request, 'contact', true) %}
+                            <a href="{{ urlContact|raw }}">{% trans %}Contact{% endtrans %}</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <p id="footer-legal-notice">
+        {% trans with {'%annee%': ('now' | date('Y'))} %}Copyright &copy; %annee% mon jardin ma terrasse - Paysagea Tous droits réservés{% endtrans %}
+    </p>
+</div>

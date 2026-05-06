@@ -1,0 +1,24 @@
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+    defaults:
+        _locale: fr
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+    defaults:
+        _locale: fr
+
+soanata_user_security:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
+    defaults:
+        _locale: fr
+
+soanata_user_resetting:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
+    prefix: /admin/resetting
+    defaults:
+        _locale: fr

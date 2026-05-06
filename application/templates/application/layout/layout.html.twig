@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta name="p:domain_verify" content="3a7e13181547ccd06198a65beaec944d"/>
+    <meta name="robots" content="noindex, nofollow"/>
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('application') }}
+    {% endblock %}
+
+    <!-- force chrome à améliorer la nettteté des images en utilisant -webkit-optimize-contrast, Firefox n'est pas concerné par ce problème, ne doit pas être activé avec safari -->
+    <style type="text/css">
+        @media screen and (-webkit-min-device-pixel-ratio:0)
+        and (min-resolution:.001dpcm) {
+            .entite {
+                image-rendering: -webkit-optimize-contrast !important;
+            }
+        }
+
+        @media not all and (min-resolution:.001dpcm)
+        { @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+            .entite {
+                image-rendering: unset !important;
+            }
+        }}
+    </style>
+
+    <script type="text/javascript">
+        var translationCurrentLocale = "{{ app.request.locale }}";
+        var translationLibraryObj = JSON.parse('{{ translate_js() | json_encode(constant('JSON_HEX_QUOT')) | raw }}');
+
+        function translateJs(identifier) {
+            var translationLibraryObjKeys = Object.keys(translationLibraryObj);
+            if(translationLibraryObjKeys.indexOf(identifier) != -1 && typeof translationLibraryObj[identifier][translationCurrentLocale] != "undefined") {
+                return translationLibraryObj[identifier][translationCurrentLocale];
+            } else if(translationLibraryObjKeys.indexOf(identifier) != -1 && typeof translationLibraryObj[identifier]['fr'] != "undefined") {
+                return translationLibraryObj[identifier]['fr'];
+            }
+
+            return "";
+        }
+    </script>
+    {% include "application/layout/_script.html.twig" %}
+
+    {#        {% block javascripts  %}
+                {{ encore_entry_script_tags('application') }}
+            {% endblock %}#}
+
+    <script src="/tarteaucitron/tarteaucitron.js"></script>
+    <script type="text/javascript">
+        var tarteaucitronForceExpire = 182;
+
+        if(tarteaucitron){
+            tarteaucitron.events.load = function(){
+
+
+                var DOMReadyTimeoutDuration = 500;
+                setTimeout(function(){
+                    // if user choose to personalize cookies management, we prevent "AllDeny" method execution
+                    tarteaucitron.addClickEventToId("tarteaucitronCloseAlert", function () {
+                        if(tarteaucitronDeniedAllTimeout) clearTimeout(tarteaucitronDeniedAllTimeout);
+                    });
+                    tarteaucitron.addClickEventToId("tarteaucitronPersonalize2", function () {
+                        if(tarteaucitronDeniedAllTimeout) clearTimeout(tarteaucitronDeniedAllTimeout);
+                    });
+
+                    var tarteaucitronAlertBig= document.getElementById('tarteaucitronAlertBig');
+
+                    if(tarteaucitronAlertBig){
+                        tarteaucitronAlertBig.addEventListener('mouseenter', function () {
+                            if(tarteaucitronDeniedAllTimeout) clearTimeout(tarteaucitronDeniedAllTimeout);
+                        });
+                    }
+                }, DOMReadyTimeoutDuration);
+
+                var tarteaucitronDeniedAllTimeoutSetter = function(){
+                    return setTimeout(function(){
+                        if(Object.keys(tarteaucitron.state).length == 0 || Object.keys(tarteaucitron.state).every(k => !tarteaucitron.state[k])){ // if user never responds to consent panel
+                            tarteaucitron.userInterface.respondAll(false); // After a short duration, all non-necessary cookie are denied
+                        }
+                    }, (30 * 1000) + DOMReadyTimeoutDuration);
+                }
+                window.tarteaucitronDeniedAllTimeout = tarteaucitronDeniedAllTimeoutSetter();
+            }
+        }
+
+        tarteaucitron.init({
+            "privacyUrl": "", /* Privacy policy url */
+            "bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
+
+            "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+            "cookieName": "tarteaucitron", /* Cookie name */
+
+            "orientation": "middle", /* Banner position (top - bottom) */
+
+            "groupServices": false, /* Group services by category */
+            "serviceDefaultState": "wait", /* Default state (true - wait - false) */
+
+            "showAlertSmall": false, /* Show the small banner on bottom right */
+            "cookieslist": false, /* Show the cookie list */
+
+            "closePopup": false, /* Show a close X on the banner */
+
+            "showIcon": true, /* Show cookie icon to manage cookies */
+            //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+            "iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
+
+            "adblocker": false, /* Show a Warning if an adblocker is detected */
+
+            "DenyAllCta" : true, /* Show the deny all button */
+            "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+            "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+
+            "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+            "removeCredit": false, /* Remove credit link */
+            "moreInfoLink": true, /* Show more info link */
+
+            "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+            "useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
+
+            //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+
+            "readmoreLink": "", /* Change the default readmore link */
+
+            "mandatory": true, /* Show a message about mandatory cookies */
+            "mandatoryCta": true /* Show the disabled accept button when mandatory on */
+        });
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script type="text/javascript">
+        tarteaucitron.user.googletagmanagerId = 'UA-45291086-3';
+        (tarteaucitron.job = tarteaucitron.job || []).push('googletagmanager');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!--Start of Zopim Live Chat Script-->
+    <script type="text/javascript">
+        window.$zopim || (function (d, s) {
+            var z = $zopim = function (c) {
+                z._.push(c)
+            }, $ = z.s =
+                d.createElement(s), e = d.getElementsByTagName(s)[0];
+            z.set = function (o) {
+                z.set._.push(o)
+            };
+            z._ = [];
+            z.set._ = [];
+            $.async = !0;
+            $.setAttribute("charset", "utf-8");
+            $.src = "//v2.zopim.com/?3QFop7Lz3RH4ZNlVGbTUqduuuyVrWvpX";
+            z.t = +new Date;
+            $.type = "text/javascript";
+            e.parentNode.insertBefore($, e)
+        })(document, "script");
+    </script>
+    <!--End of Zopim Live Chat Script-->
+
+    {% if app.request.locale == 'en' %}
+        <script type="text/javascript">$zopim(function () {
+                $zopim.livechat.setLanguage('en');
+            });</script>
+    {% endif %}
+</head>
+<body>
+<div id="entete">
+    {% include "application/layout/header.html.twig" %}
+</div>
+
+<div id="menu">
+    {% include "application/layout/menu.html.twig" %}
+</div>
+
+<div id="entete-outil" style="display: none;"></div>
+
+<div id="bloc-ma-selection">
+    <div id="conteneur-entites">
+        {{ render(controller('App\\Application\\Controller\\MaSelectionController::liste', {'creationId': creation.getId()})) }}
+    </div>
+</div>
+
+<div id="contenu">
+    {% block contenu %}{% endblock %}
+</div>
+
+<div id="contenu-clone"></div>
+
+<div id="actions">
+    {% include "application/layout/actions.html.twig" %}
+</div>
+
+<div id="lasso-help" style="display: none;">
+    <div class="msg">
+                <span>{% trans %}Cliquez sur l'image pour baliser le contour de la zone, fermez la sélection en recliquant sur le point rouge, puis choisissez le motif à dupliquer.{% endtrans %}<br/>
+                    {% trans %}Vous pouvez faire varier la taille du motif en cliquant sur les boutons agrandir et rétrécir.{% endtrans %}<br/>
+                    {% trans %}Enfin cliquez sur terminer pour finaliser l'opération.{% endtrans %}</span>
+    </div>
+    <div class="control">
+        <div data-action="zoomOut" class="item">
+            <img src="{{ asset('/application/images/icone/zoom-out.png') }}"/>
+            <span>{% trans %}Retrecir{% endtrans %}</span>
+        </div>
+        <div data-action="zoomIn" class="item">
+            <img src="{{ asset('/application/images/icone/zoom-in.png') }}"/>
+            <span>{% trans %}Agrandir{% endtrans %}</span>
+        </div>
+        <div data-action="cancel" class="item">
+            <img src="{{ asset('/application/images/icone/close.png') }}"/>
+            <span>{% trans %}Annuler{% endtrans %}</span>
+        </div>
+        <div data-action="finalize" class="item">
+            <img src="{{ asset('/application/images/icone/check-mark.png') }}"/>
+            <span>{% trans %}Terminer{% endtrans %}</span>
+        </div>
+    </div>
+</div>
+
+<div id="popin-ajout" class="popin">
+    {% include "application/popin/ajout.html.twig" %}
+</div>
+
+<div id="popin-lasso" class="popin" style="z-index: 1000;">
+    {% include "application/popin/lasso.html.twig" %}
+</div>
+
+<div id="popin-informations-entite" class="popin"></div>
+
+<div id="popin-confirmation" class="popin popin-min">
+    {% include "application/popin/confirmation.html.twig" %}
+</div>
+
+<div id="popin-finaliser" class="popin popin">
+    {% include "application/popin/finaliser.html.twig" %}
+</div>
+
+<div id="popin-quitter" class="popin popin-min">
+    {% include "application/popin/quitter.html.twig" %}
+</div>
+
+<div id="popin-confirmation-modification" class="popin popin-min">
+    {% include "application/popin/confirmation_modification.html.twig" %}
+</div>
+
+<div id="popin-article-indisponible" class="popin popin-moy">
+    {% include "application/popin/article_indisponible.html.twig" %}
+</div>
+
+<div id="popin-enregistrement" class="popin popin-moy">
+    {% include "application/popin/enregistrement.html.twig" %}
+</div>
+
+<div id="popin-aide" class="popin">
+    {% include "application/popin/aide.html.twig" %}
+</div>
+
+<div id="selection-entite-erreur-maximum" class="popin popin-moy">
+    {% include "application/popin/selection_entite_erreur_max.html.twig" %}
+</div>
+
+<div id="popin-choix-offre" class="popin">
+    {% include "application/popin/choix-offre.html.twig" %}
+</div>
+
+<div id="fonction-non-disponible-offre-decouverte" class="popin popin-moy">
+    {% include "application/popin/fonction_non_disponible_offre_decouverte.html.twig" %}
+</div>
+
+<div id="popin-parametrage" class="popin popin-moy"></div>
+
+
+<div id="popin-error" class="popin popin-moy" style="display: none;">
+    <div class="popin-content">
+        <div class="popin-content-titre">
+            {% trans %}Erreur{% endtrans %}
+            <a class="croix-ferme"></a>
+        </div>
+        <div class="popin-content-contenu">
+            <span class="msg"></span>
+
+            <span class="confirm-button" style="display: none;">
+                        <button id="popin-error-button-ok">{% trans %}Commencer une nouvelle action{% endtrans %}</button>
+                        <button id="popin-error-button-ko">{% trans %}Terminer l'action précédente{% endtrans %}</button>
+                    </span>
+        </div>
+    </div>
+</div>
+
+<div id="popin-rendu" class="popin popin-moy"></div>
+
+<div id="tampon-parametrage">
+    <div id="taille-tampon" class="tampon-parametrage-hook">
+        <div class="slider-text">{% trans %}Taille du tampon{% endtrans %}</div>
+        <div class="slider"></div>
+        <div class="slider-valeur">
+            <div class="slider-valeur-cercle"></div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="html2CanvasScreenshot" value="{% if html2CanvasScreenshot is defined %}{{ html2CanvasScreenshot }}{% endif %}"/>
+<input type="hidden" id="type-creation" value="{{ creation.getCreationType() }}"/>
+<input type="hidden" id="premier-demarrage" value="{{ creation.getEnregistree() }}"/>
+<input type="hidden" id="creation-enregistree" value="{{ creation.getEnregistree() }}"/>
+<input type="hidden" id="acces-complet-client"
+       value="{{ creation.getProjet().getClient() ? creation.getProjet().getClient().getAccesCompletPlantesObjets() : 0 }}"/>
+<input type="hidden" id="application_refresh_url"
+       value="{{ url('mjmt_application_homepage', {'creationId': creation.getId(), 'hash': creation.getReferenceEcriture()}) }}"/>
+<input type="hidden" id="url-finalisation-creation-compte" value="{{ path('mjmt_application_finaliser', {'creationId': creation.getId(), 'hash' : creation.getReferenceEcriture}) }}" />
+<input type="hidden" id="url-redirection-page-offre" value="{{ path('mjmt_front_client_offer_selection') }}" />
+</body>
+</html>

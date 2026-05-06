@@ -1,0 +1,20 @@
+{% if importingUser is null %}
+    <form style="margin-top: 10px; margin-bottom: 10px;" method="POST" action="{{ path('admin_app_core_import_verrouillage_import') }}" style="margin-top: 10px; margin-bottom: 10px;">
+        <p style="display: inline-block; margin-left: 10px;">Aucun utilisateur n'est en train d'importer de fichier</p>
+    </form>
+{% else %}
+    <form style="margin-top: 10px; margin-bottom: 10px;" method="POST" action="{{ path('admin_app_core_import_verrouillage_import') }}" style="margin-top: 10px; margin-bottom: 10px;">
+        {% if app.user.getId() == importingUser.getId() %}
+            <label class="switch allreadyImportingSwitch">
+                <input data-sonata-icheck="false" checked="checked" type="checkbox" value="1">
+                <span class="slider round"></span>
+            </label>
+        {% else %}
+            <label class="switch allreadyImportingSwitch">
+                <input data-sonata-icheck="false" disabled="disabled" checked="checked" type="checkbox" value="1">
+                <span class="slider round"></span>
+            </label>
+        {% endif %}
+        <p style="display: inline-block; margin-left: 10px;">L'utilisateur <span style="font-weight: bold;">{{ importingUser.getUsername() }}</span> est en train d'importer un fichier</p>
+    </form>
+{% endif %}

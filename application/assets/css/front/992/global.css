@@ -1,0 +1,48 @@
+@media screen and (max-width: 992px) {
+    #header {
+        padding: 0 10px;
+    }
+
+    #menu {
+        padding: 0 10px;
+    }
+
+    #page-inscription .modal-offre .modal-table-offres tbody .une-offre .titre {
+        font-size: 20px;
+    }
+
+    #page-inscription .modal-offre .modal-table-offres tbody .une-offre .prix {
+        font-size: 25px;
+        padding: 5px 0 0 15px;
+    }
+
+    #page-inscription .modal-offre .modal-table-offres tbody .une-offre .description {
+        padding: 5px 10px 15px 15px;
+        font-size: 14px;
+    }
+
+    #page-inscription .modal-offre .modal-offre-accroche .logo-paiement {
+        display: none;
+    }
+
+    #page-inscription .modal-offre .modal-table-offres.offre-ligne-2 tbody .une-offre .description {
+        display: none;
+    }
+
+    #page-inscription .modal-offre .modal-table-offres tbody .une-offre .bouton {
+        margin: 5px auto 0 auto;
+        width: 130px;
+    }
+
+    #page-inscription .modal-offre .modal-table-offres tbody .une-offre {
+        height: 280px;
+    }
+
+    #page-inscription .modal-offre .modal-table-offres tbody .offre-subtext {
+        margin: -2px 10px 0 10px;
+    }
+
+    #page-inscription .modal-offre .modal-offre-accroche {
+        font-size: 17px;
+    }
+}

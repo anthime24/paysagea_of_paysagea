@@ -1,0 +1,44 @@
+<div id="croix-fermer-selection">
+    <img src="{{ asset('application/images/boutton-croix.png') }}" alt="Fermer la sélection"
+         title="Fermer la sélection"/>
+</div>
+<form method="POST" action="{{ path('mjmt_application_recherche_filtre', {'creationId': creation.getId()}) }}">
+    <div id="filtre-entete">
+        <ul id="choix-type-entite">
+            {% for type in listTypes %}
+                {% if type.actif==true %}
+                    <li id="{{ type.getSlug() }}" {% if loop.first %}class="current"{% endif %}>{{ type.getNom() }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <select name="mjmt_appbundle_filtre_entite_type" id="select-type-entite">
+            {% for type in listTypes %}
+                <option value="{{ type.getSlug() }}">{{ type.getNom() }}</option>
+            {% endfor %}
+        </select>
+        <button id="boutton-reinitialiser">{% trans %}Réinitialiser{% endtrans %}</button>
+    </div>
+    <p class="legende-info">{% trans %}Voici notre proposition, choisissez et placez vos articles sur la photo jusqu'à obtenir la création souhaitée{% endtrans %}</p>
+    {% for type in listTypes %}
+        <div id="formulaire-{{ type.getSlug() }}" {% if loop.first %}class="formulaire-actif"{% endif %}>
+            {% include "application/selection/form_" ~ type.getSlug() ~ ".html.twig" %}
+        </div>
+    {% endfor %}
+</form>
+<div class="filtre-separation"></div>
+<div id="filtre-resultat-info">
+    {% for type in listTypes %}
+        <p id="mjmt_appbundle_filtre_arrosage_message_{{ type.getSlug() }}">{% trans %}Attention ! Dans le cas d’une
+                <span>terrasse couverte</span> un arrosage hebdomadaire est indispensable !{% endtrans %}</p>
+        <p id="filtre-resultat-nombre-{{ type.getSlug() }}" class="filtre-resultat-nombre"></p>
+    {% endfor %}
+    <p id="mjmt_appbundle_filtre_defaut_message_plante">{% trans %}Attention ! Les paramètres par défaut ont été modifiés. Les plantes risquent de ne pas correspondre à votre terrain.{% endtrans %}</p>
+</div>
+<div id="filtre-resultat">
+    <input type="hidden" id="urlPlusDeResultats"
+           value="{{ path('mjmt_application_scroll_infini', {'creationId': creation.getId()}) }}"/>
+    {% for type in listTypes %}
+        <div id="filtre-resultat-{{ type.getSlug() }}"></div>
+    {% endfor %}
+</div>
+<div id="filtre-resultat-blocage"></div>

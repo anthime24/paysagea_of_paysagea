@@ -1,0 +1,48 @@
+<div id="entite-photo-{{ entite.getId() }}-{{ timestamp }}"
+     class="entite-accroche"
+     attr-creation-entite-id="0"
+     attr-entite-id="{{ entite.getId() }}"
+        {% if entite.getComposition() %}
+            attr-composition-id="{{ entite.getComposition().getId() }}"
+            attr-rotation-composition-href="{{ path('mjmt_application_ajout_html_entite',{'entiteId':entite.getId()}) }}"
+        {% else %}
+            attr-composition-id="0"
+        {% endif %}
+     attr-composition-vue-id="{{ compositionVueId }}"
+     attr-date-ajout="{{ timestamp }}"
+     attr-taille-fixe="0"
+     attr-envoyer-image="0"
+     attr-symetrie="0"
+     attr-visible="1"
+     attr-entity-height="{{ entite.getPhotoPrincipale().getHauteurEntite() }}"
+     attr-width="{{ entite.getPhotoPrincipale().getLargeur() }}"
+     attr-height="{{ entite.getPhotoPrincipale().getHauteur() }}"
+     attr-rotation="0"
+     attr-transformation=""
+     attr-resize-width=""
+     attr-resize-height=""
+     attr-resize-min-height="0"
+     attr-resize-max-height="0"
+     attr-zindex="0"
+     attr-top="0"
+     attr-left="0">
+    {% if lasso and entite.getLasso() is not null and entite.getLasso() == 1 %}
+        {% if entite.getLassoPhoto() is not null %}
+            <div id="entite-photo-position-{{ entite.getId() }}-{{ timestamp }}" style="position: relative;z-index: 1;">
+                <img attr-lasso="1" attr-width="{{ entite.getLassoPhotoLargeur() }}"
+                     attr-height="{{ entite.getLassoPhotoHauteur() }}" src="{{ entite.getWebPath() }}" class="entite"/>
+            </div>
+        {% else %}
+            <div id="entite-photo-position-{{ entite.getId() }}-{{ timestamp }}" style="position: relative;z-index: 1;">
+                <img attr-lasso="1"
+                     src="{{ entitePhoto.getWebPath() | imagine_filter((entite.getComposition() ? 'thumb_app_contenu_entite_composition' : 'thumb_app_contenu_entite')) }}"
+                     class="entite"/>
+            </div>
+        {% endif %}
+    {% else %}
+        <div id="entite-photo-position-{{ entite.getId() }}-{{ timestamp }}" style="position: relative;z-index: 1;">
+            <img src="{{ entitePhoto.getWebPath() | imagine_filter((entite.getComposition() ? 'thumb_app_contenu_entite_composition' : 'thumb_app_contenu_entite')) }}"
+                 class="entite"/>
+        </div>
+    {% endif %}
+</div>

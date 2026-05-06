@@ -1,0 +1,53 @@
+<div id="menu-content{% if mobile %}-mobile{% endif %}" class="content-center">
+    {% set params = app.request.attributes.get('_route_params') %}
+    {% set cmsUrl = (params['url'] is defined) ? '/' ~ params['url'] : '/' %}
+
+    <ul>
+        <li>
+            <a href="{{ path('mjmt_front_home') }}"
+               class="{% if app.request.attributes.get('_route') == 'mjmt_front_home' %}active{% endif %}">
+                <span>{% trans %}Home{% endtrans %}</span>
+            </a>
+        </li>
+
+        {% set translatedUrl = translate_url(app.request, 'demo-logiciel-jardin') %}
+        <li>
+            <a href="{{ translatedUrl|raw }}"
+               class="{% if cmsUrl == translatedUrl %}active{% endif %}">
+                <span>{% trans %}Notre offre{% endtrans %}</span>
+            </a>
+        </li>
+
+        {% if app.request.locale is defined and app.request.locale == 'en' %}
+            <li>
+                <a href="https://mygardendesigner.com">
+                    <span>{% trans %}Blog{% endtrans %}</span>
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <a href="https://www.monjardin-materrasse.com/blog/">
+                    <span>{% trans %}Blog{% endtrans %}</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% set translatedUrl = translate_url(app.request, 'a-propos') %}
+        <li>
+            <a href="{{ translatedUrl|raw }}"
+               class="{% if cmsUrl == translatedUrl %}active{% endif %}">
+                <span>{% trans %}Qui sommes-nous ?{% endtrans %}</span>
+            </a>
+        </li>
+
+        {% set translatedUrl = translate_url(app.request, 'contact') %}
+        <li>
+            <a href="{{ translatedUrl|raw }}"
+               class="{% if cmsUrl == translatedUrl %}active{% endif %}">
+                <span>{% trans %}Contact{% endtrans %}</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="clear"></div>
+</div>

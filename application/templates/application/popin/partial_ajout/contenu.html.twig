@@ -1,0 +1,79 @@
+<div id="popin-ajout-content-contenu-filtre">
+    <p class="popin-ajout-titre">{% trans %}Sélectionnez un ou plusieurs critères de recherche{% endtrans %}</p>
+
+    <form method="POST" action="{{ path('mjmt_application_recherche_filtre', {'creationId': creation.getId()}) }}">
+        <div id="popin-ajout-content-contenu-filtre-gauche">
+            {% for type in listTypes %}
+                <div class="filtre-radio">
+                    <input data-reloaded="1" {% if type.getSlug() == 'plante' %}checked="checked"{% endif %}
+                           id="mjmt_appbundle_filtre_entite_type_{{ type.getSlug() }}" type="radio"
+                           name="mjmt_appbundle_filtre_entite_type" value="{{ type.getSlug() }}">
+                    <label for="mjmt_appbundle_filtre_entite_type_{{ type.getSlug() }}">{{ type.getNom() }}</label>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="popin-ajout-content-contenu-filtre-droite">
+            <a href="" onclick="return reinitialiserFilter();">{% trans %}Réinitialiser{% endtrans %}</a>
+
+            <div>
+                <a id="link-toggle-critere" onclick="return toggleCriteres(this);"
+                   href="">{% trans %}+ de critères{% endtrans %}</a>
+
+                <input class="valider-form" type="submit" value="{% trans %}Je cherche{% endtrans %}"/>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="popin-ajout-content-contenu-filtre-centre">
+            {% for type in listTypes %}
+                <div id="formulaire-{{ type.getSlug() }}"
+                     {% if type.getSlug() == 'plante' %}class="formulaire-actif"{% endif %}>
+                    {% include "application/selection/form_" ~ type.getSlug() ~ ".html.twig" %}
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+
+<div class="clear"></div>
+
+<div id="avertissement-regle-arrosage" style="display: none;">
+    <p>
+        {% trans %}<span style="font-style: italic; font-weight: bolder; color: grey;">Vous n'avez pas défini de fréquence d'arrosage</span>, et, <span style="font-style: italic; font-weight: bolder; color: grey;">cela masque l'affichage de certain résultats</span>.{% endtrans %}
+        <br />
+        {% trans %}<a class="configurerRegleArrosage" style="color:rgb(0, 102, 204); text-decoration: underline;" href="">Indiquez ici</a>, si vous comptez arroser régulièrement vos plantes (aux moins 2 fois par semaine en période sèche).{% endtrans %}
+    </p>
+</div>
+
+<div id="popin-ajout-content-contenu-resultat">
+    <p class="popin-ajout-titre">{% trans %}Choisissez et placez vos articles sur la photo jusqu'à obtenir la création souhaitée{% endtrans %}</p>
+
+    <div id="filtre-resultat-info">
+        {% for type in listTypes %}
+            <p id="mjmt_appbundle_filtre_arrosage_message_{{ type.getSlug() }}">
+                {% if creation.getCreationType() == 'Terrasse' %}
+                    {% trans %}Attention ! Dans le cas d'une
+                        <span>terrasse couverte</span> un arrosage hebdomadaire est indispensable !{% endtrans %}
+                {% endif %}
+            </p>
+            <p id="filtre-resultat-nombre-{{ type.getSlug() }}" class="filtre-resultat-nombre"></p>
+        {% endfor %}
+        <p id="mjmt_appbundle_filtre_defaut_message_plante">{% trans %}Attention ! Les paramètres par défaut ont été modifiés. Les plantes risquent de ne pas correspondre à votre terrain.{% endtrans %}</p>
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="filtre-resultat">
+        <input type="hidden" id="urlPlusDeResultats"
+               value="{{ path('mjmt_application_scroll_infini', {'creationId': creation.getId()}) }}"/>
+        {% for type in listTypes %}
+            <div id="filtre-resultat-{{ type.getSlug() }}"></div>
+        {% endfor %}
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="filtre-resultat-blocage"></div>
+</div>

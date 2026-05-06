@@ -1,0 +1,18 @@
+<div class="row">
+    <!-- cgu -->
+    {% set urlCgu = translate_url(app.request, 'cgu', true) %}
+    <div class="col-md-6 col-sm-6 col-xs-12" id="mjmt_frontbundle_projet_inscription_one_page_generale">
+        <div id="mjmt_frontbundle_projet_inscription_one_page_cgu">
+            {{ form_errors(form.cgu) }}
+            {{ form_widget(form.cgu) }}
+            {{ form_label(form.cgu) }}
+            <a id="lien-cgu" href="{{ urlCgu|raw }}"
+               target="_blank">{% trans %}Voir les CGU{% endtrans %}</a> *
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <button class="button-validation" type="submit">
+            <span>{% trans %}Je débute mon aménagement !{% endtrans %}</span></button>
+    </div>
+</div>

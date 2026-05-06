@@ -1,0 +1,12 @@
+{% trans %}Bonjour,{% endtrans %}
+<br/><br/>
+{% trans %}Merci d'avoir utilisé le simulateur d'extérieur My Garden Designer.{% endtrans %}
+<br/><br/>
+{% trans %}Veuillez trouver en pièce jointe du mail, le document de finalisation de votre création{% endtrans %} "{{ creation.getNom() }}".
+<br/>
+{% trans %}Retrouvez la photo de votre création, le récapitulé des articles choisis afin de pouvoir les commander, et le plan de masse qui vous aidera à réaliser les plantations.{% endtrans %}
+<br/><br/>
+{% trans %}Cordialement,{% endtrans %}<br/>
+{% trans %}L'équipe de Mon Jardin Ma Terrasse.{% endtrans %}
+<br/><br/>
+<a href="{{ app.request.getSchemeAndHttpHost() }}">{{ app.request.getSchemeAndHttpHost() }}</a>

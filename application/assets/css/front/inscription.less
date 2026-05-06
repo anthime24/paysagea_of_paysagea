@@ -1,0 +1,852 @@
+// COLOR
+@color-h1: #6f996e;
+@color-h2: #4c463d;
+@color-h3: #4c463d;
+@color-body: #4c4c4c;
+@color-a: #6f996e;
+@color-a-hover: #597a58;
+@color-button-validation: #ffffff;
+@color-button-fond-plein: #FFF;
+@color-button-fond-plein-hover: #FFF;
+
+// BACKGROUND
+@background-button-validation: #6f996e;
+@background-button-validation-hover: #597a58;
+@background-button-fond-plein: #598000;
+@background-form-fragment: #faf9f7;
+
+// FONT
+@police-button-validation: 'open_sanssemibold';
+@police-body: 'open_sansregular';
+@police-h1: 'open_sanssemibold';
+@police-h2: 'open_sanssemibold';
+@police-h3: 'open_sanssemibold';
+@police-button-fond-plein: 'open_sanssemibold';
+
+// FONT SIZE
+@taille-police-body: 15px;
+@taille-police-h1: 48px;
+@taille-police-h2: 48px;
+@taille-police-h3: 20px;
+@taille-button-validation: 18px;
+
+// WIDTH
+@width-content: 980px;
+
+#page-inscription {
+  color: @color-body;
+  font-family: @police-body;
+  font-size: @taille-police-body;
+}
+
+.content-center {
+  max-width: @width-content;
+  margin: auto;
+}
+
+#page-inscription .clear {
+  clear: both;
+}
+
+#page-inscription a {
+  color: @color-a;
+}
+
+#page-inscription a:hover {
+  color: @color-a-hover;
+}
+
+#page-inscription h1 {
+  color: @color-h1;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: normal;
+  font-family: @police-h1;
+  font-size: @taille-police-h1;
+  text-align: center;
+}
+
+#page-inscription h1 span {
+  background: url('/front/images/fond-lien-mon-compte.png') repeat;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+#page-inscription h2 {
+  color: @color-h2;
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: @police-h2;
+  font-size: @taille-police-h2;
+  margin-bottom: 15px;
+}
+
+#page-inscription h3 {
+  color: @color-h3;
+  font-weight: normal;
+  text-align: left;
+  margin-bottom: 50px;
+  font-family: @police-h3;
+  font-size: @taille-police-h3;
+  margin-bottom: 15px;
+}
+
+#page-inscription #tete-texte-intro {
+  float: left;
+  line-height: 32px;
+}
+
+#page-inscription #tete-image-ariane {
+  float: right;
+}
+
+#page-inscription .fragment-form {
+  background: @background-form-fragment;
+  margin-top: 20px;
+}
+
+#page-inscription #localisation {
+  margin-top: 0;
+}
+
+#page-inscription .checkbox {
+  margin-bottom: 0px;
+}
+
+#page-inscription .button-validation {
+  //display: block;
+  height: 34px;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 31px;
+  width: 325px;
+  margin: auto;
+  background: @background-button-validation;
+  font-family: @police-button-validation;
+  font-size: @taille-button-validation;
+  color: @color-button-validation;
+}
+
+#page-inscription .button-validation:hover {
+  background: @background-button-validation-hover;
+  text-decoration: none;
+}
+
+#page-inscription .button-validation span {
+  background: url('/front/images/puce-fleche-bouton.png') no-repeat left center;
+  padding-left: 25px;
+}
+
+#page-inscription #pied {
+  margin-top: 20px;
+}
+
+#page-inscription label {
+  font-weight: normal;
+}
+
+#page-inscription .radio {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+#page-inscription .form-group > label {
+  margin-bottom: 10px;
+}
+
+#page-inscription .btn-link {
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+}
+
+#page-inscription .ferme-details {
+  display: none;
+}
+
+#page-inscription .entity-input-hidden {
+  display: none;
+}
+
+#page-inscription .ui-helper-hidden-accessible {
+  display: none;
+}
+
+#page-inscription .form-input-address {
+  background: #FFF url('/front/images/puce-localisation.png') no-repeat right 4px;
+  padding-right: 38px;
+}
+
+#page-inscription #mjmt_frontbundle_projet_inscription_one_page_photo_banque-photo > div {
+  text-align: center;
+}
+
+#page-inscription #mjmt_frontbundle_projet_inscription_one_page_photo_banque-photo img {
+  border: 1px solid #36312b;
+  margin-bottom: 25px;
+}
+
+#page-inscription #mjmt_frontbundle_projet_inscription_one_page_photo_banque-photo label {
+  cursor: pointer;
+  position: relative;
+}
+
+#page-inscription #bloc-photos input[type='radio'] {
+  display: block;
+  margin: auto;
+}
+
+#page-inscription #label-photo-vide {
+  display: block;
+  width: 202px;
+  height: 202px;
+  border: 1px solid #36312b;
+  margin-bottom: 25px;
+  background: #FFF;
+  position: relative;
+  text-align: center;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+#page-inscription #label-photo-vide img {
+  position: absolute;
+  bottom: 10px;
+  left: 52px;
+  margin: auto;
+}
+
+#page-inscription #mjmt_frontbundle_projet_inscription_one_page_photo_banque-photo input[type='radio'] {
+  display: none;
+}
+
+#page-inscription #mjmt_frontbundle_projet_inscription_one_page_photo_banque-photo .photo-selected label {
+  font-weight: bold;
+}
+
+#page-inscription #mjmt_frontbundle_projet_inscription_one_page_photo_banque-photo .photo-selected label img {
+  border: 1px solid #6f996e;
+}
+
+#page-inscription #mjmt_frontbundle_projet_inscription_one_page_photo_banque-photo #label-photo-vide img {
+  border: none !important;
+}
+
+#page-inscription .radio-hidden {
+  visibility: hidden;
+  position: absolute;
+}
+
+#page-inscription #mjmt_frontbundle_projet_inscription_one_page_photo_banque-photo .tick-choix-ok {
+  position: absolute;
+  top: -0;
+  right: -21px;
+  border: none !important;
+}
+
+#page-inscription #titre-ajouter-photo {
+  font-family: 'open_sanssemibold';
+  font-size: 18px;
+}
+
+.bs-callout {
+  padding: 20px;
+  margin: 5px 0 20px 0;
+  border: 1px solid #6f996e;
+  border-left-width: 5px;
+  border-radius: 3px;
+  border-left-color: #6f996e;
+}
+
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #6f996e;
+}
+
+#page-inscription .bloc-recap-options {
+  text-align: left;
+}
+
+#page-inscription #boutton-acceder-tableau-bord,
+#page-inscription #boutton-acceder-application,
+#page-inscription #boutton-voir-offres {
+  display: block;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 24px;
+  padding: 10px;
+  margin: auto;
+  background: #6f996e;
+  font-family: Source Sans Pro Semibold;
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+}
+
+#page-inscription #boutton-acceder-tableau-bord:hover,
+#page-inscription #boutton-acceder-application:hover,
+#page-inscription #boutton-voir-offres:hover {
+  background: #597a58;
+  text-decoration: none;
+  color: #FFF;
+}
+
+#page-inscription .modal-body {
+  background: #faf9f7;
+}
+
+#page-inscription .modal-body .oui {
+  background: url('/front/images/oui.png') center no-repeat;
+}
+
+#page-inscription .modal-body table {
+  width: auto;
+}
+
+#page-inscription .modal-body table th,
+#page-inscription .modal-body table td {
+  text-align: center;
+  padding: 5px 0;
+}
+
+#page-inscription .modal-body table td {
+  width: 12%;
+}
+
+#page-inscription .modal-body table .td-label-offre {
+  width: 16%;
+  font-weight: bold;
+}
+
+#page-inscription .modal-body #modal-choix-type > label,
+#page-inscription .modal-body #modal-choix-type > .modal-choix-type-radio {
+  float: left;
+}
+
+#page-inscription .modal-body #modal-choix-type > .modal-choix-type-radio {
+  margin-left: 50px;
+}
+
+#page-inscription .modal-body #modal-choix-type > label {
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+#page-inscription .modal-body #modal-choix-type {
+  margin-bottom: 10px;
+}
+
+#page-inscription .label-erreur {
+  color: #a94442;
+  font-weight: bold;
+}
+
+#page-inscription .alert-danger a {
+  color: #a94442;
+}
+
+#page-inscription #bloc-popin-offre-bouton-choisir-haut {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+#page-inscription input[type='text'] {
+  background-color: #fff;
+  border: 1px solid #4b5055;
+  border-radius: .25rem;
+}
+
+#page-inscription input[type='text']:focus {
+  border-color: #6f996e !important;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+#page-inscription .modal-offre {
+  .modal-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 99.91%;
+    margin: 0 0 0 1px;
+    z-index: 1;
+    background: #FFF;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .modal-body {
+    padding-top: 0;
+    position: relative;
+    z-index: 0;
+    margin-top: 56px;
+    margin-bottom: 70px;
+  }
+
+  .modal-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 99.91%;
+    margin: 0 0 0 1px;
+    background: #FFF;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  .float-left {
+    float: left;
+  }
+
+  .modal-table-offres.offre-ligne-1 .une-offre,
+  .modal-table-offres.offre-ligne-1 tbody .offre-subtext {
+    background-color: #FFF;
+  }
+
+  .modal-table-offres.offre-ligne-2 .une-offre,
+  .modal-table-offres.offre-ligne-2 tbody .offre-subtext {
+    background-color: #c3dbc3;
+  }
+
+  .modal-table-offres {
+    tbody {
+      .no-m {
+        padding: 0;
+        margin: 0;
+      }
+
+      td.text-left {
+        text-align: left;
+      }
+
+      .margin-bottom {
+        margin-bottom: 20px;
+      }
+
+      .une-offre {
+        height: 280px;
+        margin: 0 10px;
+        border: 1px solid #d5d5d5;
+        text-align: left;
+        border-bottom: none;
+        position: relative;
+        z-index: 2;
+
+        .plus-populaire {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background-color: #6f996e;
+          text-align: center;
+          color: #FFF;
+          height: 28px;
+          line-height: 28px;
+        }
+
+        .titre {
+          font-size: 25px;
+          padding: 35px 10px 0 15px;
+
+          .bold {
+            font-family: 'open_sansbold';
+          }
+        }
+
+        .prix {
+          font-family: 'open_sansbold';
+          font-size: 30px;
+          padding: 15px 0 0 15px;
+        }
+
+        .description {
+          font-family: 'open_sansitalic';
+          padding: 15px 10px 15px 15px;
+          font-size: 17px;
+        }
+
+        .bouton {
+          margin: 12px auto 0 auto;
+          width: 180px;
+          height: 35px;
+
+          button {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #6f996e;
+            background-color: #FFF;
+            color: #6f996e;
+          }
+
+          button:hover {
+            color: #FFF;
+            background-color: #6f996e;
+          }
+
+          button.active {
+            background-color: #6f996e;
+            color: #FFF;
+          }
+        }
+
+        .radio {
+          display: none;
+        }
+      }
+
+      .offre-subtext {
+        margin: -1px 10px 0 10px;
+        border: 1px solid #d5d5d5;
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+
+        img {
+          width: 25px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .modal-offre-accroche {
+    font-size: 25px;
+    padding: 10px 10px 5px 20px;
+    position: relative;
+
+    .logo-paiement {
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+
+      > div {
+        border: 1px solid #d5d5d5;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin-left: 5px;
+        background-color: #FFF;
+      }
+    }
+  }
+
+  #lien-contacter-service-commercial {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  #lien-faq {
+    margin: 12px auto 0 auto;
+    width: 100px;
+    height: 35px;
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 1px solid #6f996e;
+      background-color: #FFF;
+      color: #6f996e;
+      text-align: center;
+      line-height: 35px;
+    }
+
+    a:hover {
+      color: #FFF;
+      background-color: #6f996e;
+      text-decoration: none;
+    }
+  }
+}
+
+#tarteaucitronIcon {
+  bottom: 55px;
+}
+
+#affichage-credit-restant {
+  background: #448f25;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 10px;
+  margin-top: -7px;
+}
+
+.btn-more-details {
+  padding-top: 0;
+}
+
+#page-inscription .button-blog {
+  display: block;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 24px;
+  width: 180px;
+  padding: 10px;
+  margin: auto;
+  background: #6f996e;
+  font-family: Source Sans Pro Semibold;
+  font-size: 16px;
+  color: #fff;
+  float: right;
+}
+
+#page-inscription .button-blog:hover {
+  background: #597a58;
+  text-decoration: none;
+  color: #FFF;
+}
+
+#page-inscription #mjmt_front_inscription_project_banquePhoto_file {
+  margin-top: 6.75px;
+}
+
+#page-inscription .text-help-photo-size {
+  font-size: 17px;
+}
+
+#page-inscription input[type='text'].address-error-manual {
+  border-color: red;
+}
+
+#page-inscription .address-error-manual-text {
+  margin-top: -10px;
+  color: red;
+  font-style: italic;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+#page-inscription .modal-content-ascenseur {
+  overflow-y: auto;
+  height: 90%;
+}
+
+#page-inscription-client {
+  #lien-cgu {
+    display: block;
+    margin-left: 20px;
+    margin-top: -15px;
+  }
+
+  .position-relative {
+    position: relative;
+  }
+
+  .logo-paiement {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  #bloc-steps {
+    .text-aide {
+      margin-top: 20px;
+    }
+
+    form {
+      margin-bottom: 0;
+
+      > div > div {
+        margin-bottom: 0;
+      }
+    }
+
+    h3 {
+      margin-top: 10px;
+    }
+
+    h3.active {
+      color: #598000;
+    }
+
+    .col-md-12 {
+      margin-bottom: 15px;
+
+      > div {
+        background: #faf9f7;
+        padding: 8px 15px;
+
+        .choice-register-connexion {
+          width: 90%;
+          height: 36px;
+          display: block;
+          margin: auto;
+          border: 2px solid #6f996e;
+          border-radius: 2px;
+          font-family: 'open_sanssemibold';
+          color: #6f996e;
+          text-align: center;
+          line-height: 36px;
+        }
+
+        .choice-register-connexion:hover,
+        .choice-register-connexion.active {
+          text-decoration: none;
+          color: #FFF;
+          background: #6f996e;
+        }
+
+        .line-type-person {
+          margin-top: 20px;
+
+          .radio {
+            margin-top: 0;
+          }
+
+          .col-md-6 {
+            text-align: center;
+          }
+        }
+
+        .col-md-12 {
+          margin-bottom: 0;
+
+          > div {
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    .alert-danger {
+      margin-top: 20px;
+    }
+
+    .line-login-password {
+      margin-top: 20px;
+    }
+  }
+
+  #bloc-summary {
+    background: #faf9f7;
+    padding: 10px 15px;
+
+    table {
+      border: none;
+      margin-bottom: 0;
+
+      th {
+        font-weight: normal;
+        border: none;
+      }
+
+      td {
+        font-weight: bold;
+        border: none;
+      }
+    }
+
+    .bloc-title {
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 20px;
+      color: #598000;
+    }
+
+    .button-inscription-next,
+    .button-payment-next {
+      display: block;
+      height: 45px;
+      background: #6f996e;
+      border-radius: 2px;
+      font-family: 'open_sanssemibold';
+      font-size: 20px;
+      color: #ffffff;
+      text-align: center;
+      line-height: 42px;
+      width: 40%;
+      margin: 10px auto 0 auto;
+    }
+  }
+}
+
+#page-client-connection {
+  .container-login-register {
+    background: #faf9f7;
+    padding: 8px 15px;
+
+    .col-md-6 {
+      margin-bottom: 0;
+    }
+
+    .button-inscription-login-next{
+      display: block;
+      height: 45px;
+      background: #6f996e;
+      border-radius: 2px;
+      font-family: 'open_sanssemibold';
+      font-size: 20px;
+      color: #ffffff;
+      text-align: center;
+      line-height: 42px;
+      width: 40%;
+      margin: 10px auto 0 auto;
+    }
+
+    .line-login-password{
+      margin-top: 20px;
+    }
+
+    .line-type-person {
+      margin-top: 20px;
+
+      .radio {
+        margin-top: 0;
+      }
+
+      .col-md-6 {
+        text-align: center;
+      }
+    }
+
+    .col-md-12 {
+      margin-bottom: 0;
+
+      > div {
+        padding: 0;
+      }
+    }
+
+    .choice-register-connexion {
+      width: 90%;
+      height: 36px;
+      display: block;
+      margin: auto;
+      border: 2px solid #6f996e;
+      border-radius: 2px;
+      font-family: 'open_sanssemibold';
+      color: #6f996e;
+      text-align: center;
+      line-height: 36px;
+    }
+
+    .choice-register-connexion:hover,
+    .choice-register-connexion.active {
+      text-decoration: none;
+      color: #FFF;
+      background: #6f996e;
+    }
+
+    .mb-0 {
+      margin-bottom: 0 !important;
+    }
+
+    .button-connection-container {
+      margin-top: 20px;
+    }
+
+    #lien-cgu {
+      display: block;
+      margin-left: 20px;
+      margin-top: -15px;
+    }
+  }
+}

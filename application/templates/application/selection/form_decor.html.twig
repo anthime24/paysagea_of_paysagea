@@ -1,0 +1,139 @@
+<div id="filtre-formulaire">
+    {{ form_widget(formDecor, {'attr' : {'class' : 'control-group'}}) }}
+
+    {% if creation.getProjet().getOrigineCarte() is not null %}
+        <input type="hidden" name="marque_blanche_appbundle_filtre_decor[origineCarte]" value="{{ creation.getProjet().getOrigineCarte() }}" />
+    {% else %}
+        <input type="hidden" name="marque_blanche_appbundle_filtre_decor[origineCarte]" value="FR" />
+    {% endif %}
+
+    <div class="clear"></div>
+</div>
+<!-- Si mode terrasse, on coche l'arrosage -->
+{% if creation.getCreationType()=='Terrasse' %}
+    <script>
+        jQuery('#marque_blanche_appbundle_filtre_decor_arrosage').prop('checked', true);
+    </script>
+{% endif %}
+<script>
+    //arrosage 2 fois par semaine
+    {% if (creation.getProjet().getProjetType().getId() == creation.getCreationType().getId() and creation.getProjet().getArrosageDeuxFoisParSemaineTerrasse())
+        or (creation.getCreationType().getId() == 2 and (creation.getProjet().getArrosageDeuxFoisParSemaineTerrasse() is null or creation.getProjet().getArrosageDeuxFoisParSemaineTerrasse())) %}
+    jQuery('#marque_blanche_appbundle_filtre_decor_arrosage').prop('checked', true);
+    {% endif %}
+
+    {% if creation.getProjet().getArrosageDeuxFoisParSemaine() is not null and creation.getProjet().getArrosageDeuxFoisParSemaine() %}
+    jQuery('#marque_blanche_appbundle_filtre_decor_arrosage').prop('checked', true);
+    {% endif %}
+
+    {% if creation.getProjet().getArrosageDeuxFoisParSemaineJardin() is not null %}
+    jQuery('#marque_blanche_appbundle_filtre_decor_arrosageDeuxFoisParSemaineJardin').val({{ creation.getProjet().getArrosageDeuxFoisParSemaineJardin() }});
+    {% endif %}
+
+    {% if creation.getProjet().getArrosageDeuxFoisParSemaineTerrasse() is not null %}
+    jQuery('#marque_blanche_appbundle_filtre_decor_arrosageDeuxFoisParSemaineTerrasse').val({{ creation.getProjet().getArrosageDeuxFoisParSemaineTerrasse() }});
+    {% endif %}
+
+    jQuery('#selection-entite div#filtre-formulaire div.control-group div').each(function () {
+        if (jQuery(this).find('label[for="marque_blanche_appbundle_filtre_decor_arrosage"]').length > 0) {
+            jQuery(this).css('width', 750);
+            jQuery(this).find('label[for="marque_blanche_appbundle_filtre_decor_arrosage"]').css('width', 650);
+        }
+    });
+
+    //pre-selection des champs renségnés dans le projet
+    //ensoleillement
+    {% if creation.getStyle() %}
+    jQuery('#marque_blanche_appbundle_filtre_decor_style').val({{ creation.getStyle().getId() }});
+    jQuery('#marque_blanche_appbundle_filtre_decor_style').attr('attr-default',{{ creation.getStyle().getId() }});
+    {% elseif creation.getProjet().getStyle() %}
+    jQuery('#marque_blanche_appbundle_filtre_decor_style').val({{ creation.getProjet().getStyle().getId() }});
+    jQuery('#marque_blanche_appbundle_filtre_decor_style').attr('attr-default',{{ creation.getProjet().getStyle().getId() }});
+    {% endif %}
+
+    //ensoleillement
+    {% if creation.getEnsoleillement() %}
+    jQuery('#marque_blanche_appbundle_filtre_decor_ensoleillement').val({{ creation.getEnsoleillement().getId() }});
+    jQuery('#marque_blanche_appbundle_filtre_decor_ensoleillement').attr('attr-default',{{ creation.getEnsoleillement().getId() }});
+    {% elseif creation.getProjet().getEnsoleillement() %}
+    jQuery('#marque_blanche_appbundle_filtre_decor_ensoleillement').val({{ creation.getProjet().getEnsoleillement().getId() }});
+    jQuery('#marque_blanche_appbundle_filtre_decor_ensoleillement').attr('attr-default',{{ creation.getProjet().getEnsoleillement().getId() }});
+    {% endif %}
+
+    //type sol
+    {% if creation.getProjet().getPh() %}
+    jQuery('#marque_blanche_appbundle_filtre_decor_sol').val({{ creation.getProjet().getPh().getTypeSol().getId() }});
+    jQuery('#marque_blanche_appbundle_filtre_decor_sol').attr('attr-default',{{ creation.getProjet().getPh().getTypeSol().getId() }});
+    {% endif %}
+
+    //rusiticite
+    {% if creation.getProjet().getRusticite() %}
+    var rusticiteToPreSelect = {{ creation.getProjet().getRusticite().getId() }}
+        jQuery('#marque_blanche_appbundle_filtre_decor_rusticiteMultiples').attr('attr-default', rusticiteToPreSelect);
+    jQuery('#marque_blanche_appbundle_filtre_decor_rusticiteMultiples').find('option[value="' + rusticiteToPreSelect + '"]').prop("selected", true);
+    {% endif %}
+
+
+    //besoin en eau
+    {% if idBesoinEauGroupe != '' %}
+        var idBesoinEauGroupe = {{ idBesoinEauGroupe }};
+        jQuery('#marque_blanche_appbundle_filtre_decor_eauMultiples').find('option[value="' +  idBesoinEauGroupe + '"]').prop("selected", true);
+    {% endif %}
+
+    jQuery(document).ready(function () {
+        var multipleSelectInstance = {};
+        jQuery('#formulaire-decor .multipleSelectHolder').each(function () {
+            var name = jQuery(this).attr('name');
+            var id = jQuery(this).attr('id');
+            var filterPlaceholder = translateJs('app.filtre.placeholder');
+
+            if (typeof (jQuery(this).attr('data-filterplaceholder')) != "undefined") {
+                filterPlaceholder = jQuery(this).attr('data-filterplaceholder')
+            }
+
+            //console.log(typeof multipleSelectInstance[name]);
+            if (typeof multipleSelectInstance[name] == "undefined") {
+                jQuery(this).closest('.form-group').append('<div class="' + id + '_container"></div>');
+
+                multipleSelectInstance[name] = jQuery(this).multipleSelect({
+                    container: '.' + id + '_container',
+                    locale: 'fr-FR',
+                    filter: true,
+                    filterPlaceholder: filterPlaceholder,
+                    onOpen: function (e) {
+                        var $containerElement = id + '_container';
+                        $containerElement = jQuery('.' + $containerElement);
+
+                        $containerElement.find('li.selected').each(function () {
+                            jQuery(this).find('input[type="checkbox"]').prop("checked", true);
+                        })
+                    }
+                })
+
+                jQuery(this).on('refreshMultipleSelect', function (e) {
+                    var selectedItems = [];
+                    jQuery(this).find('option').each(function () {
+                        if (jQuery(this).is(':selected')) {
+                            selectedItems.push(jQuery(this).val());
+                        }
+                    })
+
+                    jQuery(this).multipleSelect('setSelects', selectedItems);
+                    jQuery(this).multipleSelect('close');
+                    jQuery(this).multipleSelect('refresh');
+                })
+            }
+            ;
+        });
+
+        var arrosageDeuxFoisSemaine = jQuery('#marque_blanche_appbundle_filtre_decor_arrosage').is(':checked');
+        toggleAvertissementRegleArrosage(arrosageDeuxFoisSemaine);
+        jQuery('#marque_blanche_appbundle_filtre_decor_arrosage').on('change', function(e){
+            arrosageDeuxFoisSemaine = jQuery('#marque_blanche_appbundle_filtre_decor_arrosage').is(':checked');
+
+            //les checkbox arrosage partagent la même valeur (si l'on s'engage à aroser les plantes, on s'engage aussi à aroser les compositions)
+            jQuery('#marque_blanche_appbundle_filtre_plante_arrosage').prop('checked', arrosageDeuxFoisSemaine);
+            toggleAvertissementRegleArrosage(arrosageDeuxFoisSemaine);
+        });
+    })
+</script>

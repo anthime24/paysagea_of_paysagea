@@ -1,0 +1,101 @@
+<div id="menu-bloc-logo">
+    {% if app.request.getLocale() == 'en' %}
+        <img style="max-width:120px" src="{{ asset('/application/images/logo-en.png') }}"/>
+    {% else %}
+        <img src="{{ asset('/application/images/logo.png') }}"/>
+    {% endif %}
+</div>
+
+<div id="menu-a-vous-de-jouer{{ app.request.getLocale() == 'en' ? '-en' : '' }}"></div>
+
+<div id="menu-bloc-actions">
+    <ul>
+        <li id="menu-bloc-actions-ajout">
+            <a href="" id="menu-ajouter-entite">
+                {% trans %}Objets{% endtrans %}
+                <br/>
+                {% trans %}Plantes{% endtrans %}
+            </a>
+        </li>
+
+{#        {% if creation.getProjet().getClient() is not null and creation.getProjet().getClient().getAccesCompletPlantesObjets() %}#}
+            <li id="menu-bloc-actions-lasso">
+                <a href="">
+                    {% trans %}Zone à remplir{% endtrans %}
+                </a>
+            </li>
+{#        {% else %}#}
+{#            <li id="menu-bloc-actions-lasso-disabled">#}
+{#                <a href="">#}
+{#                    {% trans %}Zone à remplir{% endtrans %}#}
+{#                </a>#}
+{#            </li>#}
+{#        {% endif %}#}
+
+        <li id="menu-bloc-actions-enregistrer">
+            <a attr-href="{{ path('mjmt_application_sauvegarder_creation', {'creationId' : creation.getId, 'hash' : creation.getReferenceEcriture}) }}">
+                {% trans %}Enregistrer{% endtrans %}
+            </a>
+        </li>
+
+        <li id="menu-bloc-actions-outils">
+            <a href=""><!--
+                -->{% trans %}Outils{% endtrans %}
+            </a>
+
+            <ul>
+                <li>
+                    <a href="{{ path('mjmt_application_sauvegarder_tampon', {'creationId' : creation.getId, 'hash' : creation.getReferenceEcriture}) }}"
+                       id="menu-tampon">
+                        {% trans %}Retoucher ma photo{% endtrans %}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ path('mjmt_application_sauvegarder_tampon', {'creationId' : creation.getId, 'hash' : creation.getReferenceEcriture}) }}"
+                       id="menu-rotation">
+                        {% trans %}Rotation de ma photo{% endtrans %}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ path('mjmt_application_sauvegarder_proportion', {'creationId' : creation.getId, 'hash' : creation.getReferenceEcriture}) }}"
+                       id="menu-repere">
+                        {% trans %}Replacer les repères{% endtrans %}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ path('mjmt_application_parametrage_creation', {'creationId' : creation.getId, 'hash' : creation.getReferenceEcriture}) }}"
+                       id="menu-parametrage-creation">
+                        {% trans %}Paramétrage de la création{% endtrans %}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ path('mjmt_application_options_rendu', {'creationId' : creation.getId, 'hash' : creation.getReferenceEcriture}) }}"
+                       id="menu-rendu-creation">
+                        {% trans %}Rendu de la création{% endtrans %}
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="menu-bloc-selection">
+    <p id="menu-ma-selection-titre">{% trans %}Ma sélection{% endtrans %} <span
+                class="badge">{{ creation.getCreationEntites() | length }}</span></p>
+
+    <div id="menu-bloc-selection-content">
+        <a id="menu-lien-liste-selection" href="">{% trans %}Total :{% endtrans %} <span>{{ total }} &euro;</span></a>
+
+        <p id="menu-dernier-article-ajoute-titre">{% trans %}Dernier article ajouté{% endtrans %}</p>
+
+        <div id="menu-dernier-article-ajoute"></div>
+    </div>
+</div>
+
+<div id="menu-bloc-finalise">
+    <a href="{{ path('mjmt_application_finaliser', {'creationId': creation.getId(), 'hash' : creation.getReferenceEcriture}) }}">{% trans %}Je finalise !{% endtrans %}</a>
+</div>

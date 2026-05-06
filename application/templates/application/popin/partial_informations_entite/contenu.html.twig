@@ -1,0 +1,288 @@
+<div id="popin-infos-contenu">
+    <div class="description-texte">
+        {% if entite.getMarque() and entite.getMarque() != '' and entite.getMarque().getWebPath() and entite.getMarque().getWebPath()|file_exists %}
+            <img src="{{ entite.getMarque().getWebPath() | imagine_filter('thumb_app_entite_marque_apercu') }}"
+                 id="description-entite-marque-{{ entite.getMarque().getId() }}" class="description-entite-marque"/>
+        {% endif %}
+        <div class="description-texte-photos">
+            <div class="description-texte-photo-principale">
+                <div class="description-texte-photo-legende">{{ entite.getNom()|truncate(20, true, '...') }}{% if entite.getPhotoPrincipale() %}, {{ entite.getPhotoPrincipale().getEntitePhotoEtat() }}  ({{ entite.getPhotoPrincipale().getAnnee() }}){% endif %}</div>
+                <img src="{% if entite.getPhotoPrincipale() %}{{ entite.getPhotoPrincipale().getWebPath() | imagine_filter('thumb_app_ma_selection_description') }}{% endif %}"
+                     alt="{{ entite.getNom()|truncate(20, true, '...') }}, {{ entite.getPhotoPrincipale().getEntitePhotoEtat() }} ({{ entite.getPhotoPrincipale().getAnnee() }})"
+                     onmousedown="return false;" onmousemove="return false;"/>
+            </div>
+            <div class="controle-gauche"><img src="{{ asset('application/images/icone/precedent.png') }}" alt="<"
+                                              class="controle-arrow" title="{% trans %}Précédent{% endtrans %}"/></div>
+            <div class="description-texte-photos-apercu">
+                <div class="description-texte-photos-apercu-conteneur">
+                    {% for photo in entitePhoto %}
+                        {% if photo and photo.getWebPath() and photo.getWebPath()|file_exists %}
+                            <img src="{{ photo.getWebPath() | imagine_filter('thumb_app_ma_selection_description_apercu') }}"
+                                 attr-source="{{ photo.getWebPath() | imagine_filter('thumb_app_ma_selection_description') }}"
+                                 alt="{{ entite.getNom()|truncate(20, true, '...') }}, {{ photo.getEntitePhotoEtat() }} ({{ photo.getAnnee() }})"
+                                 class="description-texte-photos-apercu"
+                                 {% if photo.getPrincipale() %}attr-principal="true"{% endif %}/>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="controle-droite"><img src="{{ asset('application/images/icone/suivant.png') }}" alt=">"
+                                              class="controle-arrow" title="{% trans %}Suivant{% endtrans %}"/></div>
+        </div>
+        <div class="description-texte-infos-courtes">
+            <p class="description-texte-detail">
+                {% if (entite.getNom()) and (entite.getNom() != '') %}
+                    <span class="description-label">{% trans %}Nom :{% endtrans %} </span>{{ entite.getNom() }}
+                {% endif %}
+                {% if (entite.getNomVernaculaire()) and (entite.getNomVernaculaire() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Nom vernaculaire :{% endtrans %} </span>{{ entite.getNomVernaculaire() }}
+                {% endif %}
+                {% if (entite.getReference()) and (entite.getReference() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Référence :{% endtrans %} </span>{{ entite.getReference() }}
+                {% endif %}
+                {% if (entite.getEntiteSousType()) and (entite.getEntiteSousType() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Type :{% endtrans %} </span>{{ entite.getEntiteSousType() }}
+                {% endif %}
+                {% if (entite.getCaducPersistant()) and (entite.getCaducPersistant() != '') %} ({{ entite.getCaducPersistant()|translate_enum("App\\Core\\Entity\\EnumerationCaduc") }}){% endif %}
+                {% if (entite.getCouleurs()) and (entite.getCouleurs() | length > 0) %}
+                    <br/><span class="description-label">{% trans %}Couleur(s) :{% endtrans %} </span>
+                    {% for couleur in entite.getCouleurs() %}
+                        {{ couleur.getNom() }}{% if not(loop.last) %}, {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if (entite.getMois()) and (entite.getMois() | length > 0) %}
+                    <br/><span class="description-label">{% trans %}Période d'intérêt :{% endtrans %} </span>
+                    {% for mois in entite.getMoisOrderByIdAsc() %}
+                        {{ mois.getNom() }}{% if not(loop.last) %}, {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if (entite.getBesoinEau()) and (entite.getBesoinEau() != '') and (entite.getEntiteType().getSlug() != 'decoration') and (entite.getEntiteType().getSlug() != 'amenagement' ) %}
+                    <br/><span class="description-label">{% trans %}Besoin en eau minimum :{% endtrans %} </span><br/>
+                    {% for goutte in 1..entite.getBesoinEau().getValeur() %}
+                        <img class="description-goutte"
+                             src="{{ asset('/application/images/icone/goutte-pleine.png') }}"/>
+                    {% endfor %}
+                    {% for goutteVide in (entite.getBesoinEau().getValeur()+1)..11 %}
+                        <img class="description-goutte" src="{{ asset('/application/images/icone/goutte-vide.png') }}"/>
+                    {% endfor %}
+                {% endif %}
+                {% if (entite.getEnsoleillements()) and (entite.getEnsoleillements() | length > 0) %}
+                    <br/><span class="description-label">{% trans %}Ensoleillement :{% endtrans %} </span>
+                    {% set min = 999 %}
+                    {% set max = -1 %}
+                    {% for soleil in entite.getEnsoleillements() %}
+                        {% if min > soleil.getMin() %}
+                            {% set min = soleil.getMin() %}
+                        {% endif %}
+                        {% if max < soleil.getMax() %}
+                            {% set max = soleil.getMax() %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if (min < 999) and (max > -1) %}
+                        De {{ min }}h à {{ max }}h
+                    {% endif %}
+                    ({% for soleil in entite.getEnsoleillements() %}
+                    {{ soleil.getNom() }}{% if not(loop.last) %}, {% endif %}
+                {% endfor %})
+                    <br/>
+                    {% for soleil in entite.getEnsoleillements() %}
+                        {% if soleil.getNom() == "Ombre" %}
+                            <img class="description-soleil"
+                                 src="{{ asset('/application/images/icone/soleil-vide.png') }}"
+                                 title="{% trans %}Ombre{% endtrans %}" alt="{% trans %}Ombre{% endtrans %}"/>
+                        {% elseif soleil.getNom() == "Mi-ombre" %}
+                            <img class="description-soleil"
+                                 src="{{ asset('/application/images/icone/soleil-mi-vide.png') }}"
+                                 title="{% trans %}Mi-Ombre{% endtrans %}" alt="{% trans %}Mi-Ombr{% endtrans %}"/>
+                        {% else %}
+                            <img class="description-soleil"
+                                 src="{{ asset('/application/images/icone/soleil-plein.png') }}"
+                                 title="{% trans %}Soleil{% endtrans %}" alt="{% trans %}Soleil{% endtrans %}"/>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if (entite.getRusticiteValeur()) and (entite.getRusticiteValeur() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Rusticité :{% endtrans %} </span>{{ entite.getRusticiteValeur() }} °C
+                    {% if (entite.getRusticite()) and (entite.getRusticite() != '') %}({{ entite.getRusticite() }}){% endif %}
+                {% endif %}
+                {% if entite.getAnnuelle() %}
+                    <br/><span
+                        class="description-label">{% trans %}Plante annuelle :{% endtrans %} </span>{% trans %}Oui{% endtrans %}
+                {% endif %}
+                {% if (entite.getTypeSols()) and (entite.getTypeSols() | length > 0) %}
+                    <br/><span class="description-label">{% trans %}Sol :{% endtrans %} </span>
+                    {% for type_sol in entite.getTypeSols() %}
+                        {{ type_sol.getNom() }}{% if not(loop.last) %}, {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if not entite.getLasso() %}
+                    {% if ((entite.getHauteurPot()) and (entite.getHauteurPot() != ''))or((entite.getDiametrePot()) and (entite.getDiametrePot() != '')) %}
+                        <br/><span class="description-label">{% trans %}Taille (h x l) :{% endtrans %} </span>
+                        {% if (entite.getHauteurPot()) and (entite.getHauteurPot() != '') %}
+                            {{ entite.getHauteurPot() }}cm x
+                        {% else %}
+                            -
+                        {% endif %}
+                        {% if (entite.getDiametrePot()) and (entite.getDiametrePot() != '') %}
+                            {{ entite.getDiametrePot() }}cm
+                        {% else %}
+                            -
+                        {% endif %}
+                    {% endif %}
+
+                    {% if (((entite.getHauteurFinale()) and (entite.getHauteurFinale() != ''))or((entite.getDiametreFinal()) and (entite.getDiametreFinal() != ''))) and entite.entiteType.id in [1,2] %}
+                        <br/><span
+                            class="description-label">{% trans %}Taille à l'âge adulte (h x l) :{% endtrans %} </span>
+                        {% if (entite.getHauteurFinale()) and (entite.getHauteurFinale() != '') %}
+                            {{ entite.getHauteurFinale() }}cm x
+                        {% else %}
+                            -
+                        {% endif %}
+                        {% if (entite.getDiametreFinal()) and (entite.getDiametreFinal() != '') %}
+                            {{ entite.getDiametreFinal() }}cm
+                        {% else %}
+                            -
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+
+                {% if (entite.getToxiqueAlimentaireInformation()) and (entite.getToxiqueAlimentaireInformation() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Toxicité :{% endtrans %} </span>{{ entite.getToxiqueAlimentaireInformation() }}
+                {% endif %}
+                {% if (entite.getEntretien()) and (entite.getEntretien() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Entretien :{% endtrans %} </span>{{ entite.getEntretien() }}
+                {% endif %}
+                {% if (entite.getTemperatureMinimale()) and (entite.getTemperatureMinimale() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Température minimale :{% endtrans %} </span>{{ entite.getTemperatureMinimale() }}
+                {% endif %}
+
+                {% if not entite.getLasso() %}
+                    {% if (entite.getPrixMini()) and (entite.getPrixMini() != '') %}
+                        <br/><span
+                            class="description-label">{% trans %}Prix minimum :{% endtrans %} </span>{{ entite.getPrixMini() }} &euro;
+                    {% endif %}
+                {% endif %}
+            </p>
+        </div>
+        <div class="description-texte-infos-longues">
+            <div class="description-texte-detail">
+                {% if entite.getComposition() %}
+                    <span class="description-label">{% trans %}Liste des plantes et objets de la composition :{% endtrans %} </span>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>{% trans %}Nom{% endtrans %}</th>
+                            <th>{% trans %}Infos{% endtrans %}</th>
+                            <th>{% trans %}Conseil{% endtrans %}</th>
+                            <th>{% trans %}Prix{% endtrans %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for ligneEntite in entitesComposition %}
+                            {% set entiteComposition = ligneEntite.entite %}
+                            <tr class="description-table-detail">
+                                <td>
+                                    {% if (entiteComposition.getNom()) and (entiteComposition.getNom() != '') %}
+                                        {{ entiteComposition.getNom() }}<br/>
+                                    {% else %}
+                                        {% if (entiteComposition.getNomVernaculaire()) and (entiteComposition.getNomVernaculaire() != '') %}
+                                            {{ entiteComposition.getNomVernaculaire() }}<br/>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if (entiteComposition.getEntiteSousType()) and (entiteComposition.getEntiteSousType() != '') %}
+                                        {% trans %}Type :{% endtrans %} {{ entiteComposition.getEntiteSousType() }}<br/>
+                                    {% endif %}
+                                    {% if ((entiteComposition.getHauteurPot()) and (entiteComposition.getHauteurPot() != ''))or((entiteComposition.getDiametrePot()) and (entiteComposition.getDiametrePot() != '')) %}
+                                        {% trans %}Taille (h x l) :{% endtrans %}
+                                        {% if (entiteComposition.getHauteurPot()) and (entiteComposition.getHauteurPot() != '') %}
+                                            {{ entiteComposition.getHauteurPot() }}cm x
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                        {% if (entiteComposition.getDiametrePot()) and (entiteComposition.getDiametrePot() != '') %}
+                                            {{ entiteComposition.getDiametrePot() }}cm
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                        <br/>
+                                    {% endif %}
+                                    {% if (((entiteComposition.getHauteurFinale()) and (entiteComposition.getHauteurFinale() != ''))or((entiteComposition.getDiametreFinal()) and (entiteComposition.getDiametreFinal() != ''))) and entite.entiteType.id in [1,2] %}
+                                        {% trans %}Taille à l'âge adulte (h x l) :{% endtrans %}
+                                        {% if (entiteComposition.getHauteurFinale()) and (entiteComposition.getHauteurFinale() != '') %}
+                                            {{ entiteComposition.getHauteurFinale() }}cm x
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                        {% if (entiteComposition.getDiametreFinal()) and (entiteComposition.getDiametreFinal() != '') %}
+                                            {{ entiteComposition.getDiametreFinal() }}cm
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if (entiteComposition.getDivers()) and (entiteComposition.getDivers() != '') %}
+                                        {{ entiteComposition.getDivers() }}<br/>
+                                    {% endif %}
+                                    {% if (entiteComposition.getConseilAutomne()) and (entiteComposition.getConseilAutomne() != '') %}
+                                        {% trans %}Automne :{% endtrans %} {{ entiteComposition.getConseilAutomne() }}
+                                        <br/>
+                                    {% endif %}
+                                    {% if (entiteComposition.getConseilHiver()) and (entiteComposition.getConseilHiver() != '') %}
+                                        {% trans %}Hiver :{% endtrans %} {{ entiteComposition.getConseilHiver() }}<br/>
+                                    {% endif %}
+                                    {% if (entiteComposition.getConseilPrintemps()) and (entiteComposition.getConseilPrintemps() != '') %}
+                                        {% trans %}Printemps :{% endtrans %} {{ entiteComposition.getConseilPrintemps() }}
+                                        <br/>
+                                    {% endif %}
+                                    {% if (entiteComposition.getConseilEte()) and (entiteComposition.getConseilEte() != '') %}
+                                        {% trans %}Eté :{% endtrans %} {{ entiteComposition.getConseilEte() }}<br/>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if entiteComposition.getPrixMini() %}{{ entiteComposition.getPrixMini() }}€ {% else %}-{% endif %}
+                                    ({{ ligneEntite.quantite }}x)
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                {% endif %}
+                {% if (entite.getDivers()) and (entite.getDivers() != '') %}
+                    <span class="description-label">{% trans %}Informations :{% endtrans %} </span>{{ entite.getDivers() }}
+                {% endif %}
+                {% if (entite.getConseilPrintemps()) and (entite.getConseilPrintemps() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Conseil Printemps :{% endtrans %} </span>{{ entite.getConseilPrintemps() }}
+                {% endif %}
+                {% if (entite.getConseilEte()) and (entite.getConseilEte() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Conseil Eté :{% endtrans %} </span>{{ entite.getConseilEte() }}
+                {% endif %}
+                {% if (entite.getConseilAutomne()) and (entite.getConseilAutomne() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Conseil Automne :{% endtrans %} </span>{{ entite.getConseilAutomne() }}
+                {% endif %}
+                {% if (entite.getConseilHiver()) and (entite.getConseilHiver() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Conseil Hiver :{% endtrans %} </span>{{ entite.getConseilHiver() }}
+                {% endif %}
+                {% if (entite.getToxiqueAlimentaireInformation()) and (entite.getToxiqueAlimentaireInformation() != '') %}
+                    <br/><span
+                        class="description-label">{% trans %}Toxicité :{% endtrans %} </span>{{ entite.getToxiqueAlimentaireInformation() }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

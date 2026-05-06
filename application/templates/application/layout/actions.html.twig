@@ -1,0 +1,89 @@
+<p id="actions-titre"></p>
+<input id="action-entite-id" type="hidden" value="" autocomplete=off/>
+<input id="action-entite" type="hidden" value="" autocomplete=off/>
+
+<div id="actions-liste">
+    <a id="action-gomme" href="">
+        <img src="{{ asset('/application/images/icone/gomme.png') }}"/>
+        {% trans %}Gommer{% endtrans %}
+    </a>
+
+    <a id="action-symetrie" href="">
+        <img src="{{ asset('/application/images/icone/symetrie.png') }}"/>
+        {% trans %}Symétrie{% endtrans %}
+    </a>
+
+    <a id="action-suppression" href="">
+        <img src="{{ asset('/application/images/icone/supprimer.png') }}"/>
+        {% trans %}Supprimer{% endtrans %}
+    </a>
+
+    <a id="action-visibilite" href="">
+        <img src="{{ asset('/application/images/icone/masquer.png') }}"/>
+        {% trans %}Masquer{% endtrans %}
+    </a>
+
+    <a id="action-duplication" href="">
+        <img src="{{ asset('/application/images/icone/dubliquer.png') }}"/>
+        {% trans %}Dupliquer{% endtrans %}
+    </a>
+
+    <a id="action-avant" href="">
+        <img src="{{ asset('/application/images/icone/devant.png') }}"/>
+        {% trans %}Devant{% endtrans %}
+    </a>
+
+    <a id="action-arriere" href="">
+        <img src="{{ asset('/application/images/icone/derriere.png') }}"/>
+        {% trans %}Derrière{% endtrans %}
+    </a>
+
+    <a id="action-agrandie" href="">
+        <img src="{{ asset('/application/images/icone/agrandir.png') }}"/>
+        {% trans %}Agrandir{% endtrans %}
+    </a>
+
+    <a id="action-diminue" href="">
+        <img src="{{ asset('/application/images/icone/diminuer.png') }}"/>
+        {% trans %}Diminuer{% endtrans %}
+    </a>
+
+    <a id="action-rotation" href="">
+        <img src="{{ asset('/application/images/icone/rotation.png') }}"/>
+        {% trans %}Rotation{% endtrans %}
+    </a>
+
+    <a id="action-transformation" href="">
+        <img src="{{ asset('/application/images/icone/transformation.png') }}"/>
+        {% trans %}Perspective{% endtrans %}
+    </a>
+
+    <a id="action-rotation-gauche" href="">
+        <img src="{{ asset('/application/images/icone/rotation-gauche.png') }}"/>
+        {% trans %}Rotation{% endtrans %}
+    </a>
+
+    <a id="action-rotation-droite" href="">
+        <img src="{{ asset('/application/images/icone/rotation-droite.png') }}"/>
+        {% trans %}Rotation{% endtrans %}
+    </a>
+
+    <div class="clear"></div>
+</div>
+
+<div id="action-parametrage">
+    <div id="taille-gomme" class="action-parametrage-hook">
+        <div class="slider-text">{% trans %}Taille de la gomme{% endtrans %}</div>
+        <div class="slider"></div>
+        <div class="slider-valeur">
+            <div class="slider-valeur-cercle"></div>
+        </div>
+        <div>
+            <button id="gomme-confirmation-modification-ok"><i class="fa fa-check"></i></button>
+            <button id="gomme-confirmation-modification-ko"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+    <div id="indication-perspective" class="action-parametrage-hook">
+        {% trans %}Vous pouvez appliquer une perspective en cliquant et en restant appuyé sur les carrés rouges.{% endtrans %}
+    </div>
+</div>

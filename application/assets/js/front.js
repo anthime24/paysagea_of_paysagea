@@ -1,0 +1,28 @@
+require('./front/lib/jquery.bxslider/jquery.bxslider.css');
+require('./front/lib/jquery.jcrop/jquery.Jcrop.css');
+require('../css/front/lib/jQuery/jquery.ui.core.css');
+require('../css/front/lib/jQuery/jquery.ui.theme.css');
+require('../css/front/lib/jQuery/jquery.ui.autocomplete.css');
+require('../css/front/lib/gmap.css');
+require('../css/core/font.css');
+require('../css/front/global.css');
+require('../css/front/home.css');
+require('../css/front/cms.css');
+require('../css/front/inscription.less');
+require('../css/front/client.css');
+require('../css/front/1470/global.css');
+require('../css/front/1200/global.css');
+require('../css/front/992/global.css');
+require('../css/front/992/home.css');
+require('../css/front/768/global.css');
+require('../css/front/768/home.css');
+require('../css/front/768/cms.css');
+
+const jquery_ui = require('./front/lib/jquery-ui-1.10.3.custom.min.js');
+const jquery_bxslider = require('./front/lib/jquery.bxslider/jquery.bxslider.js');
+const jquer_ui_addresspicker = require('./front/lib/jquery.ui.addresspicker.js');
+const jquery_jcrop = require('./front/lib/jquery.jcrop/jquery.Jcrop.min.js');
+const global = require('./front/global.js');
+const home = require('./front/home.js');
+const inscription = require('./front/inscription.js');
+const inscription_crop = require('./front/inscription-crop.js');

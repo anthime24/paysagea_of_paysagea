@@ -1,0 +1,7 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('exportEntite') %}
+    <a href="{{ admin.generateObjectUrl('exportEntite', object) }}" class="btn btn-sm btn-default edit_link"
+       title="Exporter entités" target="_blank">
+        <i class="fa fa-download" aria-hidden="true"></i>
+        Export entités
+    </a>
+{% endif %}

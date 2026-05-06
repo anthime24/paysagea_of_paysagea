@@ -1,0 +1,7 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('pdf') %}
+    <a href="{{ admin.generateObjectUrl('pdf', object) }}" class="btn btn-sm btn-default edit_link" title="Voir PDF"
+       target="_blank">
+        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+        Voir PDF
+    </a>
+{% endif %}

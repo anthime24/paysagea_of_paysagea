@@ -1,0 +1,95 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block content %}
+    <div id="page-client-connection" class="content-center container-fluid">
+{#        <a class="pull-right button-validate-mini"#}
+{#           href="{{ path('mjmt_front_inscription') }}"><span>{% trans %}Créer un compte{% endtrans %}</span></a>#}
+        <h1 class="green">{% trans %}Inscription / Connection{% endtrans %}</h1>
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-dismissible alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{% trans %}Bravo.{% endtrans %}</strong>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="alert alert-dismissible alert-warning" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% if error %}
+            <div class="alert alert-dismissible alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{% trans %}Erreur !{% endtrans %}</strong>
+                {% trans %}Email et/ou mot de passe incorrect{% endtrans %}
+            </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 container-login-register">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="{{ path('mjmt_front_client_inscription') }}" class="choice-register-connexion" data-value="register">
+                            S'enregistrer
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="choice-register-connexion active" data-value="connexion">
+                            Se connecter
+                        </button>
+                    </div>
+                </div>
+
+                <div id="choice-connexion-content">
+                    {{ form_start(loginForm, {'action': path('mjmt_front_client_login')}) }}
+
+                    {% if error %}
+                        <div class="row">
+                            <div class="alert alert-dismissible alert-danger col-md-12"
+                                 role="alert">
+                                <button type="button" class="close" data-dismiss="alert"
+                                        aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                <strong>{% trans %}Erreur !{% endtrans %}</strong>
+                                {% trans %}Email et/ou mot de passe incorrect{% endtrans %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="row line-login-password">
+                        <div class="col-md-6">{{ form_row(loginForm._username) }}</div>
+                        <div class="col-md-6">{{ form_row(loginForm._password) }}</div>
+                    </div>
+
+                    <a target="_blank" href="{{ path('mjmt_front_client_lost_password') }}">
+                        Mot de passe oublié
+                    </a>
+
+                    <input type="hidden" name="_target_path"
+                           value="{{ path('mjmt_front_client') }}"/>
+
+                    <input type="hidden" name="_failure_path"
+                           value="{{ path('mjmt_front_inscription_client') }}"/>
+
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}">
+
+                    {{ form_widget(loginForm.common.codePromo) }}
+
+                    <button class="button-inscription-login-next" type="submit">
+                        <span>{% trans %}Se connecter{% endtrans %}</span>
+                    </button>
+
+                    {{ form_end(loginForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

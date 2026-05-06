@@ -1,0 +1,40 @@
+<h1>
+    <span>{% trans %}Devenez e-paysagiste{% endtrans %}</span>
+    <span>{% trans %}et aménagez votre extérieur !{% endtrans %}</span>
+</h1>
+
+<div class="row">
+    <div id="e-grounds-list" class="col-md-6">
+        <div id="e-grounds-list-content">
+            <ul>
+                <li id="e-grounds-list-1">
+                    {% trans %}Importez une photo de votre jardin ou de votre terrasse{% endtrans %}
+                </li>
+
+                <li id="e-grounds-list-2">
+                    {% trans %}Choisissez plantes et décors de notre large catalogue, adaptés à votre région et climat{% endtrans %}
+                </li>
+
+                <li id="e-grounds-list-3">
+                    {% trans %}Finalisez votre projet seul ou avec l'aide de nos paysagistes experts{% endtrans %}
+                </li>
+
+                <li>
+                    <a href="{{ path('mjmt_front_tester_jardin') }}">
+                        <span>{% trans %}Démarrer mon aménagement{% endtrans %}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="e-grounds-image" class="col-md-6">
+        <a href="{{ path('mjmt_front_inscription') }}">
+            <img src="/front/images/accueil/ipad.png"/>
+        </a>
+
+        <a href="{{ path('mjmt_front_inscription') }}">
+            <div id="e-grounds-image-main"></div>
+        </a>
+    </div>
+</div>

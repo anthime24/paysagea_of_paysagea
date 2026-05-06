@@ -1,0 +1,113 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block content %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success container alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div id="page-client-dashboard" class="content-center container-fluid">
+        <a class="pull-right button-validate-mini"
+           href="{{ path('mjmt_front_client_logout') }}"><span>{% trans %}Se déconnecter{% endtrans %}</span></a>
+        <h1 class="green">{% trans %}Tableau de bord{% endtrans %}</h1>
+        <div class="clear"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2 class="pull-left">{% trans %}Mes credits{% endtrans %}</h2>
+                <a class="pull-left button-validate-green"
+                   href="{{ path('mjmt_front_client_offer_selection') }}">{% trans %}Reprendre une offre{% endtrans %}</a>
+                <div class="clear"></div>
+
+                <ul>
+                    <li>{% trans %}Photos :{% endtrans %} <span class="badge">{{ client.getCreditPhotos() }}</span></li>
+                    <li>{% trans %}Conseils d'un professionnel :{% endtrans %} <span
+                                class="badge">{{ client.getCreditConseilsProfessionnel() }}</span></li>
+                    <li>{% trans %}Aide d'un paysagiste :{% endtrans %} <span
+                                class="badge">{{ client.getCreditAidePaysagiste() }}</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2 class="pull-left">{% trans %}Mes projets{% endtrans %}</h2>
+                <a class="pull-left button-validate-green"
+                   href="{{ path('mjmt_front_inscription') }}">+ {% trans %}Ajouter un projet{% endtrans %}</a>
+                <div class="clear"></div>
+
+                {% for project in projects %}
+                    {% if project.getCreations() and project.getCreations()|length > 0 %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                {{ project.getNom() }}
+                                <a class="pull-right"
+                                   href="{{ path('mjmt_front_inscription_project', {'projectId': project.getId()}) }}">+ {% trans %}Ajouter une création{% endtrans %}</a>
+                            </div>
+
+                            <table class="projets table">
+                                <tbody>
+                                {% for creation in project.getCreations() %}
+                                    {% if creation.getConfirmer() %}
+                                        <tr>
+                                            <td class="photo-creation">
+                                                {% if  creation.getWebPathRenderedImage()|file_exists_relative %}
+                                                    <img src="{{ creation.getWebPathRenderedImage() | imagine_filter('thumb_app_ma_selection') ~ '?random=' ~ date().format('U') }}"/>
+                                                {% endif %}
+                                            </td>
+                                            <td class="nom-creation">
+                                                {% trans %}Création :{% endtrans %} {{ creation.getNom() }} - identifiant : {{ creation.getId() }}
+                                            </td>
+                                            <td class="action text-right">
+                                                <a href="{{ path('mjmt_application_homepage', {'creationId': creation.getId(), 'hash': creation.getReferenceEcriture()}) }}"
+                                                   class="demarrer-appli">
+                                                    <span class="glyphicon glyphicon-play-circle"
+                                                          aria-hidden="true"></span>
+                                                    {% trans %}Démarrer l'appli{% endtrans %}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2 class="pull-left">{% trans %}Mon compte{% endtrans %}</h2>
+                <div class="clear"></div>
+
+                {{ form_start(client_form) }}
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        {{ form_row(client_form.nom) }}
+                        {{ form_row(client_form.prenom) }}
+                        {{ form_row(client_form.adresse) }}
+                        {{ form_row(client_form.email) }}
+                        {{ form_row(client_form.telephone) }}
+                        {{ form_row(client_form.passwordRepeat) }}
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <br>
+                        {{ form_row(client_form.recevoirInformations) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="button-validate-green" style="margin: 0 auto;">{% trans %}Modifier{% endtrans %}</button><br>
+                        <div><small>* Information obligatoire</small></div>
+                    </div>
+                </div>
+                {{ form_end(client_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,383 @@
+{% block form %}
+    {{ sonata_block_render_event('sonata.admin.edit.form.top', { 'admin': admin, 'object': object }) }}
+
+    {# NEXT_MAJOR: remove default filter #}
+    {% set url = objectId|default(admin.id(object)) is not null ? 'edit' : 'create' %}
+
+    {% if not admin.hasRoute(url) %}
+        <div>
+            {{ "form_not_available"|trans({}, "SonataAdminBundle") }}
+        </div>
+    {% else %}
+        <form
+                {% if sonata_admin.adminPool.getOption('form_type') == 'horizontal' %}class="form-horizontal"{% endif %}
+                role="form"
+                {# NEXT_MAJOR: remove default filter #}
+                action="{% block sonata_form_action_url %}{{ admin.generateUrl(url, {'id': objectId|default(admin.id(object)), 'uniqid': admin.uniqid, 'subclass': app.request.get('subclass')}) }}{% endblock %}"
+                {% if form.vars.multipart %} enctype="multipart/form-data"{% endif %}
+                method="POST"
+                {% if not sonata_admin.adminPool.getOption('html5_validate') %}novalidate="novalidate"{% endif %}
+                {% block sonata_form_attributes %}{% endblock %}
+        >
+
+            {{ include('@SonataAdmin/Helper/render_form_dismissable_errors.html.twig') }}
+
+            {% block sonata_pre_fieldsets %}
+            <div class="row">
+                {% endblock %}
+
+                {% block sonata_tab_content %}
+                    {% import "@SonataAdmin/CRUD/base_edit_form_macro.html.twig" as form_helper %}
+                    {% set has_tab = ((admin.formtabs|length == 1 and admin.formtabs|keys[0] != 'default') or admin.formtabs|length > 1 ) %}
+
+                    <div class="col-md-12">
+                        {% if has_tab %}
+                            {% set tab_prefix = 'tab_' ~ admin.uniqid ~ '_' ~ random() %}
+                            {% set tab_query_index = app.request.query.get('_tab', 0)|split("_")|last %}
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    {% for name, form_tab in admin.formtabs %}
+                                        {% set _tab_name = tab_prefix ~ '_' ~ loop.index %}
+                                        <li{% if (not app.request.query.has('_tab') and loop.index == 1) or (tab_query_index == loop.index) %} class="active"{% endif %}>
+                                            <a href="#{{ _tab_name }}" class="changer-tab"
+                                               aria-controls="{{ _tab_name }}" data-toggle="tab">
+                                                <i class="fa fa-exclamation-circle has-errors hide"
+                                                   aria-hidden="true"></i> {{ form_tab.label|trans({}, form_tab.translation_domain ?: admin.translationDomain) }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                    <li>
+                                        <a href="#tab-pane-emplacement" data-toggle="tab">
+                                            <i class="icon-exclamation-sign has-errors hide"></i>
+                                            Emplacement
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    {% for code, form_tab in admin.formtabs %}
+                                        {% set _tab_name = tab_prefix ~ '_' ~ loop.index %}
+                                        <div
+                                                class="tab-pane fade{% if (not app.request.query.has('_tab') and loop.first) or (tab_query_index == loop.index) %} in active{% endif %}"
+                                                id="{{ _tab_name }}"
+                                        >
+                                            <div class="box-body  container-fluid">
+                                                <div class="sonata-ba-collapsed-fields">
+                                                    {% if form_tab.description != false %}
+                                                        <p>
+                                                            {{ form_tab.description|trans({}, form_tab.translation_domain ?: admin.translationDomain)|raw }}
+                                                        </p>
+                                                    {% endif %}
+
+                                                    {{ form_helper.render_groups(admin, form, form_tab['groups'], has_tab) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <script type="text/javascript" src="/back/lib/typeahead.js"></script>
+                                    <script type="text/javascript">
+                                        var compositionEntites = {{ object.compositionEntitesAsJson()|raw }};
+
+                                        jQuery(document).ready(function () {
+                                            jQuery('#tab-pane-emplacement input[name="entite"]').typeahead({
+                                                source: function (query, process) {
+                                                    return jQuery.get('{{ admin.generateUrl('rechercheEntites') }}', {nom: query}, function (data) {
+                                                        objects = [];
+                                                        map = {};
+                                                        jQuery.each(data, function (i, object) {
+                                                            if (jQuery('.entite-' + object.id).length == 0) {
+                                                                map[getFullName(object)] = object;
+                                                                objects.push(getFullName(object));
+                                                            }
+                                                        });
+                                                        return process(objects);
+                                                    }, 'json');
+                                                },
+                                                updater: function (item) {
+                                                    addCompositionEntiteTable(map[item].id, item);
+                                                    return '';
+                                                }
+                                            });
+
+                                            jQuery('#tab-pane-emplacement .entite-liste').on('click', 'a.supprimer', function () {
+                                                jQuery(this).closest('tr').remove();
+                                                return true;
+                                            });
+
+                                            jQuery('input[name*="nb_cases_x"], input[name*="nbCasesY"]').change(function () {
+                                                loadCompositionGrilleTable(false);
+                                            });
+
+                                            loadCompositionGrilleTable(true);
+                                            loadCompositionEntiteTable();
+                                        });
+
+                                        function loadCompositionEntiteTable() {
+                                            jQuery.each(compositionEntites, function (i, item) {
+                                                addCompositionEntiteTable(item.entite_id, getFullName(item));
+                                            });
+                                        }
+
+                                        function getFullName(item) {
+                                            var name = [];
+                                            if (item.type)
+                                                name.push(item.type);
+                                            if (item.sous_type)
+                                                name.push(item.sous_type);
+                                            if (item.nom_vernaculaire)
+                                                name.push(item.nom_vernaculaire);
+                                            if (item.nom)
+                                                name.push(item.nom);
+                                            if (item.pot)
+                                                name.push(item.pot);
+                                            if (item.diametre_pot && item.diametre_pot > 0)
+                                                name.push(item.diametre_pot);
+                                            if (item.couleurs)
+                                                name.push(item.couleurs);
+                                            if (item.couleurs_fleurs)
+                                                name.push(item.couleurs_fleurs);
+
+                                            return name.join(' | ');
+                                        }
+
+                                        function addCompositionEntiteTable(id, nom) {
+                                            if (jQuery('.entite-liste tbody').find('tr.entite-' + id).length === 0)
+                                                jQuery('.entite-liste tbody').append('<tr class="entite-' + id + '"><td>' + id + '</td><td>' + nom + '</td><td><a href="#" class="supprimer"><i class="icon-remove"></i></a></td></tr>');
+                                        }
+
+                                        function loadCompositionGrilleTable(firstLoad) {
+                                            var nbCasesX = parseInt(jQuery('input[name*="nbCasesX"]').val());
+                                            var nbCasesY = parseInt(jQuery('input[name*="nbCasesY"]').val());
+
+                                            if (nbCasesX > 0 && nbCasesY > 0) {
+                                                for (var i = 1; i <= nbCasesY; i++) {
+                                                    // Ligne de TH
+                                                    if (i === 1) {
+                                                        var ligne = jQuery('.th-ligne').length === 1 ? jQuery('.th-ligne') : null;
+                                                        var thContent = '';
+
+                                                        for (var j = 1; j <= nbCasesX; j++) {
+                                                            if (jQuery('.th-colonne-' + i + '-' + j).length === 0)
+                                                                thContent += '<th>' + j + '</th>';
+
+                                                            var colonne = jQuery('.th-colonne-' + j).length === 1 ? jQuery('.th-colonne-' + j) : null;
+
+                                                            if (colonne === null && ligne !== null)
+                                                                ligne.append('<th class="th-colonne-' + j + '">' + j + '</th>');
+                                                            else if (colonne === null)
+                                                                trContent += '<th class="th-colonne-' + j + '">' + j + '</th>';
+                                                        }
+
+                                                        if (ligne === null && thContent !== '')
+                                                            jQuery('#composition-grille-table').append('<tr class="th-ligne-' + i + '"><th></th>' + thContent + '</tr>');
+                                                    }
+
+                                                    // Ligne d'entite
+                                                    var ligne = jQuery('.ligne-' + i).length === 1 ? jQuery('.ligne-' + i) : null;
+
+                                                    if (ligne === null || ligne.find('td').length !== nbCasesX) {
+                                                        var trContent = '';
+                                                        var thContent = '';
+                                                        for (var j = 1; j <= nbCasesX; j++) {
+
+                                                            if (i === 1 && jQuery('.th-colonne-' + i + '-' + j).length === 0)
+                                                                thContent += '<th>' + j + '</th>';
+
+                                                            var colonne = jQuery('.colonne-' + i + '-' + j).length === 1 ? jQuery('.colonne-' + i + '-' + j) : null;
+
+                                                            var value = '';
+
+                                                            if (firstLoad) {
+                                                                jQuery.each(compositionEntites, function (i2, item) {
+                                                                    if (parseInt(item.position_x) === j && parseInt(item.position_y) === i)
+                                                                        value = item.entite_id;
+                                                                });
+                                                            }
+
+                                                            if (colonne === null && ligne !== null)
+                                                                ligne.append('<td class="colonne-' + i + '-' + j + '"><input type="text" val="" class="input-mini" style="width:40px" name="composition[' + i + '][' + j + ']" value="' + value + '" /></td>');
+                                                            else if (colonne === null)
+                                                                trContent += '<td class="colonne-' + i + '-' + j + '"><input type="text" val="" class="input-mini" style="width:40px" name="composition[' + i + '][' + j + ']" value="' + value + '" /></td>';
+                                                        }
+
+                                                        if (ligne === null && trContent !== '')
+                                                            jQuery('#composition-grille-table').append('<tr class="ligne-' + i + '"><th>' + i + '</th>' + trContent + '</tr>');
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    </script>
+                                    <div class="tab-pane" id="tab-pane-emplacement">
+                                        <div class="box-body  container-fluid">
+                                            <div class="sonata-ba-collapsed-fields">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="box box-primary">
+                                                            <div class="box-header">
+                                                                <h4 class="box-title">
+
+                                                                </h4>
+                                                            </div>
+                                                            <div class="box-body">
+                                                                <div class="sonata-ba-collapsed-fields">
+                                                                    <div class="span4">
+                                                                        <div class="form-group"
+                                                                             id="sonata-ba-field-container-s53397c9324f50_entite">
+                                                                            <label class="control-label" for="entite">
+                                                                                Entite
+                                                                            </label>
+                                                                            <input type="text" id="entite" name="entite"
+                                                                                   class="form-control"/>
+                                                                        </div>
+                                                                        <div class="control-group"
+                                                                             id="sonata-ba-field-container-s53397c9324f50_entite">
+                                                                            <table class="entite-liste table table-bordered table-striped">
+                                                                                <thead>
+                                                                                <tr>
+                                                                                    <td style="width: 30px;">Num</td>
+                                                                                    <td>Entite</td>
+                                                                                    <td style="width: 30px;">Supp.</td>
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="span8" id="composition-grille">
+                                                                        <table>
+                                                                            <tr>
+                                                                                <th style="text-align:center;padding: 5px 0px;"
+                                                                                    colspan="3">Arrière
+                                                                                </th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="padding: 0px 10px;">Gauche
+                                                                                </th>
+                                                                                <th>
+                                                                                    <table id="composition-grille-table">
+                                                                                    </table>
+                                                                                </th>
+                                                                                <th style="padding: 0px 10px;">Droite
+                                                                                </th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="text-align:center;padding: 5px 0px;"
+                                                                                    colspan="3">Avant
+                                                                                </th>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="_tab" value="{{ app.request.query.get('_tab') }}">
+                            </div>
+                        {% else %}
+                            {{ form_helper.render_groups(admin, form, admin.formtabs['default'].groups, has_tab) }}
+                        {% endif %}
+                    </div>
+                {% endblock %}
+
+                {% block sonata_post_fieldsets %}
+            </div>
+            {% endblock %}
+
+            {{ form_rest(form) }}
+
+            {% block formactions %}
+                <div class="sonata-ba-form-actions well well-small form-actions">
+                    {% block sonata_form_actions %}
+                        {% if app.request.isxmlhttprequest %}
+                            {# NEXT_MAJOR: remove default filter #}
+                            {% if objectId|default(admin.id(object)) is not null %}
+                                <button type="submit" class="btn btn-success" name="btn_update"><i class="fa fa-save"
+                                                                                                   aria-hidden="true"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}
+                                </button>
+                                {% if admin.hasRoute('delete') and admin.hasAccess('delete', object) %}
+                                    {{ 'delete_or'|trans({}, 'SonataAdminBundle') }}
+                                    <a class="btn btn-danger" href="{{ admin.generateObjectUrl('delete', object) }}">
+                                        <i class="fa fa-minus-circle"
+                                           aria-hidden="true"></i> {{ 'link_delete'|trans({}, 'SonataAdminBundle') }}
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                <button type="submit" class="btn btn-success" name="btn_create"><i
+                                            class="fa fa-plus-circle"
+                                            aria-hidden="true"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}
+                                </button>
+                            {% endif %}
+                        {% else %}
+                            {% if admin.supportsPreviewMode %}
+                                <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
+                                </button>
+                            {% endif %}
+                            {# NEXT_MAJOR: remove default filter #}
+                            {% if objectId|default(admin.id(object)) is not null %}
+                                {% if admin.hasroute('visualiser') %}
+                                    <a class="btn btn-info" href="javascript:window.open('{{ admin.generateObjectUrl('visualiser', object) }}','','resizable=no,location=no,width=900,height=600,menubar=no,status=no,scrollbars=no,menubar=no')"><i class="fa fa-eye" aria-hidden="true"></i> {{ 'Visualiser'|trans({}, 'SonataAdminBundle') }}</a>
+                                {% endif %}
+
+                                <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i
+                                            class="fa fa-save"
+                                            aria-hidden="true"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}
+                                </button>
+
+                                {% if admin.hasRoute('list') and admin.hasAccess('list') %}
+                                    <button type="submit" class="btn btn-success" name="btn_update_and_list"><i
+                                                class="fa fa-save"></i> <i class="fa fa-list"
+                                                                           aria-hidden="true"></i> {{ 'btn_update_and_return_to_list'|trans({}, 'SonataAdminBundle') }}
+                                    </button>
+                                {% endif %}
+
+                                {% if admin.hasRoute('delete') and admin.hasAccess('delete', object) %}
+                                    {{ 'delete_or'|trans({}, 'SonataAdminBundle') }}
+                                    <a class="btn btn-danger" href="{{ admin.generateObjectUrl('delete', object) }}"><i
+                                                class="fa fa-minus-circle"
+                                                aria-hidden="true"></i> {{ 'link_delete'|trans({}, 'SonataAdminBundle') }}
+                                    </a>
+                                {% endif %}
+
+                                {% if admin.isAclEnabled() and admin.hasRoute('acl') and admin.hasAccess('acl', object) %}
+                                    <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i
+                                                class="fa fa-users"
+                                                aria-hidden="true"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                {% if admin.hasroute('edit') and admin.hasAccess('edit') %}
+                                    <button class="btn btn-success" type="submit" name="btn_create_and_edit"><i
+                                                class="fa fa-save"
+                                                aria-hidden="true"></i> {{ 'btn_create_and_edit_again'|trans({}, 'SonataAdminBundle') }}
+                                    </button>
+                                {% endif %}
+                                {% if admin.hasroute('list') and admin.hasAccess('list') %}
+                                    <button type="submit" class="btn btn-success" name="btn_create_and_list"><i
+                                                class="fa fa-save"></i> <i class="fa fa-list"
+                                                                           aria-hidden="true"></i> {{ 'btn_create_and_return_to_list'|trans({}, 'SonataAdminBundle') }}
+                                    </button>
+                                {% endif %}
+                                <button class="btn btn-success" type="submit" name="btn_create_and_create"><i
+                                            class="fa fa-plus-circle"
+                                            aria-hidden="true"></i> {{ 'btn_create_and_create_a_new_one'|trans({}, 'SonataAdminBundle') }}
+                                </button>
+                            {% endif %}
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            {% endblock formactions %}
+        </form>
+    {% endif %}
+
+    {{ sonata_block_render_event('sonata.admin.edit.form.bottom', { 'admin': admin, 'object': object }) }}
+
+{% endblock %}

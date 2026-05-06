@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="LWu8Lv_" resname="title_edit">
+        <source>title_edit</source>
+        <target>Éditer "%name%"</target>
+      </trans-unit>
+      <trans-unit id="xfBeCH1" resname="title_create">
+        <source>title_create</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="QtCwnVB" resname="form_not_available">
+        <source>form_not_available</source>
+        <target>Formulaire non disponible</target>
+      </trans-unit>
+      <trans-unit id="uX4pdI." resname="btn_update">
+        <source>btn_update</source>
+        <target>Mettre à jour les permissions</target>
+      </trans-unit>
+      <trans-unit id="I6HUeLU" resname="delete_or">
+        <source>delete_or</source>
+        <target>ou</target>
+      </trans-unit>
+      <trans-unit id="dCgAo_P" resname="link_delete">
+        <source>link_delete</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="VVeNuxV" resname="btn_create">
+        <source>btn_create</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="5U4ghii" resname="btn_preview">
+        <source>btn_preview</source>
+        <target>Prévisualiser</target>
+      </trans-unit>
+      <trans-unit id="EmRVvLi" resname="btn_update_and_edit_again">
+        <source>btn_update_and_edit_again</source>
+        <target>Mettre à jour</target>
+      </trans-unit>
+      <trans-unit id="Px_Ux2e" resname="btn_update_and_return_to_list">
+        <source>btn_update_and_return_to_list</source>
+        <target>Mettre à jour et fermer</target>
+      </trans-unit>
+      <trans-unit id="G9rfLyL" resname="link_edit_acl">
+        <source>link_edit_acl</source>
+        <target>Editer les permissions</target>
+      </trans-unit>
+      <trans-unit id="p9CSSaQ" resname="btn_create_and_edit_again">
+        <source>btn_create_and_edit_again</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="BpoG1g2" resname="btn_create_and_return_to_list">
+        <source>btn_create_and_return_to_list</source>
+        <target>Créer et retourner à la liste</target>
+      </trans-unit>
+      <trans-unit id="tMsjYm9" resname="btn_create_and_create_a_new_one">
+        <source>btn_create_and_create_a_new_one</source>
+        <target>Créer et ajouter</target>
+      </trans-unit>
+      <trans-unit id="56GUIPl" resname="Visualiser">
+        <source>Visualiser</source>
+        <target>__Visualiser</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,306 @@
+{% extends base_template %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        .form-group .checkbox {
+            margin-left: 50px;
+        }
+    </style>
+
+    <link href="{{ asset('back/css/switch.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).on('change', '.allreadyImportingSwitch input[type="checkbox"]', function(){
+                var formUrl = $(this).closest('form').attr('action');
+                var verouillageData = {'verrouillage': 0};
+                if($(this).is(':checked')){
+                    var verouillageData = {'verrouillage': 1};
+                }
+
+                $.ajax({
+                    method: 'POST',
+                    url:formUrl,
+                    data: verouillageData,
+                    success: function(res) {
+                        $('.verrouillageFormHolder').html(res);
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h3>Import des entités</h3>
+
+    <p>
+        Avant de faire un import bien prendre la dernière version de la base d'entités accessible via <a
+                href="{{ path('admin_app_core_import_export') }}">ce lien</a>.<br/>
+        <strong>Pour faire un export à destination des autres sites (non traduisible)</strong>, veuillez utiliser ce lien
+        <a href="{{ path('admin_app_core_import_exportExterne') }}">ce lien</a><br />
+        <strong style="color: red;">Il n'est pas possible de faire un import des autres sites vers celui ci .</strong>
+
+        <br /><br />
+        Il faut être très rigoureux dans le renseignement des informations car sinon elles ne seront pas importées.<br/>
+        Pour un nouvelle entité dans le fichier, il ne faut pas indiquer d'identifiant, c'est le système qui gère les
+        numéros.<br/>
+        Une erreur dans le fichier annule toutes les modifications du fichier.<br/>
+        Il faudra corriger le problème est renvoyer le fichier.<br/>
+        Le fichier est au format CSV séparateur ";".<br/>
+        Avant d'envoyer le fichier il faut envoyer les images dans le répertoire FTP avec le compte "mjmt_photos".<br/>
+        Si le champ photo_... est vide dans le fichier et qu'il existe en base de données une photo pour cette colonne,
+        alors elle sera supprimé de la base de données.<br/>
+        Le traitement des informations peut durer plusieurs minutes (environ 15 minutes).
+    </p>
+
+    <div class="verrouillageFormHolder">
+        {% include 'back/import/_verrouillageForm.hmtl.twig' %}
+    </div>
+
+    {{ form_start(form, {'action': path('admin_app_core_import_import_traitement')}) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.desactiver_entite_non_presente) }}
+    {{ form_row(form.fichier) }}
+
+    <div class="well well-small form-actions">
+        <input type="submit" class="btn btn-primary" value="Envoyer"/>
+    </div>
+    {{ form_end(form) }}
+
+    <h3>Aide pour renseigner le fichier d'import</h3>
+
+    <div class="clearfix"></div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Entité Type</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in entiteTypes %}
+                <tr>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Entité Sous Type</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in entiteSousTypes %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Rusticité</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+                <th>min</th>
+                <th>max</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in rusticite %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                    <td>{{ value.min }}</td>
+                    <td>{{ value.max }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Couleur</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in couleurs %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Ensoleillement</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in ensoleillements %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Type Sol</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in typesSols %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Style</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in styles %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Catégorie</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in categories %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Entretien</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in entretiens %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Matière</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in matieres %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pull-left" style="margin-left: 15px">
+        <h4>Marque</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for value in marques %}
+                <tr>
+                    <td>{{ value.id }}</td>
+                    <td>{{ value.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix"></div>
+
+{% endblock %}

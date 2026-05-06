@@ -1,0 +1,64 @@
+<div class="selection-entite"
+     id="maSelection-entite-{{ creation_entite.getId() }}-{{ creation_entite.getCreated().getTimestamp() }}">
+    <input type="hidden" class="entite-id"
+           value="{{ creation_entite.getId() }}-{{ creation_entite.getCreated().getTimestamp() }}"/>
+    {% if not entite.getLasso() %}
+        <input type="hidden" class="selection-entite-prix"
+               value="{% if creation_entite.getEntite().getPrixMini() %}{{ creation_entite.getEntite().getPrixMini() }}{% else %}0{% endif %}"/>
+    {% endif %}
+    <input type="hidden"
+           class="entite-type-{{ creation_entite.getId() }}-{{ creation_entite.getCreated().getTimestamp() }}"
+           value="{{ creation_entite.getEntite().getEntiteType().getNom() }}"/>
+    <div class="entite-image entite-clicable {% if creation_entite.getVisibilite() == 0 %}entite-image-invisible{% endif %}">
+        <img src="{{ creation_entite.getEntite().getPhotoPrincipale().getWebPath() | imagine_filter('thumb_app_ma_selection') }}"
+             alt="{{ creation_entite.getEntite().getNom() }}" title="{{ creation_entite.getEntite().getNom() }}"
+             onmousedown="return false" onmousemove="return false"/>
+    </div>
+    <div class="entite-action">
+        <div class="entite-suppression">
+            <img src="{{ asset('application/images/icone/supprimer.png') }}" class="ma-selection-tipsy"
+                 original-title="{% trans %}Supprimer{% endtrans %}"/>
+        </div>
+        <div class="entite-description">
+            <a onclick="return openPopinInfosEntite(this);"
+               href="{{ path('mjmt_application_ma_selection_description', {'entiteId': creation_entite.getEntite().getId()}) }}">
+                <img src="{{ asset('application/images/icone/description.png') }}" hieght="24px"
+                     class="ma-selection-tipsy" original-title="{% trans %}Informations{% endtrans %}"/>
+            </a>
+        </div>
+        <div class="entite-visibilite">
+            <img src="{{ asset('application/images/icone/masquer.png') }}" class="ma-selection-tipsy"
+                 original-title="{% trans %}Visibilité{% endtrans %}"/>
+        </div>
+
+        {% if not entite.getLasso() %}
+            <div class="entite-dupliquer">
+                <a href="{{ path('mjmt_application_ajout_html_entite', {'entiteId': creation_entite.getEntite().getId()}) }}">
+                    <img src="{{ asset('application/images/icone/dubliquer.png') }}" class="ma-selection-tipsy"
+                         original-title="{% trans %}Dupliquer{% endtrans %}"/>
+                </a>
+            </div>
+        {% else %}
+            <div class="entite-dupliquer hiddenIfLasso" style="display:none;">
+                <a href="{{ path('mjmt_application_ajout_html_entite', {'entiteId': creation_entite.getEntite().getId()}) }}">
+                    <img src="{{ asset('application/images/icone/dubliquer.png') }}" class="ma-selection-tipsy"
+                         original-title="{% trans %}Dupliquer{% endtrans %}"/>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="entite-infos entite-clicable {% if creation_entite.getVisibilite() == 0 %}entite-info-invisible{% endif %}">
+        <h2>{% if creation_entite.getEntite().getNomVernaculaire() %}{{ creation_entite.getEntite().getNomVernaculaire()|truncate(30, true, '...') }}{% else %}{{ creation_entite.getEntite().getNom() }}{% endif %}</h2>
+        <span>
+            {% if not entite.getLasso() %}
+                {% if creation_entite.getEntite().getEntiteType().getId() == 1 %}
+                    {{ creation_entite.getEntite().getHauteurPotAvecUnite() }}
+                {% else %}
+                    {{ creation_entite.getEntite().getDimensions() }}
+                {% endif %}
+                {% if creation_entite.getComposition() %}{% if creation_entite.getComposition().getTotal()>0 %}- {{ creation_entite.getComposition().getTotal() }} €{% endif %}{% else %}{% if creation_entite.getEntite().getPrixMini() %}- {{ creation_entite.getEntite().getPrixMini() }} €{% endif %}{% endif %}
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="clear"></div>

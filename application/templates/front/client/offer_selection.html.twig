@@ -1,0 +1,94 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - {% trans %}Reprendre une offre{% endtrans %}
+{% endblock %}
+
+{% block content %}
+    {% for flashMessage in app.session.flashbag.get('danger') %}
+        <div class="alert alert-dismissible alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{% trans %}Erreur !{% endtrans %}</strong>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div id="page-client-offer-selection">
+        <div class="content-center container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <a class="pull-right button-validate-mini"
+                       href="{{ path('mjmt_front_client') }}"><span>{% trans %}Revenir au tableau de bord{% endtrans %}</span></a>
+                    <h1 class="green">{% trans %}Reprendre une offre{% endtrans %}</h1>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(form) }}
+        <div class="background-grey">
+            <div class="container-fluid">
+                <div class="row">
+                    {{ form_errors(form) }}
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="content-center">
+                            {{ form_errors(form.offre) }}
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>{% trans %}Accés banque<br/>d'images<br/>d'extérieurs{% endtrans %}</th>
+                                    <th>{% trans %}Télécharger<br/>des photos de<br/>votre extérieur{% endtrans %}</th>
+                                    <th>{% trans %}Accés aux plantes,<br/>objets,<br/>décors{% endtrans %}</th>
+                                    <th>{% trans %}Accés aux <br/>fonctionnalités réservées{% endtrans %}</th>
+                                    <th>{% trans %}Conseils de Pros<br/>personnalisés{% endtrans %}</th>
+                                    <th>{% trans %}Un paysagiste<br/>100% à votre<br/>service{% endtrans %}</th>
+                                    <th>{% trans %}Tarif{% endtrans %}</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for offer in offers %}
+                                    {% if form.offre.children[offer.getId()] is defined and offer.getPrix() > 0 %}
+                                        <tr class="offre-detail">
+                                            <th class="nom">{{ offer.getNom() }}</th>
+                                            <td{% if offer.getAccesBanquePhotosPublic() == 1 %} class="oui"{% endif %}></td>
+                                            <td class="nb-photos">{% if offer.getNbPhotoMax() > 0 %}{{ offer.getNbPhotoMax() }}{% endif %}</td>
+                                            <td class="acces-plantes-objets{% if offer.getAccesCompletPlantesObjets() == 1 %} oui{% endif %}">{% if offer.getAccesCompletPlantesObjets() == 0 %}{% trans %}limité{% endtrans %}{% endif %}</td>
+                                            <td class="acces-fonctionnalites-reserves oui"></td>
+                                            <td{% if offer.getConseilsProfessionnel() == 1 %} class="oui"{% endif %}></td>
+                                            <td{% if offer.getAidePaysagiste() == 1 %} class="oui"{% endif %}></td>
+                                            <td class="tarif">{% if offer.getPrix() > 0 %}{{ offer.getPrix() }}€{% else %}{% trans %}GRATUIT{% endtrans %}{% endif %}</td>
+                                            <td class="choix">
+                                                {{ form_widget(form.offre.children[offer.getId()]) }}
+                                                {{ form_errors(form.offre.children[offer.getId()]) }}
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid content-center">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    {% if form.creationNonPublique is defined %}
+                        <div id="creation-publique">
+                            {{ form_errors(form.creationNonPublique) }}
+                            {{ form_widget(form.creationNonPublique) }}
+                        </div>
+                    {% endif %}
+                    <br/>
+                    <button class="button-validate" name="button" type="submit">
+                        <span>{% trans %}Suivant{% endtrans %}</span></button>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

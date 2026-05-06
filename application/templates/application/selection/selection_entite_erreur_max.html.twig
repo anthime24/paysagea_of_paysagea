@@ -1,0 +1,33 @@
+<div id="fenetre-info-selection-entite">
+    <div id="croix-fermer">
+        <img src="{{ asset('application/images/boutton-croix-blanc.png') }}" alt="{% trans %}Fermer{% endtrans %}"
+             title="{% trans %}Fermer{% endtrans %}"/>
+    </div>
+    <h2>
+        {% trans %}Attention{% endtrans %}
+    </h2>
+    <div class="description-texte">
+        <p class="fenetre-info-selection-entite-sous-titre fenetre-info-selection-entite-sous-titre-haut">{% trans %}Félicitation, vous avez créé un premier extérieur avec l’offre découverte.{% endtrans %}</p>
+        <p class="fenetre-info-selection-entite-titre">
+            Faites vous plaisir, aménagez<br/><span
+                    id="fenetre-info-selection-entite-titre-vert">{% trans %}Votre propre photo !{% endtrans %}</span>
+        </p>
+        <p class="fenetre-info-selection-entite-sous-titre">{% trans %}Et ayez accès à l’ensemble des plantes et objets pour un résultat professionnel.{% endtrans %}</p>
+        {#{% if (app.user == null) and (creation.getProjet().getClient()) %}
+            <p>Vous avez atteint le nombre maximum de plantes et objets possible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</p>
+        {% elseif (creation.getProjet().getClient()) and (app.user != creation.getProjet().getClient()) %}
+            <p>Vous avez atteint le nombre maximum de plantes et objets possible en mode gratuit. <br/>Cette création est attaché à un autre compte que celui-avec lequel vous êtes connecté. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous avec le bon compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</p>
+        {% else %}
+            <p>Vous avez atteint le nombre maximum de plantes et objets possible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, créer un compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</p>
+        {% endif %}#}
+    </div>
+    <div class="boutons" id="fenetre-info-selection-entite-boutons">
+        <button id="confirmation-non" class="dark-green-button">
+            <span>{% trans %}Non merci{% endtrans %},</span><br/>{% trans %}je continue cette création{% endtrans %}
+        </button>
+        <button onclick="location.href='{{ path('mjmt_front_inscription') }}'"
+                id="confirmation-oui"
+                class="green-button high-button">{% trans %}Choisir une offre{% endtrans %}</button>
+    </div>
+</div>
+<div id="fond-grise"></div>

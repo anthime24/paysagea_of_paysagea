@@ -1,0 +1,53 @@
+{% if redirectHtmlToOfferSelection is defined and redirectHtmlToOfferSelection %}
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            location.href = jQuery('#url-redirection-page-offre').val();
+            return;
+        })
+    </script>
+{% endif %}
+
+<div id="finaliser-pdf">
+    <p class="fenetre-menu-finaliser-sous-titre fenetre-menu-finaliser-sous-titre-haut">
+        {% trans %}Félicitations, vous avez terminé.{% endtrans %}
+    </p>
+
+    <p class="fenetre-menu-finaliser-sous-titre">
+        {% trans %}Vous pouvez télécharger ou recevoir par email vos informations :{% endtrans %}
+        <br/>
+        {% trans %}- liste des plantes et produits utilisés{% endtrans %}
+        <br/>
+        {% trans %}- conseils d'entretien{% endtrans %}
+        <br/>
+        {% trans %}- plan de plantation{% endtrans %}
+    </p>
+
+    <p><a id="link-pdf-web"
+          href="{{ path('mjmt_application_pdf', {'creationId': creation.getId(), 'hash': creation.getReferenceEcriture() }) }}"
+          target="_blank">{% trans %}Télécharger le document PDF en ligne{% endtrans %}</a></p>
+
+    <form class="form-menu form-menu-finaliser-email" method="POST"
+          action="{{ path('mjmt_application_pdf', {'creationId': creation.getId(), 'hash': creation.getReferenceEcriture()}) }}">
+        <div id="mjmt_appbundle_email">
+            <div>
+                <label>{% trans %}Envoyer le PDF par mail :{% endtrans %} </label>
+                <input id="form-menu-finaliser-email-input" type="text" name="email" value="{{ email }}"
+                       placeholder="email@email.com"/>
+                <input type="submit" value="{% trans %}OK{% endtrans %}"/>
+            </div>
+        </div>
+        <input type="hidden" name="methode" value="email"/>
+    </form>
+    <br/>
+    <br/>
+
+    {% set urlDevisAmenagementJardin = translate_url(app.request, 'devis-amenagement-jardin', true) %}
+    <p><a id="link-devis-amenagement" href="{{ urlDevisAmenagementJardin|raw }}"
+          target="_blank">{% trans %}Demander gratuitement un devis<br/>d'aménagement de mon jardin{% endtrans %}</a>
+    </p>
+
+    <div class="boutons">
+        <a href="{{ path('mjmt_front_client') }}" id="finaliser-quitter"
+           class="rouge">{% trans %}Retourner à mon tableau de bord{% endtrans %}</a>
+    </div>
+</div>

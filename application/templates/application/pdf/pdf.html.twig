@@ -1,0 +1,429 @@
+<style type="text/css">
+    <!--
+    h2 {
+        margin-bottom: 5px;
+    }
+
+    hr {
+        height: 0;
+        border: none;
+        border-bottom: 1px solid #000;
+        font-size: 14pt;
+    }
+
+    .page_header {
+        font-size: 9pt;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        margin-top: -30px;
+    }
+
+    .page_footer {
+        font-size: 9pt;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    p.warning {
+        color: #ff0000;
+    }
+
+    p.warning span {
+        font-weight: bold;
+    }
+
+    tr.bordered td {
+        border-top: 1px dotted #aaaaaa;
+    }
+
+    -->
+</style>
+<page backtop="8mm" backbottom="15mm" backleft="0mm" backright="0mm" style="font-size: 11pt" orientation="portrait">
+    <page_header>
+        <table class="page_header">
+            <tr>
+                <td style="width: 50%; text-align: left">
+                    {% trans %}Mon Jardin Ma Terrasse - My Garden Designer{% endtrans %}
+                </td>
+                <td style="width: 50%; text-align: right">
+                    <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('/application/images/logo_pdf.png') }}"
+                         width="100px" height="51px"/>
+                </td>
+            </tr>
+        </table>
+    </page_header>
+    <page_footer>
+        <table class="page_footer">
+            <tr>
+                <td style="width: 34%; text-align: left">
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}">{{ app.request.getSchemeAndHttpHost() }}</a>
+                </td>
+                <td style="width: 33%; text-align: center;">
+                    {{ "now"|date("d/M/Y") }}
+                    &agrave;
+                    {{ "now"|date("H:i:s") }}
+
+                    {% if creation.getBanquePhoto() is not null and creation.getBanquePhoto().getNom() is not empty %}
+                        <span>{{ ' : ' ~ creation.getBanquePhoto().getNom()|capitalize() }}</span>
+                    {% endif %}
+                </td>
+                <td style="width: 33%; text-align: right">
+                    {% trans %}page{% endtrans %} [[page_cu]]/[[page_nb]]
+                </td>
+            </tr>
+        </table>
+    </page_footer>
+    <h1>{{ projet.getNom() }}</h1>
+
+    <p>
+        {% trans %}Bonjour,{% endtrans %}<br/><br/>
+        {% trans %}Merci d'avoir utilis&eacute; le simulateur d'ext&eacute;rieur My Garden Designer.{% endtrans %}<br/>
+        {% trans with {'%name%': creation.getNom()} %}Retrouvez dans ce document de finalisation de votre cr&eacute;ation "%name%" : la photo de votre r&eacute;alisation, le r&eacute;capitul&eacute; des articles choisis afin de pouvoir les commander, et le plan de masse qui vous aidera &agrave; r&eacute;aliser les plantations.{% endtrans %}
+    </p>
+
+    <h2>{% trans %}Informations sur la cr&eacute;ation{% endtrans %}</h2>
+    <hr/>
+    <p style="font-size: 10pt">
+    <table>
+        <tr>
+            <th>{% trans %}Nom de la cr&eacute;ation :{% endtrans %}</th>
+            <td>{{ creation.getNom() }}</td>
+        </tr>
+        <tr>
+            <th>{% trans %}Date de la cr&eacute;ation :{% endtrans %}</th>
+            <td>{{ creation.getDateCreation()|date("d/m/Y") }}</td>
+        </tr>
+        {% if projet.getClient() %}
+            <tr>
+                <th>{% trans %}Nom :{% endtrans %}</th>
+                <td>{{ projet.getClient().getNom() }} {{ projet.getClient().getPrenom() }}</td>
+            </tr>
+        {% endif %}
+        {% if projet.getAdresse() %}
+            <tr>
+                <th>{% trans %}Adresse du projet :{% endtrans %}</th>
+                <td>
+                    {{ projet.getAdresse() }}
+                </td>
+            </tr>
+        {% endif %}
+        {% if creation.getSurface() %}
+            <tr>
+                <th>{% trans %}Surface :{% endtrans %}</th>
+                <td>{{ creation.getSurface() }}</td>
+            </tr>
+        {% endif %}
+        {% if creation.getEnsoleillement() %}
+            <tr>
+                <th>{% trans %}Ensoleillement :{% endtrans %}</th>
+                <td>{{ creation.getEnsoleillement() }}</td>
+            </tr>
+        {% endif %}
+        {% if creation.getStyle() %}
+            <tr>
+                <th>{% trans %}Style :{% endtrans %}</th>
+                <td>{{ creation.getStyle() }}</td>
+            </tr>
+        {% endif %}
+        {% if projet.getBudgetMax() %}
+            <tr>
+                <th>{% trans %}Budget maximum :{% endtrans %}</th>
+                <td>{{ projet.getBudgetMax() }} &euro;</td>
+            </tr>
+        {% endif %}
+        {% if creation.getCreationType() %}
+            <tr>
+                <th>{% trans %}Type :{% endtrans %}</th>
+                <td>{{ creation.getCreationType() }}</td>
+            </tr>
+        {% endif %}
+        {% if projet.getRusticite() %}
+            <tr>
+                <th>{% trans %}Rusticit&eacute; :{% endtrans %}</th>
+                <td>{{ projet.getRusticite() }}</td>
+            </tr>
+        {% endif %}
+        {% if projet.getPrecipitation() %}
+            <tr>
+                <th>{% trans %}Pr&eacute;cipitation :{% endtrans %}</th>
+                <td>{{ projet.getPrecipitation() }}</td>
+            </tr>
+        {% endif %}
+        {% if projet.getPh() %}
+            <tr>
+                <th>{% trans %}Ph :{% endtrans %}</th>
+                <td>{{ projet.getPh() }}</td>
+            </tr>
+        {% endif %}
+        {% if projet.getMoisOrderByNomAsc() != '' %}
+            <tr>
+                <th>{% trans %}P&eacute;riode d'int&eacute;r&ecirc;t :{% endtrans %}</th>
+                <td>{{ projet.getMoisOrderByNomAsc() }}</td>
+            </tr>
+        {% endif %}
+    </table>
+    </p>
+
+    <h2>{% trans %}Liste des plantes{% endtrans %}</h2>
+    <hr/>
+    <p style="font-size: 10pt">{% trans %}Les prix des articles sont donn&eacute;s &agrave; titre indicatif, sont soumis &agrave; &eacute;volution et n'engagent en rien la soci&eacute;t&eacute; Paysagea S.A.S.{% endtrans %}</p>
+    {% if creation.isGeolocalisationCompatible() == false %}
+        <p class="warning">
+            <span>{% trans %}Avertissement :{% endtrans %}</span> {% trans %}Vous avez lors de la cr&eacute;ation chang&eacute; des param&egrave;tres initiaux, il se peut que certaines plantes n&eacute;cessitent des soins particuliers pour rester en bonne sant&eacute;.{% endtrans %}
+        </p>
+    {% endif %}
+    <table style="width:700px">
+        <thead>
+        <tr>
+            <th style="width: 10pt">{% trans %}N&deg;{% endtrans %}</th>
+            <th style="width: 105pt; text-align: center;">{% trans %}Image{% endtrans %}</th>
+            <th style="width: 150pt">{% trans %}Infos{% endtrans %}</th>
+            <th style="width: 165pt">{% trans %}Conseils{% endtrans %}</th>
+            <th style="width: 35pt">{% trans %}Quantite{% endtrans %}</th>
+            <th style="width: 40pt; text-align: right;">{% trans %}Prix{% endtrans %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ligneEntite in listEntites %}
+            {% set entite = ligneEntite.entite %}
+            <tr class="bordered">
+                <td style="width: 10pt;text-align: left">{{ ligneEntite.numeros }}</td>
+                <td style="width: 105pt;text-align: center">
+                    {% if entite.getPhotoPrincipale() is not null and entite.getPhotoPrincipale().getWebPath() | imagine_filter('thumb_app_resultat_pdf') | file_exists_relative %}
+                        <img src="{{ entite.getPhotoPrincipale().getWebPath() | imagine_filter('thumb_app_resultat_pdf') | relative_file_path }}"/>
+                    {% endif %}
+                </td>
+                <td style="width: 150pt;font-size: 10pt; vertical-align: middle">
+                    {% if (entite.getNom()) and (entite.getNom() != '') %}
+                        {% trans %}Nom :{% endtrans %} {{ entite.getNom() }}<br/>
+                    {% endif %}
+                    {% if (entite.getNomVernaculaire()) and (entite.getNomVernaculaire() != '') %}
+                        {% trans %}Nom vernaculaire :{% endtrans %} {{ entite.getNomVernaculaire() }}<br/>
+                    {% endif %}
+                    {% if (entite.getEntiteSousType()) and (entite.getEntiteSousType() != '') %}
+                        {% trans %}Type :{% endtrans %} {{ entite.getEntiteSousType() }}<br/>
+                    {% endif %}
+
+                    {% if not entite.getlasso() %}
+                        {% if ((entite.getHauteurPot()) and (entite.getHauteurPot() != ''))or((entite.getDiametrePot()) and (entite.getDiametrePot() != '')) %}
+                            {% trans %}Taille (h x l) :{% endtrans %}
+                            {% if (entite.getHauteurPot()) and (entite.getHauteurPot() != '') %}
+                                {{ entite.getHauteurPot() }}cm x
+                            {% else %}
+                                -
+                            {% endif %}
+                            {% if (entite.getDiametrePot()) and (entite.getDiametrePot() != '') %}
+                                {{ entite.getDiametrePot() }}cm
+                            {% else %}
+                                -
+                            {% endif %}
+                            <br/>
+                        {% endif %}
+                        {% if ((entite.getHauteurFinale()) and (entite.getHauteurFinale() != ''))or((entite.getDiametreFinal()) and (entite.getDiametreFinal() != '')) %}
+                            {% trans %}Taille &agrave; l'&acirc;ge adulte (h x l) :{% endtrans %}
+                            {% if (entite.getHauteurFinale()) and (entite.getHauteurFinale() != '') %}
+                                {{ entite.getHauteurFinale() }}cm x
+                            {% else %}
+                                -
+                            {% endif %}
+                            {% if (entite.getDiametreFinal()) and (entite.getDiametreFinal() != '') %}
+                                {{ entite.getDiametreFinal() }}cm
+                            {% else %}
+                                -
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td style="width: 165pt;font-size: 10pt; vertical-align: middle">
+                    {% if (entite.getDivers()) and (entite.getDivers() != '') %}
+                        {{ entite.getDivers() }}<br/>
+                    {% endif %}
+                    {% if (entite.getConseilAutomne()) and (entite.getConseilAutomne() != '') %}
+                        {% trans %}Automne :{% endtrans %} {{ entite.getConseilAutomne() }}<br/>
+                    {% endif %}
+                    {% if (entite.getConseilHiver()) and (entite.getConseilHiver() != '') %}
+                        {% trans %}Hiver :{% endtrans %} {{ entite.getConseilHiver() }}<br/>
+                    {% endif %}
+                    {% if (entite.getConseilPrintemps()) and (entite.getConseilPrintemps() != '') %}
+                        {% trans %}Printemps :{% endtrans %} {{ entite.getConseilPrintemps() }}<br/>
+                    {% endif %}
+                    {% if (entite.getConseilEte()) and (entite.getConseilEte() != '') %}
+                        {% trans %}Et&eacute; :{% endtrans %} {{ entite.getConseilEte() }}<br/>
+                    {% endif %}
+                </td>
+                <td style="width: 35pt;text-align: right">
+                    {% if not entite.getLasso() %}
+                        {{ ligneEntite.quantite }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td style="width: 40pt;text-align: right">
+                    {% if not entite.getLasso() %}
+                        {% if entite.getPrixMini() %}{{ entite.getPrixMini()*ligneEntite.quantite }} &euro; {% else %}-{% endif %}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
+            {% if entite.getComposition() %}
+                {% for ligneCompositionEntite in listCompositionEntites[entite.getComposition().getId()] %}
+                    {% set entite = ligneCompositionEntite.entite %}
+                    <tr>
+                        <td style="width: 10pt;text-align: left"></td>
+                        <td style="width: 105pt;text-align: center">
+                            {% if entite.getPhotoPrincipale() is not null and entite.getPhotoPrincipale().getWebPath() | imagine_filter('thumb_app_resultat_pdf') | file_exists_relative %}
+                                <img src="{{ entite.getPhotoPrincipale().getWebPath() | imagine_filter('thumb_app_resultat_pdf') | relative_file_path }}"/>
+                            {% endif %}
+                        </td>
+                        <td style="width: 150pt;font-size: 10pt; vertical-align: middle">
+                            {% if (entite.getNom()) and (entite.getNom() != '') %}
+                                {% trans %}Nom :{% endtrans %} {{ entite.getNom() }}<br/>
+                            {% endif %}
+                            {% if (entite.getNomVernaculaire()) and (entite.getNomVernaculaire() != '') %}
+                                {% trans %}Nom vernaculaire :{% endtrans %} {{ entite.getNomVernaculaire() }}<br/>
+                            {% endif %}
+                            {% if (entite.getEntiteSousType()) and (entite.getEntiteSousType() != '') %}
+                                {% trans %}Type :{% endtrans %} {{ entite.getEntiteSousType() }}<br/>
+                            {% endif %}
+                            {% if ((entite.getHauteurPot()) and (entite.getHauteurPot() != ''))or((entite.getDiametrePot()) and (entite.getDiametrePot() != '')) %}
+                                {% trans %}Taille (h x l) :{% endtrans %}
+                                {% if (entite.getHauteurPot()) and (entite.getHauteurPot() != '') %}
+                                    {{ entite.getHauteurPot() }}cm x
+                                {% else %}
+                                    -
+                                {% endif %}
+                                {% if (entite.getDiametrePot()) and (entite.getDiametrePot() != '') %}
+                                    {{ entite.getDiametrePot() }}cm
+                                {% else %}
+                                    -
+                                {% endif %}
+                                <br/>
+                            {% endif %}
+                            {% if ((entite.getHauteurFinale()) and (entite.getHauteurFinale() != ''))or((entite.getDiametreFinal()) and (entite.getDiametreFinal() != '')) %}
+                                {% trans %}Taille &agrave; l'&acirc;ge adulte (h x l) :{% endtrans %}
+                                {% if (entite.getHauteurFinale()) and (entite.getHauteurFinale() != '') %}
+                                    {{ entite.getHauteurFinale() }}cm x
+                                {% else %}
+                                    -
+                                {% endif %}
+                                {% if (entite.getDiametreFinal()) and (entite.getDiametreFinal() != '') %}
+                                    {{ entite.getDiametreFinal() }}cm
+                                {% else %}
+                                    -
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                        <td style="width: 165pt;font-size: 10pt; vertical-align: middle">
+                            {% if (entite.getDivers()) and (entite.getDivers() != '') %}
+                                {{ entite.getDivers() }}<br/>
+                            {% endif %}
+                            {% if (entite.getConseilAutomne()) and (entite.getConseilAutomne() != '') %}
+                                {% trans %}Automne :{% endtrans %} {{ entite.getConseilAutomne() }}<br/>
+                            {% endif %}
+                            {% if (entite.getConseilHiver()) and (entite.getConseilHiver() != '') %}
+                                {% trans %}Hiver :{% endtrans %} {{ entite.getConseilHiver() }}<br/>
+                            {% endif %}
+                            {% if (entite.getConseilPrintemps()) and (entite.getConseilPrintemps() != '') %}
+                                {% trans %}Printemps :{% endtrans %} {{ entite.getConseilPrintemps() }}<br/>
+                            {% endif %}
+                            {% if (entite.getConseilEte()) and (entite.getConseilEte() != '') %}
+                                {% trans %}Et&eacute; :{% endtrans %} {{ entite.getConseilEte() }}<br/>
+                            {% endif %}
+                        </td>
+                        <td style="width: 35pt;text-align: right">{{ ligneCompositionEntite.quantite }}</td>
+                        <td style="width: 40pt;text-align: right">{% if entite.getPrixMini() %}{{ entite.getPrixMini()*ligneCompositionEntite.quantite }} &euro; {% else %}-{% endif %}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        {% if total %}
+            <tr class="bordered">
+                <td colspan="5" style="text-align: right;vertical-align: bottom;height:25px;">
+                    <strong>{% trans %}Total :{% endtrans %} </strong></td>
+                <td style="text-align: right;vertical-align: bottom;height:25px;">{{ total }} &euro;</td>
+            </tr>
+        {% endif %}
+        </tbody>
+
+    </table>
+
+    {% set urlDevisAmenagementJardin = translate_url(app.request, 'devis-amenagement-jardin', true) %}
+    <a href="{{ urlDevisAmenagementJardin|raw }}">{% trans %}Demander un devis d'am&eacute;nagement de jardin{% endtrans %}</a>
+</page>
+<page orientation="paysage" backtop="5mm">
+    <page_header>
+        <table class="page_header">
+            <tr>
+                <td style="width: 50%; text-align: left">
+                    {% trans %}Mon Jardin Ma Terrasse - My Garden Designer{% endtrans %}
+                </td>
+                <td style="width: 50%; text-align: right">
+                    <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('/application/images/logo_pdf.png') }}"
+                         width="100px" height="51px"/>
+                </td>
+            </tr>
+        </table>
+    </page_header>
+    <page_footer>
+        <table class="page_footer">
+            <tr>
+                <td style="width: 34%; text-align: left">
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}">{{ app.request.getSchemeAndHttpHost() }}</a>
+                </td>
+                <td style="width: 33%; text-align: center;">
+                    {{ "now"|date("d/M/Y") }}
+                    &agrave;
+                    {{ "now"|date("H:i:s") }}
+                </td>
+                <td style="width: 33%; text-align: right">
+                    {% trans %}page{% endtrans %} [[page_cu]]/[[page_nb]]
+                </td>
+            </tr>
+        </table>
+    </page_footer>
+    <h2>{% trans %}Rendu final{% endtrans %}</h2>
+    <hr/>
+    <p style="text-align:center;"><img
+                src="{{ app.request.getSchemeAndHttpHost() ~ creation.getWebPathRenderedImage() }}"
+                style="{{ pdfStyleForMaximumHeight(creation.getFullPathRenderedImage(), 145) }};"/></p>
+</page>
+<page orientation="paysage" backtop="5mm">
+    <page_header>
+        <table class="page_header">
+            <tr>
+                <td style="width: 50%; text-align: left">
+                    {% trans %}Mon Jardin Ma Terrasse - My Garden Designer{% endtrans %}
+                </td>
+                <td style="width: 50%; text-align: right">
+                    <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('/application/images/logo_pdf.png') }}"
+                         width="100px" height="51px"/>
+                </td>
+            </tr>
+        </table>
+    </page_header>
+    <page_footer>
+        <table class="page_footer">
+            <tr>
+                <td style="width: 34%; text-align: left">
+                    <a href="{{ app.request.getSchemeAndHttpHost() }}">{{ app.request.getSchemeAndHttpHost() }}</a>
+                </td>
+                <td style="width: 33%; text-align: center;">
+                    {{ "now"|date("d/M/Y") }}
+                    &agrave;
+                    {{ "now"|date("H:i:s") }}
+                </td>
+                <td style="width: 33%; text-align: right">
+                    {% trans %}page{% endtrans %} [[page_cu]]/[[page_nb]]
+                </td>
+            </tr>
+        </table>
+    </page_footer>
+    <h2>{% trans %}Emplacement des plantes et des objets{% endtrans %}</h2>
+    <hr/>
+    <p style="text-align:center;"><img
+                src="{{ app.request.getSchemeAndHttpHost() ~ creation.getWebPathPlanMasseImage() }}"
+                style="{{ pdfStyleForMaximumHeight(creation.getFullPathRenderedPlanMasse(), 145) }};"/></p>
+</page>

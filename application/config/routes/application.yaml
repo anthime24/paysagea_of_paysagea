@@ -1,0 +1,118 @@
+mjmt_application_pdf:
+    path:  /application/{creationId}/pdf/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::pdf }
+    requirements:
+        creationId: '\d+'
+
+mjmt_application_sauvegarder_client:
+    path:  /application/{creationId}/sauvegarder-client/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::sauvegarderClient }
+    requirements:
+        creationId: '\d+'
+
+mjmt_application_finaliser:
+    path:  /application/{creationId}/finaliser/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::finaliser }
+    requirements:
+        creationId: '\d+'
+
+mjmt_application_lier_creation_client:
+    path:  /application/{creationId}/lier-creation-client/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::lierCreationClient }
+    requirements:
+        creationId: '\d+'
+
+mjmt_application_quitter:
+    path:  /application/quitter
+    defaults: { _controller: App\Application\Controller\DefaultController::quitterApplication }
+
+mjmt_application_authenticated_user_info:
+    path:  /application/authenticated-user-info
+    defaults: { _controller: App\Application\Controller\DefaultController::authenticatedUserInfo }
+
+# Appels AJAX Filtres
+mjmt_application_recherche_filtre:
+    path:  /application/{creationId}/recherche-filtre
+    defaults: { _controller: App\Application\Controller\SelectionController::rechercheFiltre }
+    requirements:
+        creationId: '\d+'
+
+mjmt_application_recherche_lasso:
+    path:  /application/{creationId}/recherche-lasso
+    defaults: { _controller: App\Application\Controller\SelectionController::rechercheLasso }
+    requirements:
+        creationId: '\d+'
+
+mjmt_application_ajout_html_entite:
+    path:  /application/{entiteId}/ajout-element/{bLasso}
+    defaults: { _controller: App\Application\Controller\SelectionController::ajoutElement, bLasso: false }
+    requirements:
+        entiteId: '\d+'
+
+mjmt_application_scroll_infini:
+    path:  /application/{creationId}/plus-de-resultats
+    defaults: { _controller: App\Application\Controller\SelectionController::plusResultats }
+    requirements:
+        creationId: '\d+'
+
+
+# Appels AJAX Menu
+mjmt_application_parametrage_creation:
+    path:  /application/{creationId}/parametrage-creation/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::parametrageCreation }
+    requirements:
+        creationId: '\d+'
+
+mjmt_application_options_rendu:
+    path:  /application/{creationId}/options-rendu/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::optionsRendu }
+    requirements:
+        creationId: '\d+'
+
+# Appels AJAX Ma Selection
+mjmt_application_ma_selection_description:
+    path:  /application/ma-selection/{entiteId}/description
+    defaults: { _controller: App\Application\Controller\MaSelectionController::description }
+    requirements:
+        creationId: '\d+'
+
+
+# Appels AJAX Ma Selection
+mjmt_application_sauvegarder_proportion:
+    path:  /application/{creationId}/sauvegarder-proportion/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::sauvegarderProportion }
+    requirements:
+        creationId: '\d+'
+
+# Sauvegarder Canvas
+mjmt_application_sauvegarder_tampon:
+    path:  /application/{creationId}/sauvegarder-tampon/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::sauvegarderTampon }
+    requirements:
+        creationId: '\d+'
+
+# Appels AJAX Sauvegarder Creation
+mjmt_application_sauvegarder_creation:
+    path:  /application/{creationId}/sauvegarder-creation/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::sauvegarderCreation }
+    requirements:
+        creationId: '\d+'
+
+# Image
+mjmt_application_image:
+    path:  /application/{creationId}/image/{hash}/{timestamp}
+    defaults: { _controller: App\Application\Controller\DefaultController::image }
+    requirements:
+        creationId: '\d+'
+
+# Home
+mjmt_application_homepage:
+    path:  /application/{creationId}/{hash}
+    defaults: { _controller: App\Application\Controller\DefaultController::index }
+    requirements:
+        creationId: '\d+'
+
+# Display screenshot
+mjmt_application_displayscreenshot:
+    path:  /application/displayScreenshot/{identifiantCreation}/{identifiantEcriture}/{key}
+    defaults: { _controller: App\Application\Controller\DefaultController::displayScreenshot }

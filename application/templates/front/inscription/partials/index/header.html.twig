@@ -1,0 +1,27 @@
+<h1>
+    {% trans %}Démarrez votre projet...{% endtrans %}
+
+    <a href="https://www.monjardin-materrasse.com/actualites/" target="_blank" class="button-blog">Voir des exemples de créations</a>
+</h1>
+
+{% if extraFormErrors|length > 0 %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for extraError in extraFormErrors %}
+                <li style="list-style-type: none;">{{ extraError }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+{{ form_errors(form) }}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <p id="tete-texte-intro">{% trans %}Précisez-nous vos besoins, nous vous proposerons des choix adaptés{% endtrans %}</p>
+
+        <img id="tete-image-ariane" src="/front/images/progression-projet.png"/>
+
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {#    {% javascripts  '@MjmtBackBundle/Resources/public/js/entite_admin.js' %}#}
+    <script type="text/javascript" src="/back/js/entite_admin.js"></script>
+    {#    {% endjavascripts %}#}
+{% endblock %}

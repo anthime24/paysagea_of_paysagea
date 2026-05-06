@@ -1,0 +1,7 @@
+{% if admin.hasRoute('proportions') and object.public %}
+    <a href="{{ admin.generateObjectUrl('proportions', object) }}" class="btn view_link btn-small" title="Proportions"
+       target="_blank">
+        <i class="icon-zoom-in"></i>
+        Proportions
+    </a>
+{% endif %}

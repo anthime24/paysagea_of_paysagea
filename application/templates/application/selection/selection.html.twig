@@ -1,0 +1,3 @@
+{% for creation_entite in creation.getCreationEntites() %}
+    {% include "application/selection/ma_selection_html.html.twig" with {'entite' : creation_entite} %}
+{% endfor %}

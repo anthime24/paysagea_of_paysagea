@@ -1,0 +1,11 @@
+{% block mjmt_translated_type_label %}
+    <div class="translatedLabel">
+        <label>{{ form.vars.label }}</label>
+        <span class="translatedButton">
+            <i class="fa fa-language"></i>
+            {% if translatedPropertyOriginalValue is defined %}
+                <a data-content="{{ translatedPropertyOriginalValue }}" class="translatedButtonOriginalValue">voir valeur fr</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

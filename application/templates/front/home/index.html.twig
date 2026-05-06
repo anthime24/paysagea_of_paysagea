@@ -1,0 +1,33 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block meta %}
+    {% if creation is defined and creation is not null %}
+        <meta property="og:url"
+              content="{{ absolute_url(path('mjmt_front_home_facebook', {'creationId': creation.getId(), 'hash': hash, 'timestamp': timestamp})) }}"/>
+        <meta property="og:title" content="{% trans %}Mon Jardin ma Terrasse{% endtrans %}"/>
+        <meta property="og:description"
+              content="{% trans %}Que pensez-vous de mon projet d'aménagement extérieur réalisé sur monjardin-materrasse.com ?{% endtrans %}"/>
+        <meta property="og:image"
+              content="{{ absolute_url(path('mjmt_application_image', {'creationId' : creation.getId(), 'hash' : creation.getReferenceLecture(), 'timestamp': timestamp})) }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div id="page-home">
+        <div id="e-grounds" class="content-center container-fluid">
+            {% include 'front/home/partials/e_grounds.html.twig' %}
+        </div>
+
+        <div id="asset" class="content-center container-fluid">
+            {% include 'front/home/partials/asset.html.twig' %}
+        </div>
+
+        <div id="historic" class="container-fluid">
+            {% include 'front/home/partials/historic.html.twig' %}
+        </div>
+
+        <div id="testimony" class="content-center container-fluid">
+            {% include 'front/home/partials/testimony.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

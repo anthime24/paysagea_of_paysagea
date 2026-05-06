@@ -1,0 +1,54 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block content %}
+    <div id="page-payment-done" class="content-center container-fluid">
+        <a class="pull-right button-tableau"
+           href="{{ path('mjmt_front_client') }}"><span>{% trans %}Revenir au tableau de bord{% endtrans %}</span></a>
+        <h1 class="green">{% trans %}Merci{% endtrans %}</h1>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="recapitulatif-general">
+                    {% if valid %}
+                        <div>
+                            <label class="label-etape5-generale">{% trans %}Le paiement a été effectué, vous pouvez maintenant accéder à votre amènagement extérieur en cliquant sur le bouton "Etape suivante".{% endtrans %}</label>
+                        </div>
+                    {% else %}
+                        <div>
+                            <label class="label-etape5-generale">{% trans %}Le paiement a échoué.
+                                    <br/>Vous pouvez revenir au début de l'étape de paiement en cliquant sur "Etape suivante".{% endtrans %}
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="border-dotted-horizontale"></div>
+
+                <a href="{{ path('mjmt_front_client') }}" class="button-validate"
+                   type="submit"><span>{% trans %}Etape Suivante{% endtrans %}</span></a>
+            </div>
+        </div>
+    </div>
+
+    {% if valid %}
+        <!-- Facebook Conversion Code for pixel conversion FB -->
+        <script type="text/javascript">
+            var fb_param = {};
+            fb_param.pixel_id = '6014663833785';
+            fb_param.value = {{ amount|number_format(2, '.', '') }};
+            fb_param.currency = 'EUR';
+            (function () {
+                var fpw = document.createElement('script');
+                fpw.async = true;
+                fpw.src = '//connect.facebook.net/en_US/fp.js';
+                var ref = document.getElementsByTagName('script')[0];
+                ref.parentNode.insertBefore(fpw, ref);
+            })();
+        </script>
+        <noscript><img height="1" width="1" alt="" style="display:none"
+                       src="https://www.facebook.com/offsite_event.php?id=6014663833785&amp;value={{ amount|number_format(2, '.', '') }}&amp;currency=EUR"/>
+        </noscript>
+    {% endif %}
+{% endblock %}

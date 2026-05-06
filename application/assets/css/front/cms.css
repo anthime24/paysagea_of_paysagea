@@ -1,0 +1,43 @@
+#page-cms ul li {
+    line-height: 30px;
+}
+
+#page-cms p,
+#page-cms ul li {
+    font-size: 18px;
+}
+
+#page-cms img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+#page-cms h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+#page-cms table {
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    margin: 20px 0;
+}
+
+#page-cms table td {
+    padding: 5px 0;
+}
+
+#page-cms .cms-paragraphe {
+    margin-bottom: 30px;
+}
+
+#page-cms .cms-bloc-photos-inline img {
+    display: inline;
+}
+
+#page-cms iframe {
+    border: none;
+}

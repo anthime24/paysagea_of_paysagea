@@ -1,0 +1,7 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('application') %}
+    <a href="{{ admin.generateObjectUrl('application', object) }}" class="btn btn-sm btn-default edit_link"
+       title="Application" target="_blank">
+        <i class="fa fa-magic" aria-hidden="true"></i>
+        Application
+    </a>
+{% endif %}

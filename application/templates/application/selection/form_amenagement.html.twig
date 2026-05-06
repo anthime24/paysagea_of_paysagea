@@ -1,0 +1,60 @@
+<div id="filtre-formulaire">
+    {{ form_widget(formAmenagement, {'attr' : {'class' : 'control-group'}}) }}
+    <div class="clear"></div>
+</div>
+<script>
+    //pre-selection des champs renségnés dans le projet
+    //ensoleillement
+    {% if creation.getStyle() %}
+    jQuery('#marque_blanche_appbundle_filtre_amenagement_style').val({{ creation.getStyle().getId() }});
+    {% elseif creation.getProjet().getStyle() %}
+    jQuery('#marque_blanche_appbundle_filtre_amenagement_style').val({{ creation.getProjet().getStyle().getId() }});
+    {% endif %}
+
+    jQuery(document).ready(function () {
+        var multipleSelectInstance = {};
+        jQuery('#formulaire-amenagement .multipleSelectHolder').each(function () {
+            var name = jQuery(this).attr('name');
+            var id = jQuery(this).attr('id');
+            var filterPlaceholder = translateJs('app.filtre.placeholder');
+
+            if (typeof (jQuery(this).attr('data-filterplaceholder')) != "undefined") {
+                filterPlaceholder = jQuery(this).attr('data-filterplaceholder')
+            }
+
+            //console.log(typeof multipleSelectInstance[name]);
+            if (typeof multipleSelectInstance[name] == "undefined") {
+                jQuery(this).closest('.form-group').append('<div class="' + id + '_container"></div>');
+
+                multipleSelectInstance[name] = jQuery(this).multipleSelect({
+                    container: '.' + id + '_container',
+                    locale: 'fr-FR',
+                    filter: true,
+                    filterPlaceholder: filterPlaceholder,
+                    onOpen: function (e) {
+                        var $containerElement = id + '_container';
+                        $containerElement = jQuery('.' + $containerElement);
+
+                        $containerElement.find('li.selected').each(function () {
+                            jQuery(this).find('input[type="checkbox"]').prop("checked", true);
+                        })
+                    }
+                })
+
+                jQuery(this).on('refreshMultipleSelect', function (e) {
+                    var selectedItems = [];
+                    jQuery(this).find('option').each(function () {
+                        if (jQuery(this).is(':selected')) {
+                            selectedItems.push(jQuery(this).val());
+                        }
+                    })
+
+                    jQuery(this).multipleSelect('setSelects', selectedItems);
+                    jQuery(this).multipleSelect('close');
+                    jQuery(this).multipleSelect('refresh');
+                })
+            }
+            ;
+        });
+    })
+</script>

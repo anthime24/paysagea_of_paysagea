@@ -1,0 +1,236 @@
+<div class="modal fade modal-offre" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="width:90%;">
+        <div class="modal-content modal-content-ascenseur">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    {% trans %}Nos différentes offres pour vous aider{% endtrans %}
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="d-none offre-detail" data-prix="{% trans %}Gratuit{% endtrans %}"
+                     data-photo="{{ offers[0].getNbPhotoMax() }}" data-objet="Limité à 5 objets"
+                     data-paysagiste="{{ offers[0].getAidePaysagiste() ? 'Oui' : 'Non' }}">
+                    {{ form_widget(form.offre.children[offers[0].getId()]) }}
+                </div>
+
+                <div class="modal-offre-accroche">
+                    {% trans %}Créez votre extérieur par vous-même :{% endtrans %}
+
+                    <div class="logo-paiement">
+                        <div class="float-left"><img src="/front/images/visa.png"/></div>
+                        <div class="float-left"><img src="/front/images/mastercard.png"/></div>
+                        <div class="float-left"><img src="/front/images/paypal.png"/></div>
+                    </div>
+                </div>
+
+                <table class="modal-table-offres offre-ligne-1">
+                    <tbody>
+                    <tr>
+                        <td class="no-m">
+                            <div class="une-offre offre-detail"
+                                 data-prix="{{ offers[1].getPrix() | number_format(2, ',', ' ') }} €"
+                                 data-photo="{{ offers[1].getNbPhotoMax() }}"
+                                 data-objet="{{ offers[1].getAccesCompletPlantesObjets() ? 'Illimité' : 'Limité à 5 objets' }}"
+                                 data-paysagiste="{{ offers[1].getAidePaysagiste() ? 'Oui' : 'Non' }}">
+                                <div class="titre">{% trans %}Un espace{% endtrans %}</div>
+                                <div class="prix">{{ offers[1].getPrix() | number_format(2, ',', ' ') }} €</div>
+                                <div class="description">
+                                    {% trans %}Créez l'extérieur de vos rêves à partir d'une
+                                        <br/>photo de votre extérieur{% endtrans %}
+                                </div>
+                                <div class="bouton">
+                                    <button>{% trans %}Acheter{% endtrans %}</button>
+                                </div>
+                                {{ form_widget(form.offre.children[offers[1].getId()]) }}
+                            </div>
+                        </td>
+                        <td class="no-m">
+                            <div class="une-offre offre-detail"
+                                 data-prix="{{ offers[2].getPrix() | number_format(2, ',', ' ') }} €"
+                                 data-photo="{{ offers[2].getNbPhotoMax() }}"
+                                 data-objet="{{ offers[2].getAccesCompletPlantesObjets() ? 'Illimité' : 'Limité à 5 objets' }}"
+                                 data-paysagiste="{{ offers[2].getAidePaysagiste() ? 'Oui' : 'Non' }}">
+                                <div class="plus-populaire">{% trans %}Le plus populaire{% endtrans %}</div>
+                                <div class="titre">{% trans %}Trois espaces{% endtrans %}</div>
+                                <div class="prix">{{ offers[2].getPrix() | number_format(2, ',', ' ') }} €</div>
+                                <div class="description">
+                                    {% trans %}Créez le jardin de vos rêves à partir de 3 photos de votre extérieur{% endtrans %}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="bouton">
+                                    <button>{% trans %}Acheter{% endtrans %}</button>
+                                </div>
+                                {{ form_widget(form.offre.children[offers[2].getId()]) }}
+                            </div>
+                        </td>
+                        <td class="no-m">
+                            <div class="une-offre offre-detail"
+                                 data-prix="{{ offers[3].getPrix() | number_format(2, ',', ' ') }} €"
+                                 data-photo="{{ offers[3].getNbPhotoMax() }}"
+                                 data-objet="{{ offers[3].getAccesCompletPlantesObjets() ? 'Illimité' : 'Limité à 5 objets' }}"
+                                 data-paysagiste="{{ offers[3].getAidePaysagiste() ? 'Oui' : 'Non' }}">
+                                <div class="titre">{% trans %}Pro : 10 espaces{% endtrans %}</div>
+                                <div class="prix">{{ offers[3].getPrix() | number_format(2, ',', ' ') }} €</div>
+                                <div class="description">
+                                    {% trans %}Créez les visuels de vos projets de jardin pour illustrer vos devis{% endtrans %}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="bouton">
+                                    <button>{% trans %}Acheter{% endtrans %}</button>
+                                </div>
+                                {{ form_widget(form.offre.children[offers[3].getId()]) }}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-left no-m">
+                            <div class="offre-subtext">
+                                <p class="margin-bottom">
+                                    <img src="/front/images/tick-choix.png"/>
+                                    {% trans %}Utilisez sans limite de temps notre logiciel 100 % en ligne{% endtrans %}
+                                </p>
+
+                                <p class="margin-bottom">
+                                    <img src="/front/images/tick-choix.png"/>
+                                    {% trans %}Téléchargez autant de photos de votre extérieur que l'offre choisie vous le permet.{% endtrans %}
+                                </p>
+
+                                <p class="margin-bottom">
+                                    <img src="/front/images/tick-choix.png"/>
+                                    {% trans %}Accédez à notre bibliothèque de plus de 2 000 plantes et articles de jardin{% endtrans %}
+                                </p>
+
+                                <p class="margin-bottom">
+                                    <img src="/front/images/tick-choix.png"/>
+                                    {% trans %}Déterminez automatiquement avec l'adresse du projet les plantes les plus adaptées à votre extérieur{% endtrans %}
+                                </p>
+
+                                <p class="margin-bottom">
+                                    <img src="/front/images/tick-choix.png"/>
+                                    {% trans %}Accédez à toutes nos fonctionnalités : Jardin prêt à planter, zone à remplir...{% endtrans %}
+                                </p>
+
+                                <p>
+                                    <img src="/front/images/tick-choix.png"/>
+                                    {% trans %}Editez et imprimez votre création, la liste, quantité, et plan d'implantation des articles que vous avez intégré dans votre projet pour préparer vos achats{% endtrans %}
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="modal-offre-accroche">
+                    {% trans %}Confiez-nous la création de votre extérieur :{% endtrans %}
+
+                    <div class="logo-paiement">
+                        <div class="float-left"><img src="/front/images/visa.png"/></div>
+                        <div class="float-left"><img src="/front/images/mastercard.png"/></div>
+                        <div class="float-left"><img src="/front/images/paypal.png"/></div>
+                    </div>
+                </div>
+
+                <table class="modal-table-offres offre-ligne-2">
+                    <tbody>
+                    <tr>
+                        <td class="no-m">
+                            <div class="une-offre offre-detail"
+                                 data-prix="{{ offers[4].getPrix() | number_format(2, ',', ' ') }} €"
+                                 data-photo="{{ offers[4].getNbPhotoMax() }}"
+                                 data-objet="{{ offers[4].getAccesCompletPlantesObjets() ? 'Illimité' : 'Limité à 5 objets' }}"
+                                 data-paysagiste="{{ offers[4].getAidePaysagiste() ? 'Oui' : 'Non' }}">
+                                <div class="plus-populaire">{% trans %}Le plus populaire{% endtrans %}</div>
+                                <div class="titre">{% trans %}Offre premium surface < 50 m²<br/><span class="bold">1 photo</span>{% endtrans %}
+                                </div>
+                                <div class="prix">{{ offers[4].getPrix() | number_format(2, ',', ' ') }} €</div>
+                                <div class="description">
+                                    {% trans %}Nous créerons l'extérieur de vos rêves à partir d'une photo de votre extérieur{% endtrans %}
+                                </div>
+                                <div class="bouton">
+                                    <button>{% trans %}Acheter{% endtrans %}</button>
+                                </div>
+                                {{ form_widget(form.offre.children[offers[4].getId()]) }}
+                            </div>
+                        </td>
+                        <td class="no-m">
+                            <div class="une-offre offre-detail"
+                                 data-prix="{{ offers[5].getPrix() | number_format(2, ',', ' ') }} €"
+                                 data-photo="{{ offers[5].getNbPhotoMax() }}"
+                                 data-objet="{{ offers[5].getAccesCompletPlantesObjets() ? 'Illimité' : 'Limité à 5 objets' }}"
+                                 data-paysagiste="{{ offers[5].getAidePaysagiste() ? 'Oui' : 'Non' }}">
+                                <div class="titre">{% trans %}Offre premium de 50 à 100 m²<br/><span class="bold">2 photos</span>{% endtrans %}
+                                </div>
+                                <div class="prix">{{ offers[5].getPrix() | number_format(2, ',', ' ') }} €</div>
+                                <div class="description">
+                                    {% trans %}Nous créerons le jardin de vos rêves à partir de 2 photos de votre extérieur{% endtrans %}
+                                </div>
+                                <div class="bouton">
+                                    <button>{% trans %}Acheter{% endtrans %}</button>
+                                </div>
+                                {{ form_widget(form.offre.children[offers[5].getId()]) }}
+                            </div>
+                        </td>
+                        <td class="no-m">
+                            <div class="une-offre offre-detail"
+                                 data-prix="{{ offers[6].getPrix() | number_format(2, ',', ' ') }} €"
+                                 data-photo="{{ offers[6].getNbPhotoMax() }}"
+                                 data-objet="{{ offers[6].getAccesCompletPlantesObjets() ? 'Illimité' : 'Limité à 5 objets' }}"
+                                 data-paysagiste="{{ offers[6].getAidePaysagiste() ? 'Oui' : 'Non' }}">
+                                <div class="titre">{% trans %}Offre premium de 100 à 200 m²<br/><span class="bold">3 photos</span>{% endtrans %}
+                                </div>
+                                <div class="prix">{{ offers[6].getPrix() | number_format(2, ',', ' ') }} €</div>
+                                <div class="description">
+                                    {% trans %}Nous créerons le jardin de vos rêves à partir de 3 photos de votre extérieur{% endtrans %}
+                                </div>
+                                <div class="bouton">
+                                    <button>{% trans %}Acheter{% endtrans %}</button>
+                                </div>
+                                {{ form_widget(form.offre.children[offers[6].getId()]) }}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-left no-m">
+                            <div class="offre-subtext">
+                                <p>
+                                    <img src="/front/images/tick-choix.png"/>
+                                    {% trans %}Téléchargez les photos du lieu à aménager, puis recevez un petit questionnaire pour connaître vos attentes et contraintes.{% endtrans %}
+                                    <br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;{% trans %}Notre paysagiste crée votre extérieur à 100% et vous envoie sa proposition accompagnée de la liste des plantes et objets.{% endtrans %}
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div id="lien-contacter-service-commercial">
+                    {% trans %}Vous souhaitez personnaliser notre logiciel à votre marque ?{% endtrans %}
+                    <a target="_blank"
+                       href="https://www.monjardin-materrasse.com/nous-contacter/">{% trans %}Contactez le service commercial{% endtrans %}</a>
+                </div>
+
+                <div id="lien-faq">
+                    <a target="_blank" href="https://www.monjardin-materrasse.com/faq/">FAQ</a>
+                </div>
+            </div>
+
+            {% do form.offre.setRendered %}
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {% trans %}Fermer{% endtrans %}
+                </button>
+
+                <button class="button-validation" type="submit">
+                    <span>{% trans %}Je débute mon aménagement !{% endtrans %}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

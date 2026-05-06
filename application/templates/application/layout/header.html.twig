@@ -1,0 +1,46 @@
+<div id="entete-gauche">
+    <p id="entete-titre">{% trans %}Ajouter plantes, compositions paysagées et agrémentez d'objets{% endtrans %}</p>
+
+    <p id="entete-sous-titre">{% trans %}Enregistrez régulièrement votre création, puis "Je finalise" pour recevoir votre liste d'articles et plan de plantation.{% endtrans %}</p>
+</div>
+
+<div id="entete-droite">
+
+    <div>
+            <span data-url="{{ path('mjmt_application_authenticated_user_info') }}" class="connectedUserInfo"
+                  style="position: relative; top: -8px; margin-right: 10px;">
+                {% if app.user is not null %}
+                    {{ app.user().getPrenom()|capitalize ~ " " ~ app.user.getNom()|upper }}
+                {% endif %}
+            </span>
+        <img src="{{ asset('/application/images/progression-projet.png') }}" alt="progression"
+             usemap="#progression-map"/>
+        <map name="progression-map">
+            <area data-step="3" shape="circle" coords="119,16,16"
+                  href="{{ path('mjmt_application_finaliser', {'creationId': creation.getId(), 'hash' : creation.getReferenceEcriture}) }}"
+                  alt="etape-finaliser"/>
+        </map>
+    </div>
+
+    <div id="entete-icones">
+        <a id="entete-icones-facebook" target="_blank"
+           href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url(path('mjmt_front_home_facebook', {'creationId' : creation.getId(), 'hash' : creation.getReferenceLecture(), 'timestamp': ("now"|date('U'))})) }}">
+            <img src="{{ asset('/application/images/icone/facebook.png') }}"/>
+        </a>
+
+        <a id="entete-icones-pinterest" target="_blank"
+           href="https://www.pinterest.com/pin/create/button/?url={{ (app.request.getSchemeAndHttpHost() ~ path('mjmt_application_homepage', {'creationId' : creation.getId, 'hash' : creation.getReferenceLecture}))|url_encode }}&media={{ (app.request.getSchemeAndHttpHost() ~ path('mjmt_application_image', {'creationId' : creation.getId, 'hash' : creation.getReferenceLecture, 'timestamp': ("now"|date('U'))}))|url_encode }}&description={{ "Que pensez-vous de mon projet d'aménagement extérieur réalisé sur monjardin-materrasse.com?"|url_encode }}">
+            <img src="{{ asset('/application/images/icone/pinterest.png') }}"/>
+        </a>
+
+        <a onclick="toggleAide('open');return false;" href="">
+            <img src="{{ asset('/application/images/icone/aide.png') }}"/>
+        </a>
+
+        <a id="entete-icones-quitter" href="{{ path('mjmt_application_quitter') }}">
+            <img src="{{ asset('/application/images/icone/fermer.png') }}"/>
+        </a>
+    </div>
+</div>
+
+<div class="clear"></div>

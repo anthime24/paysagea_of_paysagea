@@ -1,0 +1,50 @@
+<p class="fenetre-menu-finaliser-sous-titre fenetre-menu-finaliser-sous-titre-haut">
+    {% trans %}Félicitation, vous avez terminé.{% endtrans %}
+</p>
+
+<p class="fenetre-menu-finaliser-sous-titre">{% trans %}Pour recevoir par email votre liste de plantes et produits utilisés, le plan de plantation et les conseils d'entretien :{% endtrans %}</p>
+
+<div class="finalisation-bloc-form-separ">
+    <form class="form-menu form-menu-finaliser-nouveau-client" method="POST"
+          action="{{ form.vars.action }}">
+        {{ form_widget(form) }}
+        <input type="submit" value="{% trans %}Créer un compte{% endtrans %}"/>
+    </form>
+</div>
+
+<div class="finalisation-bloc-form-separ">
+    <p class="fenetre-menu-finaliser-sous-titre">{% trans %}Vous avez déjà un compte ?{% endtrans %}</p>
+
+    {% if redirectHtmlToOfferSelection is defined and redirectHtmlToOfferSelection %}
+        <input type="hidden" name="redirectToOfferSelection" value="1"/>
+    {% else %}
+        <input type="hidden" name="redirectToOfferSelection" value="0"/>
+    {% endif %}
+
+    <form class="form-menu form-menu-finaliser-connexion-client" method="POST"
+          action="{{ path('mjmt_front_client_login') }}">
+        {{ form_widget(form_login) }}
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}">
+
+        <input type="submit" value="{% trans %}Me connecter{% endtrans %}"/>
+        <input type="hidden" name="url_lier_creation_client"
+               value="{{ path('mjmt_application_lier_creation_client', {'creationId': creation.getId(), 'hash': creation.getReferenceEcriture()}) }}"/>
+    </form>
+    <div class="clear"></div>
+
+    <p><a href="{{ path('mjmt_front_client_lost_password') }}" target="_blank"
+          class="mot-de-passe-oublie">{% trans %}J'ai oublié mon mot de passe{% endtrans %}</a></p>
+</div>
+
+<p class="fenetre-menu-finaliser-titre">
+    {% trans %}Faites vous plaisir, aménagez<br/><span
+            id="fenetre-menu-finaliser-titre-vert">Votre propre photo !</span>{% endtrans %}
+</p>
+
+<p class="fenetre-menu-finaliser-sous-titre">{% trans %}Et ayez accès à l'ensemble des plantes et objets pour un résultat professionnel.{% endtrans %}</p>
+
+<a href="{{ path('mjmt_front_inscription') }}" target="_blank" style="display: block;margin-top:5px;">
+    <button type="button" class="green-button">{% trans %}Je télécharge une photo !{% endtrans %}</button>
+</a>

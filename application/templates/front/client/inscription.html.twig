@@ -1,0 +1,108 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block content %}
+    <div id="page-client-connection" class="content-center container-fluid">
+{#        <a class="pull-right button-validate-mini"#}
+{#           href="{{ path('mjmt_front_inscription') }}"><span>{% trans %}Créer un compte{% endtrans %}</span></a>#}
+        <h1 class="green">{% trans %}Inscription / Connection{% endtrans %}</h1>
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-dismissible alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{% trans %}Bravo.{% endtrans %}</strong>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="alert alert-dismissible alert-warning" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 container-login-register">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="choice-register-connexion active" data-value="register">
+                            S'enregistrer
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ path('mjmt_front_client_login') }}" class="choice-register-connexion" data-value="connexion">
+                            Se connecter
+                        </a>
+                    </div>
+                </div>
+
+                <div id="choice-register-content">
+                    {{ form_start(form) }}
+
+                    <div class="row line-type-person">
+                        <div class="col-md-12">
+                            {{ form_label(form.typePersonne) }}
+                        </div>
+
+                        {% for child in form.typePersonne %}
+                            <div class="col-md-6">
+                                <label class="form-check-label">
+                                    {{ form_widget(child, {'attr': {'class': 'form-check-input'}}) }}
+                                    {{ form_label(child, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                                </label>
+                            </div>
+                        {% endfor %}
+
+                        <div class="col-md-12">
+                            {{ form_errors(form.typePersonne) }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">{{ form_row(form.nom) }}</div>
+                        <div class="col-md-6">{{ form_row(form.prenom) }}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">{{ form_row(form.email) }}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">{{ form_row(form.password.first) }}</div>
+                        <div class="col-md-6">{{ form_row(form.password.second) }}</div>
+                    </div>
+
+                    {% if form['cgu'] is defined %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.cgu) }}
+
+                                <a id="lien-cgu" href="{{ app.request.getSchemeAndHttpHost() ~ '/cgu' }}" target="_blank">
+                                    Voir les CGU
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if form['recevoirInformations'] is defined %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.recevoirInformations) }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {{ form_widget(form.common.codePromo) }}
+
+                    <button class="button-inscription-login-next" type="submit">
+                        <span>{% trans %}S'enregistrer{% endtrans %}</span>
+                    </button>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

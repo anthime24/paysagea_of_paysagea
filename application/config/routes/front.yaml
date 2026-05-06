@@ -1,0 +1,102 @@
+mjmt_front_home:
+    path:  /
+    defaults: { _controller: App\Front\Controller\HomeController::index }
+
+#mjmt_front_contact:
+    #path:  /contact
+    #defaults: { _controller: App\Front\Controller\ContactController::index }
+
+mjmt_front_inscription:
+    path:  /client/inscription/amenagement
+    defaults: { _controller: App\Front\Controller\InscriptionController::index }
+
+mjmt_front_inscription_project:
+    path:  /client/inscription/amenagement/{projectId}
+    defaults: { _controller: App\Front\Controller\InscriptionController::index }
+
+mjmt_front_inscription_client:
+    path:  /client/inscription/client
+    defaults: { _controller: App\Front\Controller\InscriptionController::client }
+
+mjmt_front_inscription_crop:
+    path:  /client/inscription/crop
+    defaults: { _controller: App\Front\Controller\InscriptionController::crop }
+
+mjmt_front_client_login:
+    path:  /client/login
+    defaults: { _controller: App\Front\Controller\ClientController::login }
+
+mjmt_front_client_inscription:
+    path:  /client/inscription
+    defaults: { _controller: App\Front\Controller\ClientController::inscription }
+
+mjmt_front_client_lost_password:
+    path:  /client/mot-de-passe-oublie
+    defaults: { _controller: App\Front\Controller\ClientController::lostPassword }
+
+mjmt_front_client_logout:
+    path:  /client/logout
+
+mjmt_front_client:
+    path:  /client/tableau-de-bord
+    defaults: { _controller: App\Front\Controller\ClientController::index }
+
+mjmt_front_client_offer_selection:
+    path:  /client/offre/selection
+    defaults: { _controller: App\Front\Controller\ClientController::offerSelection }
+
+mjmt_front_client_offer_selection_from_application:
+    path:  /client/offre/ajout-depuis-application
+    defaults: { _controller: App\Front\Controller\ClientController::offerSelection }
+
+mjmt_front_client_offer_promo_code:
+    path:  /client/offre/code-promo
+    defaults: { _controller: App\Front\Controller\ClientController::offerPromoCode }
+
+mjmt_front_client_offer_payment:
+    path:  /client/offre/paiment
+    defaults: { _controller: App\Front\Controller\ClientController::offerPayment }
+
+mjmt_front_payment_selection:
+    path:  /paiement/selection
+    defaults: { _controller: App\Front\Controller\PaymentController::selection }
+
+mjmt_front_payment_stripeCheckout:
+    path:  /paiement/stripe-checkout
+    defaults: { _controller: App\Front\Controller\PaymentController::stripeCheckout }
+
+mjmt_front_payment_stripeResponse:
+    path:  /paiement/stripe-response
+    defaults: { _controller: App\Front\Controller\PaymentController::stripeResponse }
+
+mjmt_front_payment_response:
+    path:  /paiement/reponse
+    defaults: { _controller: App\Front\Controller\PaymentController::response }
+
+mjmt_front_payment_done:
+    path:  /paiement/{clientPaymentId}/termine
+    defaults: { _controller: App\Front\Controller\PaymentController::done }
+
+mjmt_front_home_facebook:
+    path:  /{creationId}/{hash}/{timestamp}
+    defaults: { _controller: App\Front\Controller\HomeController::indexFacebook }
+    requirements:
+        creationId: '\d+'
+        hash: '\w+'
+        timestamp: '\d+'
+
+mjmt_front_tester_jardin:
+    path:  /tester-simulateur-jardin
+    defaults: { _controller: App\Front\Controller\TesterController::jardin }
+
+mjmt_front_tester_balcon:
+    path: /tester-simulateur-balcon
+    defaults: { _controller: App\Front\Controller\TesterController::balcon }
+
+mjmt_front_page_cms:
+    path:  /{url}
+    defaults: { _controller: App\Front\Controller\CmsController::index }
+
+#gregwar_captcha_routing:
+#    resource: "@GregwarCaptchaBundle/Resources/config/routing/routing.yml"
+#    prefix: /_gcb

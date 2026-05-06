@@ -1,0 +1,72 @@
+<div id="historic-content" class="content-center">
+    <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="historic-title">{% trans %}Avant / Après my garden designer{% endtrans %}</p>
+
+            <div id="historic-slider">
+                <ul class="bxslider">
+                    {% for post in posts %}
+                        <li attr-id-post="{{ post['ID'] }}">
+                            <img src="{{ ('/blog/wp-content/uploads/' ~ post['meta_value']) | imagine_filter('thumb_front_accueil_historique') }}" title=""/>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <a id="historic-link-start" href="{{ path('mjmt_front_inscription') }}">
+                <span>{% trans %}Démarrer mon aménagement{% endtrans %}</span>
+            </a>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <p class="historic-title">{% trans %}Ils parlent de nous{% endtrans %}</p>
+
+                    {% set urlOnParleDeNous = translate_url(app.request, 'on-parle-de-nous', true) %}
+                    <div id="historic-talk-about-us">
+                        <div class="pull-left">
+                            <a href="{{ urlOnParleDeNous|raw }}">
+                                <img src="/front/images/accueil/parle-de-nous-1.jpg"/>
+                            </a>
+                        </div>
+
+                        <div class="pull-right">
+                            <a href="{{ urlOnParleDeNous|raw }}">
+                                <img src="/front/images/accueil/parle-de-nous-2.jpg"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="historic-article">
+                <p class="historic-title">
+                    {% for post in posts %}
+                        <span class="details-article details-article-{{ post['ID'] }}"
+                              {% if loop.first %}style="display:block;"{% endif %}>{{ post['post_title'] }}</span>
+                    {% endfor %}
+                </p>
+
+                <p class="historic-text">{# 130 #}
+                    {% for post in posts %}
+                        <span class="details-article details-article-{{ post['ID'] }}"
+                              {% if loop.first %}style="display:block;"{% endif %}>{{ post['post_content'] | slice(0, 120) }}...</span>
+                    {% endfor %}
+                </p>
+
+                <div class="historic-bloc-buttons">
+                    <a class="historic-bloc-buttons-left" href="https://www.monjardin-materrasse.com/blog/">{% trans %}Tous les articles{% endtrans %}</a>
+
+                    {% for post in posts %}
+                        <a {% if loop.first %}style="display:block;"{% endif %}
+                           class="historic-bloc-buttons-right full-article full-article-{{ post['ID'] }}"
+                           href="https://www.monjardin-materrasse.com/blog/{{ post['post_name'] }}">{% trans %}Lire la suite{% endtrans %}</a>
+                    {% endfor %}
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

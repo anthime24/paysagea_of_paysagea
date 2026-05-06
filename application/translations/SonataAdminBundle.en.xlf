@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="LWu8Lv_" resname="title_edit">
+        <source>title_edit</source>
+        <target>__title_edit</target>
+      </trans-unit>
+      <trans-unit id="xfBeCH1" resname="title_create">
+        <source>title_create</source>
+        <target>__title_create</target>
+      </trans-unit>
+      <trans-unit id="QtCwnVB" resname="form_not_available">
+        <source>form_not_available</source>
+        <target>__form_not_available</target>
+      </trans-unit>
+      <trans-unit id="uX4pdI." resname="btn_update">
+        <source>btn_update</source>
+        <target>__btn_update</target>
+      </trans-unit>
+      <trans-unit id="I6HUeLU" resname="delete_or">
+        <source>delete_or</source>
+        <target>__delete_or</target>
+      </trans-unit>
+      <trans-unit id="dCgAo_P" resname="link_delete">
+        <source>link_delete</source>
+        <target>__link_delete</target>
+      </trans-unit>
+      <trans-unit id="VVeNuxV" resname="btn_create">
+        <source>btn_create</source>
+        <target>__btn_create</target>
+      </trans-unit>
+      <trans-unit id="5U4ghii" resname="btn_preview">
+        <source>btn_preview</source>
+        <target>__btn_preview</target>
+      </trans-unit>
+      <trans-unit id="EmRVvLi" resname="btn_update_and_edit_again">
+        <source>btn_update_and_edit_again</source>
+        <target>__btn_update_and_edit_again</target>
+      </trans-unit>
+      <trans-unit id="Px_Ux2e" resname="btn_update_and_return_to_list">
+        <source>btn_update_and_return_to_list</source>
+        <target>__btn_update_and_return_to_list</target>
+      </trans-unit>
+      <trans-unit id="G9rfLyL" resname="link_edit_acl">
+        <source>link_edit_acl</source>
+        <target>__link_edit_acl</target>
+      </trans-unit>
+      <trans-unit id="p9CSSaQ" resname="btn_create_and_edit_again">
+        <source>btn_create_and_edit_again</source>
+        <target>__btn_create_and_edit_again</target>
+      </trans-unit>
+      <trans-unit id="BpoG1g2" resname="btn_create_and_return_to_list">
+        <source>btn_create_and_return_to_list</source>
+        <target>__btn_create_and_return_to_list</target>
+      </trans-unit>
+      <trans-unit id="tMsjYm9" resname="btn_create_and_create_a_new_one">
+        <source>btn_create_and_create_a_new_one</source>
+        <target>__btn_create_and_create_a_new_one</target>
+      </trans-unit>
+      <trans-unit id="56GUIPl" resname="Visualiser">
+        <source>Visualiser</source>
+        <target>__Visualiser</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

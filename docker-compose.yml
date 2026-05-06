@@ -1,0 +1,44 @@
+# docker-compose.yml
+services:
+    php:
+        image: mygardendesigner_paysagea_php:latest
+        restart: always
+        container_name: "mygardendesigner_paysagea_php"
+        networks:
+            - tkwtraefik_tkwtraefik-net
+            - mygardendesigner-net
+        depends_on:
+            - db
+            - gisdb
+
+    db:
+        image: mariadb:10.1.48
+        restart: always
+        container_name: "mygardendesigner_paysagea_db"
+        volumes:
+            - "mygardendesigner_db:/var/lib/mysql"
+        environment:
+            - TZ=Europe/Paris
+        networks:
+            - mygardendesigner-net
+            - tkwphpmyadmin_tkwphpmyadmin-net
+
+    gisdb:
+        image: postgis/postgis:9.6-2.5
+        restart: always
+        container_name: "mygardendesigner_paysagea_gisdb"
+        volumes:
+            - "mygardendesigner_gisdb:/var/lib/postgresql/data"
+        networks:
+            - mygardendesigner-net
+
+volumes:
+    mygardendesigner_db:
+    mygardendesigner_gisdb:
+
+networks:
+    mygardendesigner-net:
+    tkwtraefik_tkwtraefik-net:
+        external: true
+    tkwphpmyadmin_tkwphpmyadmin-net:
+        external: true

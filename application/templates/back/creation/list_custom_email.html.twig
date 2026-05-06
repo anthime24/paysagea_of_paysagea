@@ -1,0 +1,28 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% set emailBP = object.banquePhoto ? object.banquePhoto.email : null %}
+    {% set emailCL = object.projet and object.projet.client ? object.projet.client.email : null %}
+    {% if emailCL is null %}
+        {% set emailCL = object.banquePhoto and object.banquePhoto.client ? object.banquePhoto.client.email : null %}
+    {% endif %}
+    {% if emailBP and emailCL and emailBP != emailCL %}
+        {{ emailCL }} (client) <br/>
+        {{ emailBP }} (photo)
+    {% elseif (emailBP and emailCL and emailBP == emailCL) or (emailBP) %}
+        {{ emailBP }}
+    {% elseif emailCL %}
+        {{ emailCL }}
+    {% endif %}
+{% endblock %}

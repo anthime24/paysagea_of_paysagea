@@ -1,0 +1,61 @@
+{% extends ecriture == false
+    ? 'application/layout/layout_simple.html.twig'
+    : 'application/layout/layout.html.twig' %}
+
+{% block title %}{% trans %}Mygarden designer{% endtrans %}{% endblock %}
+
+{% block contenu %}
+    <input type="hidden" id="url-reprendre-offre"
+           value="{{ path('mjmt_front_client_offer_selection_from_application', {'creationId' : creation.getId, 'hash' : creation.getReferenceEcriture}) }}"/>
+    <input type="hidden" id="url-replacer-repere"
+           value="{{ path('mjmt_application_sauvegarder_proportion', {'creationId' : creation.getId, 'hash' : creation.getReferenceEcriture}) }}"/>
+    <input type="hidden" id="url-tampon"
+           value="{{ path('mjmt_application_sauvegarder_tampon', {'creationId' : creation.getId, 'hash' : creation.getReferenceEcriture}) }}"/>
+
+    {% if ecriture %}
+        <div id="informations-proportion">
+            <input type="hidden"
+                   value="{% if (creation.repere1X == '' and creation.repere1X != '0') or (initialisationProportionsAdmin) %}1{% endif %}"
+                   name="initialisation_application"/>
+            {% if initialisationProportionsAdmin %}
+                <input type="hidden" value="1" name="initialisation_proportions_admin"/>
+            {% endif %}
+            <input type="hidden" value="{{ creation.repere1X }}" name="repere1_x"/>
+            <input type="hidden" value="{{ creation.repere1Y }}" name="repere1_y"/>
+            <input type="hidden" value="{{ creation.repere1Hauteur }}" name="repere1_hauteur"/>
+            <input type="hidden" value="{{ creation.repere1Largeur }}" name="repere1_largeur"/>
+            <input type="hidden" value="{{ creation.repere2X }}" name="repere2_x"/>
+            <input type="hidden" value="{{ creation.repere2Y }}" name="repere2_y"/>
+            <input type="hidden" value="{{ creation.repere2Hauteur }}" name="repere2_hauteur"/>
+            <input type="hidden" value="{{ creation.repere2Largeur }}" name="repere2_largeur"/>
+            <input type="hidden" value="{{ creation.repere3X }}" name="repere3_x"/>
+            <input type="hidden" value="{{ creation.repere3Y }}" name="repere3_y"/>
+            <input type="hidden" value="{{ creation.repere3Hauteur }}" name="repere3_hauteur"/>
+            <input type="hidden" value="{{ creation.repere3Largeur }}" name="repere3_largeur"/>
+            <input type="hidden" value="{{ creation.repere4X }}" name="repere4_x"/>
+            <input type="hidden" value="{{ creation.repere4Y }}" name="repere4_y"/>
+            <input type="hidden" value="{{ creation.repere4Hauteur }}" name="repere4_hauteur"/>
+            <input type="hidden" value="{{ creation.repere4Largeur }}" name="repere4_largeur"/>
+        </div>
+        <div id="contenu-fond-image" style="z-index: 0;">
+            <span
+                    id="canvasLassoTemplate"
+                    data-backgroundImage="{{ creation.getWebPath() | imagine_filter('thumb_app_contenu_fond_image') }}"
+                    width="{{ backgroundWidth + 50 }}"
+                    height="{{ backgroundHeight + 50 }}"></span>
+            <img src="{{ creation.getWebPath() | imagine_filter('thumb_app_contenu_fond_image') }}"
+                 onmousedown="return false;" onmousemove="return false;" width="{{ backgroundWidth }}"
+                 height="{{ backgroundHeight }}"/>
+        </div>
+        <div class="rendu-proportion-homme">
+            <img src="{{ asset('/application/images/homme.png') }}" attr-width="200" attr-height="600"/>
+        </div>
+        {% for creation_entite in creation.getCreationEntites() %}
+            {% include "application/selection/entite_html.html.twig" with {'creation_entite' : creation_entite} %}
+        {% endfor %}
+    {% else %}
+        <div id="contenu-fond-image">
+            <img src="{{ path('mjmt_application_image', {'creationId' : creation.getId, 'hash' : creation.getReferenceLecture, 'timestamp' : ("now"|date('U'))}) }}"/>
+        </div>
+    {% endif %}
+{% endblock %}

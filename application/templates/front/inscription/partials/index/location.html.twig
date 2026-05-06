@@ -1,0 +1,46 @@
+<div class="content-center container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h3>{% trans %}Chaque espace extérieur est différent : dites-nous en un peu plus sur lui{% endtrans %}</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 col-sm-5 col-xs-12">
+            {{ form_row(form.adresse) }}
+            <span class="d-none address-error-manual-text">L'adresse est manquante</span>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            {{ form_row(form.projetType) }}
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            {{ form_row(form.ensoleillement) }}
+        </div>
+    </div>
+
+    <div class="row ferme-details">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            {{ form_row(form.style) }}
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            {{ form_row(form.surface) }}
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            {{ form_row(form.budgetMax) }}
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            {{ form_row(form.arrosageDeuxFoisParSemaine) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <a class="btn btn-link btn-more-details" href="#">{% trans %}Plus de détails{% endtrans %}</a>
+        </div>
+    </div>
+</div>

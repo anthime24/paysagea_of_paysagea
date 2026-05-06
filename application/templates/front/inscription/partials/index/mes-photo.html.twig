@@ -1,0 +1,23 @@
+<div class="content-center container-fluid" id="bloc-photos">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h3>
+                {% trans %}Mes photos :{% endtrans %}
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="mjmt_frontbundle_projet_inscription_one_page_photo_banque-photo">
+            {% for banquePhoto in form.banquePhotos %}
+                <div class="col-md-3 col-sm-6 col-xs-12 photo-content">
+                    {% if banquePhoto.vars.attr['data-photo-web-path'] is not defined %}
+                        {{ form_widget(banquePhoto, {'label': false}) }}
+                    {% else %}
+                        {{ form_widget(banquePhoto, {'attr': {'data-photo-web-path': banquePhoto.vars.attr['data-photo-web-path'] | imagine_filter('thumb_front_vignette_inscription')}}) }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

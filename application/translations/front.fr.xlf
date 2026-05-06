@@ -1,0 +1,1262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="EPopYAO" resname="Génération d'un nouveau mot de passe">
+        <source>Génération d'un nouveau mot de passe</source>
+        <target>Génération d'un nouveau mot de passe</target>
+      </trans-unit>
+      <trans-unit id="jnQ8X1V" resname="Un nouveau mot de passe vient de vous être envoyé sur votre email.">
+        <source>Un nouveau mot de passe vient de vous être envoyé sur votre email.</source>
+        <target>Un nouveau mot de passe vient de vous être envoyé sur votre email.</target>
+      </trans-unit>
+      <trans-unit id="FIszKcj" resname="Prise de contact sur le site internet">
+        <source>Prise de contact sur le site internet</source>
+        <target>Prise de contact sur le site internet</target>
+      </trans-unit>
+      <trans-unit id="fZ99LZF" resname="Votre message a bien été envoyé.">
+        <source>Votre message a bien été envoyé.</source>
+        <target>Votre message a bien été envoyé.</target>
+      </trans-unit>
+      <trans-unit id="qd7wuRA" resname="Le message n'a pas pu être transmis. Merci de nous contacter directement.">
+        <source>Le message n'a pas pu être transmis. Merci de nous contacter directement.</source>
+        <target>Le message n'a pas pu être transmis. Merci de nous contacter directement.</target>
+      </trans-unit>
+      <trans-unit id="unAZ9SK" resname="Mygarden designer">
+        <source>Mygarden designer</source>
+        <target>Mygarden designer</target>
+      </trans-unit>
+      <trans-unit id="c8AQVXL" resname="Bonjour,">
+        <source>Bonjour,</source>
+        <target>Bonjour,</target>
+      </trans-unit>
+      <trans-unit id="9lhxywq" resname="Merci d'avoir utilisé le simulateur d'extérieur My Garden Designer.">
+        <source>Merci d'avoir utilisé le simulateur d'extérieur My Garden Designer.</source>
+        <target>Merci d'avoir utilisé le simulateur d'extérieur My Garden Designer.</target>
+      </trans-unit>
+      <trans-unit id="iHVk3Dj" resname="Veuillez trouver en pièce jointe du mail, le document de finalisation de votre création">
+        <source>Veuillez trouver en pièce jointe du mail, le document de finalisation de votre création</source>
+        <target>Veuillez trouver en pièce jointe du mail, le document de finalisation de votre création</target>
+      </trans-unit>
+      <trans-unit id="JwtNCUZ" resname="Retrouvez la photo de votre création, le récapitulé des articles choisis afin de pouvoir les commander, et le plan de masse qui vous aidera à réaliser les plantations.">
+        <source>Retrouvez la photo de votre création, le récapitulé des articles choisis afin de pouvoir les commander, et le plan de masse qui vous aidera à réaliser les plantations.</source>
+        <target>Retrouvez la photo de votre création, le récapitulé des articles choisis afin de pouvoir les commander, et le plan de masse qui vous aidera à réaliser les plantations.</target>
+      </trans-unit>
+      <trans-unit id="A0qx1I0" resname="Cordialement,">
+        <source>Cordialement,</source>
+        <target>Cordialement,</target>
+      </trans-unit>
+      <trans-unit id="o0sA36W" resname="L'équipe de Mon Jardin Ma Terrasse.">
+        <source>L'équipe de Mon Jardin Ma Terrasse.</source>
+        <target>L'équipe de Mon Jardin Ma Terrasse.</target>
+      </trans-unit>
+      <trans-unit id="7qFuHfh" resname="Gommer">
+        <source>Gommer</source>
+        <target>Gommer</target>
+      </trans-unit>
+      <trans-unit id="UpHwrjY" resname="Symétrie">
+        <source>Symétrie</source>
+        <target>Symétrie</target>
+      </trans-unit>
+      <trans-unit id="Xl0CFs4" resname="Supprimer">
+        <source>Supprimer</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="BK4ot.f" resname="Masquer">
+        <source>Masquer</source>
+        <target>Masquer</target>
+      </trans-unit>
+      <trans-unit id="nXJuKzF" resname="Dupliquer">
+        <source>Dupliquer</source>
+        <target>Dupliquer</target>
+      </trans-unit>
+      <trans-unit id="iHJzq0D" resname="Devant">
+        <source>Devant</source>
+        <target>Devant</target>
+      </trans-unit>
+      <trans-unit id="NpEQ2Tc" resname="Derrière">
+        <source>Derrière</source>
+        <target>Derrière</target>
+      </trans-unit>
+      <trans-unit id="iMfjtVV" resname="Agrandir">
+        <source>Agrandir</source>
+        <target>Agrandir</target>
+      </trans-unit>
+      <trans-unit id="XePVUN_" resname="Diminuer">
+        <source>Diminuer</source>
+        <target>Diminuer</target>
+      </trans-unit>
+      <trans-unit id="V7Xi.Bu" resname="Rotation">
+        <source>Rotation</source>
+        <target>Rotation</target>
+      </trans-unit>
+      <trans-unit id="460bzCy" resname="Perspective">
+        <source>Perspective</source>
+        <target>Perspective</target>
+      </trans-unit>
+      <trans-unit id="HDbT7J2" resname="Taille de la gomme">
+        <source>Taille de la gomme</source>
+        <target>Taille de la gomme</target>
+      </trans-unit>
+      <trans-unit id="q9d22sp" resname="Vous pouvez appliquer une perspective en cliquant et en restant appuyé sur les carrés rouges.">
+        <source>Vous pouvez appliquer une perspective en cliquant et en restant appuyé sur les carrés rouges.</source>
+        <target>Vous pouvez appliquer une perspective en cliquant et en restant appuyé sur les carrés rouges.</target>
+      </trans-unit>
+      <trans-unit id="DLKvJ5C" resname="Ajouter plantes, compositions paysagées et agrémentez d'objets">
+        <source>Ajouter plantes, compositions paysagées et agrémentez d'objets</source>
+        <target>Ajouter plantes, compositions paysagées et agrémentez d'objets</target>
+      </trans-unit>
+      <trans-unit id="X4DIdyA" resname="Enregistrez régulièrement votre création, puis &quot;Je finalise&quot; pour recevoir votre liste d'articles et plan de plantation.">
+        <source>Enregistrez régulièrement votre création, puis "Je finalise" pour recevoir votre liste d'articles et plan de plantation.</source>
+        <target>Enregistrez régulièrement votre création, puis "Je finalise" pour recevoir votre liste d'articles et plan de plantation.</target>
+      </trans-unit>
+      <trans-unit id="0QnDYWJ" resname="Cliquez sur l'image pour baliser le contour de la zone, fermez la sélection en recliquant sur le point rouge, puis choisissez le motif à dupliquer.">
+        <source>Cliquez sur l'image pour baliser le contour de la zone, fermez la sélection en recliquant sur le point rouge, puis choisissez le motif à dupliquer.</source>
+        <target>Cliquez sur l'image pour baliser le contour de la zone, fermez la sélection en recliquant sur le point rouge, puis choisissez le motif à dupliquer.</target>
+      </trans-unit>
+      <trans-unit id="R4PqBO4" resname="Vous pouvez faire varier la taille du motif en cliquant sur les boutons agrandir et rétrécir.">
+        <source>Vous pouvez faire varier la taille du motif en cliquant sur les boutons agrandir et rétrécir.</source>
+        <target>Vous pouvez faire varier la taille du motif en cliquant sur les boutons agrandir et rétrécir.</target>
+      </trans-unit>
+      <trans-unit id="8BMwQBB" resname="Enfin cliquez sur terminer pour finaliser l'opération.">
+        <source>Enfin cliquez sur terminer pour finaliser l'opération.</source>
+        <target>Enfin cliquez sur terminer pour finaliser l'opération.</target>
+      </trans-unit>
+      <trans-unit id="Kt4PPn4" resname="Retrecir">
+        <source>Retrecir</source>
+        <target>Retrecir</target>
+      </trans-unit>
+      <trans-unit id="Rq05Fva" resname="Annuler">
+        <source>Annuler</source>
+        <target>Annuler</target>
+      </trans-unit>
+      <trans-unit id="tNklKPh" resname="Terminer">
+        <source>Terminer</source>
+        <target>Terminer</target>
+      </trans-unit>
+      <trans-unit id="RhSOJQ5" resname="Erreur">
+        <source>Erreur</source>
+        <target>Erreur</target>
+      </trans-unit>
+      <trans-unit id="bv9NAxw" resname="Commencer une nouvelle action">
+        <source>Commencer une nouvelle action</source>
+        <target>Commencer une nouvelle action</target>
+      </trans-unit>
+      <trans-unit id="k_u6SZi" resname="Terminer l'action précédente">
+        <source>Terminer l'action précédente</source>
+        <target>Terminer l'action précédente</target>
+      </trans-unit>
+      <trans-unit id="sJReo5a" resname="Taille du tampon">
+        <source>Taille du tampon</source>
+        <target>Taille du tampon</target>
+      </trans-unit>
+      <trans-unit id="5X.iOs6" resname="what_do_you_think_my_garden_my_terrace">
+        <source>what_do_you_think_my_garden_my_terrace</source>
+        <target>Que pensez-vous de mon projet d'aménagement extérieur réalisé sur monjardin-materrasse.com ?</target>
+      </trans-unit>
+      <trans-unit id="nVo5pwt" resname="Objets">
+        <source>Objets</source>
+        <target>Objets</target>
+      </trans-unit>
+      <trans-unit id="_INoYcw" resname="Plantes">
+        <source>Plantes</source>
+        <target>Plantes</target>
+      </trans-unit>
+      <trans-unit id="hHeMRG5" resname="Zone à remplir">
+        <source>Zone à remplir</source>
+        <target>Zone à remplir</target>
+      </trans-unit>
+      <trans-unit id="cdx0hz4" resname="Enregistrer">
+        <source>Enregistrer</source>
+        <target>Enregistrer</target>
+      </trans-unit>
+      <trans-unit id="jFQYfRM" resname="Outils">
+        <source>Outils</source>
+        <target>Outils</target>
+      </trans-unit>
+      <trans-unit id="UH8uTJd" resname="Retoucher ma photo">
+        <source>Retoucher ma photo</source>
+        <target>Retoucher ma photo</target>
+      </trans-unit>
+      <trans-unit id="jeUewKz" resname="Rotation de ma photo">
+        <source>Rotation de ma photo</source>
+        <target>Rotation de ma photo</target>
+      </trans-unit>
+      <trans-unit id="ESK7Jg7" resname="Replacer les repères">
+        <source>Replacer les repères</source>
+        <target>Replacer les repères</target>
+      </trans-unit>
+      <trans-unit id="l7A9_uz" resname="Paramétrage de la création">
+        <source>Paramétrage de la création</source>
+        <target>Paramétrage de la création</target>
+      </trans-unit>
+      <trans-unit id="F_ONuOA" resname="Rendu de la création">
+        <source>Rendu de la création</source>
+        <target>Rendu de la création</target>
+      </trans-unit>
+      <trans-unit id="RweLUv9" resname="Ma sélection">
+        <source>Ma sélection</source>
+        <target>Ma sélection</target>
+      </trans-unit>
+      <trans-unit id="VnRzuMZ" resname="Total :">
+        <source>Total :</source>
+        <target>Total :</target>
+      </trans-unit>
+      <trans-unit id="z3R8lt5" resname="Dernier article ajouté">
+        <source>Dernier article ajouté</source>
+        <target>Dernier article ajouté</target>
+      </trans-unit>
+      <trans-unit id="kpzxWzY" resname="Je finalise !">
+        <source>Je finalise !</source>
+        <target>Je finalise !</target>
+      </trans-unit>
+      <trans-unit id="YQ_p1_n" resname="Mon Jardin Ma Terrasse - My Garden Designer">
+        <source>Mon Jardin Ma Terrasse - My Garden Designer</source>
+        <target>Mon Jardin Ma Terrasse - My Garden Designer</target>
+      </trans-unit>
+      <trans-unit id="NmAxWpr" resname="page">
+        <source>page</source>
+        <target>page</target>
+      </trans-unit>
+      <trans-unit id="lRB7DLJ" resname="Merci d'avoir utilis&amp;eacute; le simulateur d'ext&amp;eacute;rieur My Garden Designer.">
+        <source>Merci d'avoir utilis&amp;eacute; le simulateur d'ext&amp;eacute;rieur My Garden Designer.</source>
+        <target><![CDATA[Merci d'avoir utilis&eacute; le simulateur d'ext&eacute;rieur My Garden Designer.]]></target>
+      </trans-unit>
+      <trans-unit id="RhGD4Fb" resname="Retrouvez dans ce document de finalisation de votre cr&amp;eacute;ation &quot;%name%&quot; : la photo de votre r&amp;eacute;alisation, le r&amp;eacute;capitul&amp;eacute; des articles choisis afin de pouvoir les commander, et le plan de masse qui vous aidera &amp;agrave; r&amp;eacute;aliser les plantations.">
+        <source>Retrouvez dans ce document de finalisation de votre cr&amp;eacute;ation "%name%" : la photo de votre r&amp;eacute;alisation, le r&amp;eacute;capitul&amp;eacute; des articles choisis afin de pouvoir les commander, et le plan de masse qui vous aidera &amp;agrave; r&amp;eacute;aliser les plantations.</source>
+        <target><![CDATA[Retrouvez dans ce document de finalisation de votre cr&eacute;ation "%name%" : la photo de votre r&eacute;alisation, le r&eacute;capitul&eacute; des articles choisis afin de pouvoir les commander, et le plan de masse qui vous aidera &agrave; r&eacute;aliser les plantations.]]></target>
+      </trans-unit>
+      <trans-unit id="1ydmql7" resname="Informations sur la cr&amp;eacute;ation">
+        <source>Informations sur la cr&amp;eacute;ation</source>
+        <target><![CDATA[Informations sur la cr&eacute;ation]]></target>
+      </trans-unit>
+      <trans-unit id="5QfLYjG" resname="Nom de la cr&amp;eacute;ation :">
+        <source>Nom de la cr&amp;eacute;ation :</source>
+        <target><![CDATA[Nom de la cr&eacute;ation :]]></target>
+      </trans-unit>
+      <trans-unit id="wMRNLje" resname="Date de la cr&amp;eacute;ation :">
+        <source>Date de la cr&amp;eacute;ation :</source>
+        <target><![CDATA[Date de la cr&eacute;ation :]]></target>
+      </trans-unit>
+      <trans-unit id="gsEYSi1" resname="Nom :">
+        <source>Nom :</source>
+        <target>Nom :</target>
+      </trans-unit>
+      <trans-unit id="pYAeYHH" resname="Adresse du projet :">
+        <source>Adresse du projet :</source>
+        <target>Adresse du projet :</target>
+      </trans-unit>
+      <trans-unit id="R3lXo0X" resname="Surface :">
+        <source>Surface :</source>
+        <target>Surface :</target>
+      </trans-unit>
+      <trans-unit id="JIRAUIh" resname="Ensoleillement :">
+        <source>Ensoleillement :</source>
+        <target>Ensoleillement :</target>
+      </trans-unit>
+      <trans-unit id="HABa6Qx" resname="Style :">
+        <source>Style :</source>
+        <target>Style :</target>
+      </trans-unit>
+      <trans-unit id="8aCZAy7" resname="Budget maximum :">
+        <source>Budget maximum :</source>
+        <target>Budget maximum :</target>
+      </trans-unit>
+      <trans-unit id="h_f1tg5" resname="Type :">
+        <source>Type :</source>
+        <target>Type :</target>
+      </trans-unit>
+      <trans-unit id="a_E.0WR" resname="Rusticit&amp;eacute; :">
+        <source>Rusticit&amp;eacute; :</source>
+        <target><![CDATA[Rusticit&eacute; :]]></target>
+      </trans-unit>
+      <trans-unit id="JeX8eC2" resname="Pr&amp;eacute;cipitation :">
+        <source>Pr&amp;eacute;cipitation :</source>
+        <target><![CDATA[Pr&eacute;cipitation :]]></target>
+      </trans-unit>
+      <trans-unit id="WCq0IK8" resname="Ph :">
+        <source>Ph :</source>
+        <target>Ph :</target>
+      </trans-unit>
+      <trans-unit id="uhx1XX3" resname="P&amp;eacute;riode d'int&amp;eacute;r&amp;ecirc;t :">
+        <source>P&amp;eacute;riode d'int&amp;eacute;r&amp;ecirc;t :</source>
+        <target><![CDATA[P&eacute;riode d'int&eacute;r&ecirc;t :]]></target>
+      </trans-unit>
+      <trans-unit id="EfELUr5" resname="Liste des plantes">
+        <source>Liste des plantes</source>
+        <target>Liste des plantes</target>
+      </trans-unit>
+      <trans-unit id="Y_B_sBG" resname="Les prix des articles sont donn&amp;eacute;s &amp;agrave; titre indicatif, sont soumis &amp;agrave; &amp;eacute;volution et n'engagent en rien la soci&amp;eacute;t&amp;eacute; Paysagea S.A.S.">
+        <source>Les prix des articles sont donn&amp;eacute;s &amp;agrave; titre indicatif, sont soumis &amp;agrave; &amp;eacute;volution et n'engagent en rien la soci&amp;eacute;t&amp;eacute; Paysagea S.A.S.</source>
+        <target><![CDATA[Les prix des articles sont donn&eacute;s &agrave; titre indicatif, sont soumis &agrave; &eacute;volution et n'engagent en rien la soci&eacute;t&eacute; Paysagea S.A.S.]]></target>
+      </trans-unit>
+      <trans-unit id="t7Dpk5n" resname="Avertissement :">
+        <source>Avertissement :</source>
+        <target>Avertissement :</target>
+      </trans-unit>
+      <trans-unit id="veY1Rlj" resname="Vous avez lors de la cr&amp;eacute;ation chang&amp;eacute; des param&amp;egrave;tres initiaux, il se peut que certaines plantes n&amp;eacute;cessitent des soins particuliers pour rester en bonne sant&amp;eacute;.">
+        <source>Vous avez lors de la cr&amp;eacute;ation chang&amp;eacute; des param&amp;egrave;tres initiaux, il se peut que certaines plantes n&amp;eacute;cessitent des soins particuliers pour rester en bonne sant&amp;eacute;.</source>
+        <target><![CDATA[Vous avez lors de la cr&eacute;ation chang&eacute; des param&egrave;tres initiaux, il se peut que certaines plantes n&eacute;cessitent des soins particuliers pour rester en bonne sant&eacute;.]]></target>
+      </trans-unit>
+      <trans-unit id="i2tuZcV" resname="N&amp;deg;">
+        <source>N&amp;deg;</source>
+        <target><![CDATA[N&deg;]]></target>
+      </trans-unit>
+      <trans-unit id="GqTLC8y" resname="Image">
+        <source>Image</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="qrK4heb" resname="Infos">
+        <source>Infos</source>
+        <target>Infos</target>
+      </trans-unit>
+      <trans-unit id="JYSobjD" resname="Conseils">
+        <source>Conseils</source>
+        <target>Conseils</target>
+      </trans-unit>
+      <trans-unit id="Bs51NI8" resname="Quantite">
+        <source>Quantite</source>
+        <target>Quantite</target>
+      </trans-unit>
+      <trans-unit id="VMMk9sE" resname="Prix">
+        <source>Prix</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="Up4DRac" resname="Nom vernaculaire :">
+        <source>Nom vernaculaire :</source>
+        <target>Nom vernaculaire :</target>
+      </trans-unit>
+      <trans-unit id=".k_bjyl" resname="Taille (h x l) :">
+        <source>Taille (h x l) :</source>
+        <target>Taille (h x l) :</target>
+      </trans-unit>
+      <trans-unit id="CM2SswL" resname="Taille &amp;agrave; l'&amp;acirc;ge adulte (h x l) :">
+        <source>Taille &amp;agrave; l'&amp;acirc;ge adulte (h x l) :</source>
+        <target><![CDATA[Taille &agrave; l'&acirc;ge adulte (h x l) :]]></target>
+      </trans-unit>
+      <trans-unit id="FlQRZcy" resname="Automne :">
+        <source>Automne :</source>
+        <target>Automne :</target>
+      </trans-unit>
+      <trans-unit id="UYtPiuj" resname="Hiver :">
+        <source>Hiver :</source>
+        <target>Hiver :</target>
+      </trans-unit>
+      <trans-unit id="VQpjn2A" resname="Printemps :">
+        <source>Printemps :</source>
+        <target>Printemps :</target>
+      </trans-unit>
+      <trans-unit id="LR4sQEu" resname="Et&amp;eacute; :">
+        <source>Et&amp;eacute; :</source>
+        <target><![CDATA[Et&eacute; :]]></target>
+      </trans-unit>
+      <trans-unit id="RIWcUG1" resname="Demander un devis d'am&amp;eacute;nagement de jardin">
+        <source>Demander un devis d'am&amp;eacute;nagement de jardin</source>
+        <target><![CDATA[Demander un devis d'am&eacute;nagement de jardin]]></target>
+      </trans-unit>
+      <trans-unit id="5p0szYF" resname="Rendu final">
+        <source>Rendu final</source>
+        <target>Rendu final</target>
+      </trans-unit>
+      <trans-unit id="rIvO7WQ" resname="Emplacement des plantes et des objets">
+        <source>Emplacement des plantes et des objets</source>
+        <target>Emplacement des plantes et des objets</target>
+      </trans-unit>
+      <trans-unit id="U.qWOT8" resname="Vidéos explicatives des outils">
+        <source>Vidéos explicatives des outils</source>
+        <target>Vidéos explicatives des outils</target>
+      </trans-unit>
+      <trans-unit id="BlEiNjr" resname="Nos propositions et choix de produits">
+        <source>Nos propositions et choix de produits</source>
+        <target>Nos propositions et choix de produits</target>
+      </trans-unit>
+      <trans-unit id="wuuM2dl" resname="Attention">
+        <source>Attention</source>
+        <target>Attention</target>
+      </trans-unit>
+      <trans-unit id="0BRgRHk" resname="Confirmer ou annuler son action">
+        <source>Confirmer ou annuler son action</source>
+        <target>Confirmer ou annuler son action</target>
+      </trans-unit>
+      <trans-unit id="6QpYc_Y" resname="Enregistrement">
+        <source>Enregistrement</source>
+        <target>Enregistrement</target>
+      </trans-unit>
+      <trans-unit id="g8W66jk" resname="Finaliser">
+        <source>Finaliser</source>
+        <target>Finaliser</target>
+      </trans-unit>
+      <trans-unit id="FheID_M" resname="Cette fonctionnalité n'est pas disponible en mode gratuit.">
+        <source>Cette fonctionnalité n'est pas disponible en mode gratuit.</source>
+        <target>Cette fonctionnalité n'est pas disponible en mode gratuit.</target>
+      </trans-unit>
+      <trans-unit id="hUK8hNH" resname="Pour bénéficier de tous les fonctionalités que nous mettons à votre disposition, créez un compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.">
+        <source>Pour bénéficier de tous les fonctionalités que nous mettons à votre disposition, créez un compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</source>
+        <target>Pour bénéficier de tous les fonctionalités que nous mettons à votre disposition, créez un compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</target>
+      </trans-unit>
+      <trans-unit id="xIuDfRu" resname="Choisir une offre">
+        <source>Choisir une offre</source>
+        <target>Choisir une offre</target>
+      </trans-unit>
+      <trans-unit id="lDZ8laQ" resname="Commencer ma création">
+        <source>Commencer ma création</source>
+        <target>Commencer ma création</target>
+      </trans-unit>
+      <trans-unit id="T3NbdyM" resname="La recherche n'ayant rien trouvé en raison de critères trop restrictifs, une nouvelle recherche a été effectuée sur le nom uniquement.">
+        <source>La recherche n'ayant rien trouvé en raison de critères trop restrictifs, une nouvelle recherche a été effectuée sur le nom uniquement.</source>
+        <target>La recherche n'ayant rien trouvé en raison de critères trop restrictifs, une nouvelle recherche a été effectuée sur le nom uniquement.</target>
+      </trans-unit>
+      <trans-unit id="uyvmOfI" resname="Plus d'informations">
+        <source>Plus d'informations</source>
+        <target>Plus d'informations</target>
+      </trans-unit>
+      <trans-unit id="NgB0Sz2" resname="Désolé, nous n’avons pas encore de résultat pour cette recherche, veuillez changer un ou plusieurs critère de sélection.">
+        <source>Désolé, nous n’avons pas encore de résultat pour cette recherche, veuillez changer un ou plusieurs critère de sélection.</source>
+        <target>Désolé, nous n’avons pas encore de résultat pour cette recherche, veuillez changer un ou plusieurs critère de sélection.</target>
+      </trans-unit>
+      <trans-unit id="kjQTnQV" resname="Résultats affichés :">
+        <source>Résultats affichés :</source>
+        <target>Résultats affichés :</target>
+      </trans-unit>
+      <trans-unit id="S35PNX1" resname="trouvés">
+        <source>trouvés</source>
+        <target>trouvés</target>
+      </trans-unit>
+      <trans-unit id="vWqUg3d" resname="Sélectionnez un ou plusieurs critères de recherche">
+        <source>Sélectionnez un ou plusieurs critères de recherche</source>
+        <target>Sélectionnez un ou plusieurs critères de recherche</target>
+      </trans-unit>
+      <trans-unit id="WzXg41W" resname="Réinitialiser">
+        <source>Réinitialiser</source>
+        <target>Réinitialiser</target>
+      </trans-unit>
+      <trans-unit id="GtdAMnf" resname="+ de critères">
+        <source>+ de critères</source>
+        <target>+ de critères</target>
+      </trans-unit>
+      <trans-unit id="NX4_Rh3" resname="Je cherche">
+        <source>Je cherche</source>
+        <target>Je cherche</target>
+      </trans-unit>
+      <trans-unit id="6TBbPu8" resname="Choisissez et placez vos articles sur la photo jusqu'à obtenir la création souhaitée">
+        <source>Choisissez et placez vos articles sur la photo jusqu'à obtenir la création souhaitée</source>
+        <target>Choisissez et placez vos articles sur la photo jusqu'à obtenir la création souhaitée</target>
+      </trans-unit>
+      <trans-unit id="6qhIxqT" resname="Attention ! Dans le cas d'une&#10;                        &lt;span&gt;terrasse couverte&lt;/span&gt; un arrosage hebdomadaire est indispensable !">
+        <source>Attention ! Dans le cas d'une
+                        &lt;span&gt;terrasse couverte&lt;/span&gt; un arrosage hebdomadaire est indispensable !</source>
+        <target><![CDATA[Attention ! Dans le cas d'une
+                        <span>terrasse couverte</span> un arrosage hebdomadaire est indispensable !]]></target>
+      </trans-unit>
+      <trans-unit id="bO7qGO5" resname="Attention ! Les paramètres par défaut ont été modifiés. Les plantes risquent de ne pas correspondre à votre terrain.">
+        <source>Attention ! Les paramètres par défaut ont été modifiés. Les plantes risquent de ne pas correspondre à votre terrain.</source>
+        <target>Attention ! Les paramètres par défaut ont été modifiés. Les plantes risquent de ne pas correspondre à votre terrain.</target>
+      </trans-unit>
+      <trans-unit id="8x7W52s" resname="Cet article n'est pas disponible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, créer un compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.">
+        <source>Cet article n'est pas disponible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, créer un compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</source>
+        <target>Cet article n'est pas disponible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, créer un compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</target>
+      </trans-unit>
+      <trans-unit id="jvyh_d5" resname="Etes-vous sur d'effectuer cette action ?">
+        <source>Etes-vous sur d'effectuer cette action ?</source>
+        <target>Etes-vous sur d'effectuer cette action ?</target>
+      </trans-unit>
+      <trans-unit id="MKi3hGl" resname="Confirmer">
+        <source>Confirmer</source>
+        <target>Confirmer</target>
+      </trans-unit>
+      <trans-unit id="cR5fLhm" resname="Fermer">
+        <source>Fermer</source>
+        <target>Fermer</target>
+      </trans-unit>
+      <trans-unit id="xdMeGop" resname="Veuillez patienter, l'enregistrement de vos modifications est en cours.">
+        <source>Veuillez patienter, l'enregistrement de vos modifications est en cours.</source>
+        <target>Veuillez patienter, l'enregistrement de vos modifications est en cours.</target>
+      </trans-unit>
+      <trans-unit id="b2Ztwkh" resname="Félicitation, vous avez créé un premier extérieur avec l’offre découverte.">
+        <source>Félicitation, vous avez créé un premier extérieur avec l’offre découverte.</source>
+        <target>Félicitation, vous avez créé un premier extérieur avec l’offre découverte.</target>
+      </trans-unit>
+      <trans-unit id="yezZ3X2" resname="Faites vous plaisir, aménagez&lt;br/&gt;&lt;span id=&quot;fenetre-info-selection-entite-titre-vert&quot;&gt;Votre propre photo !&lt;/span&gt;">
+        <source>Faites vous plaisir, aménagez&lt;br/&gt;&lt;span id="fenetre-info-selection-entite-titre-vert"&gt;Votre propre photo !&lt;/span&gt;</source>
+        <target><![CDATA[Faites vous plaisir, aménagez<br/><span id="fenetre-info-selection-entite-titre-vert">Votre propre photo !</span>]]></target>
+      </trans-unit>
+      <trans-unit id="XgsU_lD" resname="Et ayez accès à l’ensemble des plantes et objets pour un résultat professionnel.">
+        <source>Et ayez accès à l’ensemble des plantes et objets pour un résultat professionnel.</source>
+        <target>Et ayez accès à l’ensemble des plantes et objets pour un résultat professionnel.</target>
+      </trans-unit>
+      <trans-unit id="f03yuZy" resname="Non merci,">
+        <source>Non merci,</source>
+        <target>Non merci,</target>
+      </trans-unit>
+      <trans-unit id="Iyfu6yQ" resname="je continue cette création">
+        <source>je continue cette création</source>
+        <target>je continue cette création</target>
+      </trans-unit>
+      <trans-unit id="BpAvG5o" resname="Félicitation, vous avez terminé.">
+        <source>Félicitation, vous avez terminé.</source>
+        <target>Félicitation, vous avez terminé.</target>
+      </trans-unit>
+      <trans-unit id="knDPyxD" resname="Pour recevoir par email votre liste de plantes et produits utilisés, le plan de plantation et les conseils d'entretien :">
+        <source>Pour recevoir par email votre liste de plantes et produits utilisés, le plan de plantation et les conseils d'entretien :</source>
+        <target>Pour recevoir par email votre liste de plantes et produits utilisés, le plan de plantation et les conseils d'entretien :</target>
+      </trans-unit>
+      <trans-unit id="K4SeK7D" resname="create_account">
+        <source>create_account</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="nJ0pmH0" resname="Vous avez déjà un compte ?">
+        <source>Vous avez déjà un compte ?</source>
+        <target>Vous avez déjà un compte ?</target>
+      </trans-unit>
+      <trans-unit id="JxMJ_zB" resname="Me connecter">
+        <source>Me connecter</source>
+        <target>Me connecter</target>
+      </trans-unit>
+      <trans-unit id="y45Kzfu" resname="forgot_password">
+        <source>forgot_password</source>
+        <target>J'ai oublié mon mot de passe</target>
+      </trans-unit>
+      <trans-unit id="rB39V24" resname="Faites vous plaisir, aménagez&lt;br/&gt;&lt;span&#10;            id=&quot;fenetre-menu-finaliser-titre-vert&quot;&gt;Votre propre photo !&lt;/span&gt;">
+        <source>Faites vous plaisir, aménagez&lt;br/&gt;&lt;span
+            id="fenetre-menu-finaliser-titre-vert"&gt;Votre propre photo !&lt;/span&gt;</source>
+        <target><![CDATA[Faites vous plaisir, aménagez<br/><span
+            id="fenetre-menu-finaliser-titre-vert">Votre propre photo !</span>]]></target>
+      </trans-unit>
+      <trans-unit id="olemRb3" resname="Et ayez accès à l'ensemble des plantes et objets pour un résultat professionnel.">
+        <source>Et ayez accès à l'ensemble des plantes et objets pour un résultat professionnel.</source>
+        <target>Et ayez accès à l'ensemble des plantes et objets pour un résultat professionnel.</target>
+      </trans-unit>
+      <trans-unit id="5QgrclK" resname="Je télécharge une photo !">
+        <source>Je télécharge une photo !</source>
+        <target>Je télécharge une photo !</target>
+      </trans-unit>
+      <trans-unit id="lCj52sb" resname="Félicitations, vous avez terminé.">
+        <source>Félicitations, vous avez terminé.</source>
+        <target>Félicitations, vous avez terminé.</target>
+      </trans-unit>
+      <trans-unit id="e5_eJsj" resname="Vous pouvez télécharger ou recevoir par email vos informations :">
+        <source>Vous pouvez télécharger ou recevoir par email vos informations :</source>
+        <target>Vous pouvez télécharger ou recevoir par email vos informations :</target>
+      </trans-unit>
+      <trans-unit id="Lw7EJxg" resname="- liste des plantes et produits utilisés">
+        <source>- liste des plantes et produits utilisés</source>
+        <target>- liste des plantes et produits utilisés</target>
+      </trans-unit>
+      <trans-unit id="3Cj5rZZ" resname="- conseils d'entretien">
+        <source>- conseils d'entretien</source>
+        <target>- conseils d'entretien</target>
+      </trans-unit>
+      <trans-unit id="AUlPI0z" resname="- plan de plantation">
+        <source>- plan de plantation</source>
+        <target>- plan de plantation</target>
+      </trans-unit>
+      <trans-unit id="RoBoyhz" resname="Télécharger le document PDF en ligne">
+        <source>Télécharger le document PDF en ligne</source>
+        <target>Télécharger le document PDF en ligne</target>
+      </trans-unit>
+      <trans-unit id="8e1GvN4" resname="Envoyer le PDF par mail :">
+        <source>Envoyer le PDF par mail :</source>
+        <target>Envoyer le PDF par mail :</target>
+      </trans-unit>
+      <trans-unit id="VlM5vE0" resname="OK">
+        <source>OK</source>
+        <target>OK</target>
+      </trans-unit>
+      <trans-unit id="OvZMkm0" resname="Demander gratuitement un devis&lt;br/&gt;d'aménagement de mon jardin">
+        <source>Demander gratuitement un devis&lt;br/&gt;d'aménagement de mon jardin</source>
+        <target><![CDATA[Demander gratuitement un devis<br/>d'aménagement de mon jardin]]></target>
+      </trans-unit>
+      <trans-unit id="E0mPcZ_" resname="Retourner à mon tableau de bord">
+        <source>Retourner à mon tableau de bord</source>
+        <target>Retourner à mon tableau de bord</target>
+      </trans-unit>
+      <trans-unit id="MLDppFq" resname="Précédent">
+        <source>Précédent</source>
+        <target>Précédent</target>
+      </trans-unit>
+      <trans-unit id="xsHJqch" resname="next">
+        <source>next</source>
+        <target>Suivant</target>
+      </trans-unit>
+      <trans-unit id="Ig6V6vL" resname="Référence :">
+        <source>Référence :</source>
+        <target>Référence :</target>
+      </trans-unit>
+      <trans-unit id="rJLdYaZ" resname="Couleur(s) :">
+        <source>Couleur(s) :</source>
+        <target>Couleur(s) :</target>
+      </trans-unit>
+      <trans-unit id="krDDbhC" resname="Période d'intérêt :">
+        <source>Période d'intérêt :</source>
+        <target>Période d'intérêt :</target>
+      </trans-unit>
+      <trans-unit id="tC62qXy" resname="Besoin en eau minimum :">
+        <source>Besoin en eau minimum :</source>
+        <target>Besoin en eau minimum :</target>
+      </trans-unit>
+      <trans-unit id="ZJ2SbSb" resname="Ombre">
+        <source>Ombre</source>
+        <target>Ombre</target>
+      </trans-unit>
+      <trans-unit id="7s9eb_E" resname="Mi-Ombre">
+        <source>Mi-Ombre</source>
+        <target>Mi-Ombre</target>
+      </trans-unit>
+      <trans-unit id="9e6HCyI" resname="Mi-Ombr">
+        <source>Mi-Ombr</source>
+        <target>Mi-Ombr</target>
+      </trans-unit>
+      <trans-unit id="m4Joy1U" resname="Soleil">
+        <source>Soleil</source>
+        <target>Soleil</target>
+      </trans-unit>
+      <trans-unit id="BFNmU95" resname="Rusticité :">
+        <source>Rusticité :</source>
+        <target>Rusticité :</target>
+      </trans-unit>
+      <trans-unit id="bnVl3yl" resname="Plante annuelle :">
+        <source>Plante annuelle :</source>
+        <target>Plante annuelle :</target>
+      </trans-unit>
+      <trans-unit id="CpBAdjn" resname="Oui">
+        <source>Oui</source>
+        <target>Oui</target>
+      </trans-unit>
+      <trans-unit id="zIISd_2" resname="Sol :">
+        <source>Sol :</source>
+        <target>Sol :</target>
+      </trans-unit>
+      <trans-unit id="rBn_M0U" resname="Taille à l'âge adulte (h x l) :">
+        <source>Taille à l'âge adulte (h x l) :</source>
+        <target>Taille à l'âge adulte (h x l) :</target>
+      </trans-unit>
+      <trans-unit id="OL2RuKE" resname="Toxicité :">
+        <source>Toxicité :</source>
+        <target>Toxicité :</target>
+      </trans-unit>
+      <trans-unit id="xaUzTR5" resname="Entretien :">
+        <source>Entretien :</source>
+        <target>Entretien :</target>
+      </trans-unit>
+      <trans-unit id="mTjP7A2" resname="Température minimale :">
+        <source>Température minimale :</source>
+        <target>Température minimale :</target>
+      </trans-unit>
+      <trans-unit id="Ux9ekbl" resname="Prix minimum :">
+        <source>Prix minimum :</source>
+        <target>Prix minimum :</target>
+      </trans-unit>
+      <trans-unit id="W0rbzoc" resname="Liste des plantes et objets de la composition :">
+        <source>Liste des plantes et objets de la composition :</source>
+        <target>Liste des plantes et objets de la composition :</target>
+      </trans-unit>
+      <trans-unit id="ssEkU20" resname="Nom">
+        <source>Nom</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="ZwIdcT8" resname="Conseil">
+        <source>Conseil</source>
+        <target>Conseil</target>
+      </trans-unit>
+      <trans-unit id="x1CCwR7" resname="Eté :">
+        <source>Eté :</source>
+        <target>Eté :</target>
+      </trans-unit>
+      <trans-unit id="n2dQpvR" resname="Informations :">
+        <source>Informations :</source>
+        <target>Informations :</target>
+      </trans-unit>
+      <trans-unit id="aH2glXu" resname="Conseil Printemps :">
+        <source>Conseil Printemps :</source>
+        <target>Conseil Printemps :</target>
+      </trans-unit>
+      <trans-unit id="QoWvsg2" resname="Conseil Eté :">
+        <source>Conseil Eté :</source>
+        <target>Conseil Eté :</target>
+      </trans-unit>
+      <trans-unit id="3HEIjtn" resname="Conseil Automne :">
+        <source>Conseil Automne :</source>
+        <target>Conseil Automne :</target>
+      </trans-unit>
+      <trans-unit id="o9VWKNG" resname="Conseil Hiver :">
+        <source>Conseil Hiver :</source>
+        <target>Conseil Hiver :</target>
+      </trans-unit>
+      <trans-unit id="gmbtFWz" resname="Désolé, nous n’avons pas encore de résultat compatible avec cette fonctionnalité">
+        <source>Désolé, nous n’avons pas encore de résultat compatible avec cette fonctionnalité</source>
+        <target>Désolé, nous n’avons pas encore de résultat compatible avec cette fonctionnalité</target>
+      </trans-unit>
+      <trans-unit id="tWBA7wO" resname="Choisissez un motif pour remplir la zone sélectionnée">
+        <source>Choisissez un motif pour remplir la zone sélectionnée</source>
+        <target>Choisissez un motif pour remplir la zone sélectionnée</target>
+      </trans-unit>
+      <trans-unit id="QuN2BLY" resname="Modifier">
+        <source>Modifier</source>
+        <target>Modifier</target>
+      </trans-unit>
+      <trans-unit id="GPZMhVn" resname="Voulez-vous enregistrer vos modifications avant de quitter l'application ?">
+        <source>Voulez-vous enregistrer vos modifications avant de quitter l'application ?</source>
+        <target>Voulez-vous enregistrer vos modifications avant de quitter l'application ?</target>
+      </trans-unit>
+      <trans-unit id="f2JJawy" resname="Non">
+        <source>Non</source>
+        <target>Non</target>
+      </trans-unit>
+      <trans-unit id="CPA4AnP" resname="Quitter l'application">
+        <source>Quitter l'application</source>
+        <target>Quitter l'application</target>
+      </trans-unit>
+      <trans-unit id="WOF7.aT" resname="Gérer les options de rendu">
+        <source>Gérer les options de rendu</source>
+        <target>Gérer les options de rendu</target>
+      </trans-unit>
+      <trans-unit id="kIOmUjx" resname="Nombre de produits maximal atteint">
+        <source>Nombre de produits maximal atteint</source>
+        <target>Nombre de produits maximal atteint</target>
+      </trans-unit>
+      <trans-unit id="lesAOZc" resname="usticité :">
+        <source>usticité :</source>
+        <target>usticité :</target>
+      </trans-unit>
+      <trans-unit id="QSvguc1" resname="Informations">
+        <source>Informations</source>
+        <target>Informations</target>
+      </trans-unit>
+      <trans-unit id="T6jfNBx" resname="Visibilité">
+        <source>Visibilité</source>
+        <target>Visibilité</target>
+      </trans-unit>
+      <trans-unit id="7q6NAd2" resname="Voici notre proposition, choisissez et placez vos articles sur la photo jusqu'à obtenir la création souhaitée">
+        <source>Voici notre proposition, choisissez et placez vos articles sur la photo jusqu'à obtenir la création souhaitée</source>
+        <target>Voici notre proposition, choisissez et placez vos articles sur la photo jusqu'à obtenir la création souhaitée</target>
+      </trans-unit>
+      <trans-unit id="GzAnj34" resname="Attention ! Dans le cas d’une&#10;                &lt;span&gt;terrasse couverte&lt;/span&gt; un arrosage hebdomadaire est indispensable !">
+        <source>Attention ! Dans le cas d’une
+                &lt;span&gt;terrasse couverte&lt;/span&gt; un arrosage hebdomadaire est indispensable !</source>
+        <target><![CDATA[Attention ! Dans le cas d’une
+                <span>terrasse couverte</span> un arrosage hebdomadaire est indispensable !]]></target>
+      </trans-unit>
+      <trans-unit id="iW6_m.y" resname="Cet article n'est pas disponible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.">
+        <source>Cet article n'est pas disponible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</source>
+        <target>Cet article n'est pas disponible en mode gratuit. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</target>
+      </trans-unit>
+      <trans-unit id="yFXHztr" resname="Cet article n'est pas disponible en mode gratuit.&#10;                    &lt;br/&gt;Cette création est attaché à un autre compte que celui-avec lequel vous êtes connecté. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous avec le bon compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.">
+        <source>Cet article n'est pas disponible en mode gratuit.
+                    &lt;br/&gt;Cette création est attaché à un autre compte que celui-avec lequel vous êtes connecté. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous avec le bon compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.</source>
+        <target><![CDATA[Cet article n'est pas disponible en mode gratuit.
+                    <br/>Cette création est attaché à un autre compte que celui-avec lequel vous êtes connecté. Pour bénéficier de tous les articles que nous mettons à votre disposition, connectez-vous avec le bon compte et prenez une nouvelle offre en cliquant sur le bouton adéquat ci-dessous.]]></target>
+      </trans-unit>
+      <trans-unit id="ayl.RUm" resname="Votre propre photo !">
+        <source>Votre propre photo !</source>
+        <target>Votre propre photo !</target>
+      </trans-unit>
+      <trans-unit id="XUZrW64" resname="Non merci">
+        <source>Non merci</source>
+        <target>Non merci</target>
+      </trans-unit>
+      <trans-unit id="Ri_o8Q3" resname="sign_out">
+        <source>sign_out</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="Zs2WiKK" resname="dashboard">
+        <source>dashboard</source>
+        <target>Tableau de bord</target>
+      </trans-unit>
+      <trans-unit id="yt1DY39" resname="my_credits">
+        <source>my_credits</source>
+        <target>Mes credits</target>
+      </trans-unit>
+      <trans-unit id="WPgJXt0" resname="resume_offer">
+        <source>resume_offer</source>
+        <target>Reprendre une offre</target>
+      </trans-unit>
+      <trans-unit id="hKba5Jz" resname="photos">
+        <source>photos</source>
+        <target>Photos :</target>
+      </trans-unit>
+      <trans-unit id="xLT8313" resname="professional_advice">
+        <source>professional_advice</source>
+        <target>Conseils d'un professionnel :</target>
+      </trans-unit>
+      <trans-unit id="e_AKaS6" resname="help_landscaper">
+        <source>help_landscaper</source>
+        <target>Aide d'un paysagiste :</target>
+      </trans-unit>
+      <trans-unit id="6jb3bmW" resname="my_projects">
+        <source>my_projects</source>
+        <target>Mes projets</target>
+      </trans-unit>
+      <trans-unit id="2EWwwmm" resname="add_project">
+        <source>add_project</source>
+        <target>Ajouter un projet</target>
+      </trans-unit>
+      <trans-unit id="SdDL70w" resname="add_creation">
+        <source>add_creation</source>
+        <target>Ajouter une création</target>
+      </trans-unit>
+      <trans-unit id="llq7JUs" resname="creation">
+        <source>creation</source>
+        <target>Création :</target>
+      </trans-unit>
+      <trans-unit id="1sGxzI4" resname="start_application">
+        <source>start_application</source>
+        <target>Démarrer l'appli</target>
+      </trans-unit>
+      <trans-unit id="s42dFow" resname="connection">
+        <source>connection</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="AcuaAqd" resname="well_done">
+        <source>well_done</source>
+        <target>Bravo.</target>
+      </trans-unit>
+      <trans-unit id="ygD8z7Q" resname="error">
+        <source>error</source>
+        <target>Erreur !</target>
+      </trans-unit>
+      <trans-unit id="PF1Lw4j" resname="incorrect_email_password">
+        <source>incorrect_email_password</source>
+        <target>Email et/ou mot de passe incorrect</target>
+      </trans-unit>
+      <trans-unit id="d3Ajbuo" resname="new_password_sent_email">
+        <source>new_password_sent_email</source>
+        <target>Un nouveau mot de passe vous sera envoyé par mail.</target>
+      </trans-unit>
+      <trans-unit id="RZupZ7t" resname="regenerate">
+        <source>regenerate</source>
+        <target>Re-générer</target>
+      </trans-unit>
+      <trans-unit id="msBGnWH" resname="back_dashboard">
+        <source>back_dashboard</source>
+        <target>Revenir au tableau de bord</target>
+      </trans-unit>
+      <trans-unit id="zpADc5f" resname="Accés banque&lt;br/&gt;d'images&lt;br/&gt;d'extérieurs">
+        <source>Accés banque&lt;br/&gt;d'images&lt;br/&gt;d'extérieurs</source>
+        <target><![CDATA[Accés banque<br/>d'images<br/>d'extérieurs]]></target>
+      </trans-unit>
+      <trans-unit id="FEkwcfw" resname="Télécharger&lt;br/&gt;des photos de&lt;br/&gt;votre extérieur">
+        <source>Télécharger&lt;br/&gt;des photos de&lt;br/&gt;votre extérieur</source>
+        <target><![CDATA[Télécharger<br/>des photos de<br/>votre extérieur]]></target>
+      </trans-unit>
+      <trans-unit id="1z.vBfo" resname="Accés aux plantes,&lt;br/&gt;objets,&lt;br/&gt;décors">
+        <source>Accés aux plantes,&lt;br/&gt;objets,&lt;br/&gt;décors</source>
+        <target><![CDATA[Accés aux plantes,<br/>objets,<br/>décors]]></target>
+      </trans-unit>
+      <trans-unit id="Bq0dsYh" resname="Conseils de Pros&lt;br/&gt;personnalisés">
+        <source>Conseils de Pros&lt;br/&gt;personnalisés</source>
+        <target><![CDATA[Conseils de Pros<br/>personnalisés]]></target>
+      </trans-unit>
+      <trans-unit id="I74q2n8" resname="Un paysagiste&lt;br/&gt;100% à votre&lt;br/&gt;service">
+        <source>Un paysagiste&lt;br/&gt;100% à votre&lt;br/&gt;service</source>
+        <target><![CDATA[Un paysagiste<br/>100% à votre<br/>service]]></target>
+      </trans-unit>
+      <trans-unit id="CdI6LwI" resname="Tarif">
+        <source>Tarif</source>
+        <target>Tarif</target>
+      </trans-unit>
+      <trans-unit id="VeoJ5XF" resname="limit">
+        <source>limit</source>
+        <target>limité</target>
+      </trans-unit>
+      <trans-unit id="rZXV_mU" resname="free">
+        <source>free</source>
+        <target>Gratuit</target>
+      </trans-unit>
+      <trans-unit id="CT59X9u" resname="contact">
+        <source>contact</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="pqJynL9" resname="thanks">
+        <source>thanks</source>
+        <target>Merci.</target>
+      </trans-unit>
+      <trans-unit id="J84dG.Q" resname="send">
+        <source>send</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="fay_h6q" resname="Une commande nécessite votre intervention :">
+        <source>Une commande nécessite votre intervention :</source>
+        <target>Une commande nécessite votre intervention :</target>
+      </trans-unit>
+      <trans-unit id=".rWbff7" resname="Client :">
+        <source>Client :</source>
+        <target>Client :</target>
+      </trans-unit>
+      <trans-unit id="j4GtOhm" resname="Offre :">
+        <source>Offre :</source>
+        <target>Offre :</target>
+      </trans-unit>
+      <trans-unit id="jnPM7oq" resname="Date :">
+        <source>Date :</source>
+        <target>Date :</target>
+      </trans-unit>
+      <trans-unit id="F9C4FHK" resname="Voir ce client dans l'administration">
+        <source>Voir ce client dans l'administration</source>
+        <target>Voir ce client dans l'administration</target>
+      </trans-unit>
+      <trans-unit id="kXLo7sm" resname="Bonjour">
+        <source>Bonjour</source>
+        <target>Bonjour</target>
+      </trans-unit>
+      <trans-unit id="Ip2wRL_" resname="Votre demande de mot de passe a bien été enregistrée.">
+        <source>Votre demande de mot de passe a bien été enregistrée.</source>
+        <target>Votre demande de mot de passe a bien été enregistrée.</target>
+      </trans-unit>
+      <trans-unit id="IvjGRWO" resname="Nouveau mot de passe :">
+        <source>Nouveau mot de passe :</source>
+        <target>Nouveau mot de passe :</target>
+      </trans-unit>
+      <trans-unit id="7xEQkUZ" resname="A bientot,">
+        <source>A bientot,</source>
+        <target>A bientot,</target>
+      </trans-unit>
+      <trans-unit id="8TBI.hf" resname="L'équipe de Mon Jardin Ma terrasse.">
+        <source>L'équipe de Mon Jardin Ma terrasse.</source>
+        <target>L'équipe de Mon Jardin Ma terrasse.</target>
+      </trans-unit>
+      <trans-unit id="9CnIFQ3" resname="my_garden_my_terrace">
+        <source>my_garden_my_terrace</source>
+        <target>Mon Jardin ma Terrasse</target>
+      </trans-unit>
+      <trans-unit id="rRkcgn3" resname="advantage_my_garden_designer">
+        <source>advantage_my_garden_designer</source>
+        <target>Les atouts de Mygarden designer</target>
+      </trans-unit>
+      <trans-unit id="p6ObcvK" resname="simple">
+        <source>simple</source>
+        <target>Simple</target>
+      </trans-unit>
+      <trans-unit id="GPeJfOb" resname="intuitive_tool_everyone">
+        <source>intuitive_tool_everyone</source>
+        <target>Un outil à la portée de tous, intuitif et ludique.</target>
+      </trans-unit>
+      <trans-unit id="EV3DYG_" resname="fast">
+        <source>fast</source>
+        <target>Rapide</target>
+      </trans-unit>
+      <trans-unit id="YfQLcGG" resname="create_custom_project_few_click">
+        <source>create_custom_project_few_click</source>
+        <target>Créez votre projet personnalisé en quelques clics.</target>
+      </trans-unit>
+      <trans-unit id="VE4tYUX" resname="smart">
+        <source>smart</source>
+        <target>Malin</target>
+      </trans-unit>
+      <trans-unit id="W9bulQQ" resname="receive_planting_plan_advice">
+        <source>receive_planting_plan_advice</source>
+        <target>Recevez votre plan de plantation détaillé, votre liste de plantes et nos conseils.</target>
+      </trans-unit>
+      <trans-unit id="EcRYcen" resname="economic">
+        <source>economic</source>
+        <target>Économique</target>
+      </trans-unit>
+      <trans-unit id="c.lMBPm" resname="basic_usage_free_find_gardener">
+        <source>basic_usage_free_find_gardener</source>
+        <target>L'utilisation de base est gratuite. Nous vous aidons à trouver le  bon jardinier près de chez vous.</target>
+      </trans-unit>
+      <trans-unit id="0IAE61I" resname="become_elandscaper">
+        <source>become_elandscaper</source>
+        <target>Devenez e-paysagiste</target>
+      </trans-unit>
+      <trans-unit id="P7BeTw8" resname="an_design_your_outdoor">
+        <source>an_design_your_outdoor</source>
+        <target>et aménagez votre extérieur !</target>
+      </trans-unit>
+      <trans-unit id="95KhT14" resname="import_photo_garden_terrace">
+        <source>import_photo_garden_terrace</source>
+        <target>Importez une photo de votre jardin ou de votre terrasse</target>
+      </trans-unit>
+      <trans-unit id="0qVVsgR" resname="choose_plants_catalogue">
+        <source>choose_plants_catalogue</source>
+        <target>Choisissez plantes et décors de notre large catalogue, adaptés à votre région et climat</target>
+      </trans-unit>
+      <trans-unit id="mmBSm0p" resname="finalize_project_alone_or_landscaper">
+        <source>finalize_project_alone_or_landscaper</source>
+        <target>Finalisez votre projet seul ou avec l'aide de nos paysagistes experts</target>
+      </trans-unit>
+      <trans-unit id="VsAlZNm" resname="start_my_setup">
+        <source>start_my_setup</source>
+        <target>Démarrer mon aménagement</target>
+      </trans-unit>
+      <trans-unit id="fp5uqta" resname="before_after_my_garden_designer">
+        <source>before_after_my_garden_designer</source>
+        <target>Avant / Après my garden designer</target>
+      </trans-unit>
+      <trans-unit id="RKb1AzG" resname="talk_about_us">
+        <source>talk_about_us</source>
+        <target>Ils parlent de nous</target>
+      </trans-unit>
+      <trans-unit id="Arwda.n" resname="all_items">
+        <source>all_items</source>
+        <target>Tous les articles</target>
+      </trans-unit>
+      <trans-unit id="_derf9G" resname="read_more">
+        <source>read_more</source>
+        <target>Lire la suite</target>
+      </trans-unit>
+      <trans-unit id="CU4bqss" resname="some_testimonials">
+        <source>some_testimonials</source>
+        <target>Quelques témoignages</target>
+      </trans-unit>
+      <trans-unit id="0qZaKhp" resname="testimonial_1">
+        <source>testimonial_1</source>
+        <target>Un site efficace et simple d'utilisation qui peut autant être utilisé par des particuliers afin de se projeter dans d'éventuels travaux.</target>
+      </trans-unit>
+      <trans-unit id="bVr60un" resname="testimonial_2">
+        <source>testimonial_2</source>
+        <target>La première photo étant gratuite, j'ai réalisé un essai concluant... Ce produit permet un bon visuel. Il est facile d'utilisation.</target>
+      </trans-unit>
+      <trans-unit id="hl3F6.I" resname="testimonial_3">
+        <source>testimonial_3</source>
+        <target>Super logiciel pour les jardiniers dilettantes comme moi ! La mise en route est rapide et facile, elle permet d’indiquer l’exposition du terrain pour éviter de choisir des plantes qui ne conviennent pas à son ensoleillement. L’utilisation est ultra-simple : un jeu d’enfant au sens propre puisque je l’utilisais avec mes élèves de Primaire en cours d’informatique ! Il suffit de choisir les plantes ou les objets désirés dans le catalogue proposé, on peut ensuite les agrandir ou les déplacer à sa guise. C’est un excellent moyen de découvrir de nouvelles plantes et de contrôler son budget avant d’aller chez un pépiniériste. Quand le projet est terminé, on reçoit par mail la liste des plantes et produits utilisés ainsi que le plan de plantation et les conseils d’entretien. Bref, je recommande vivement ce logiciel à ceux qui manquent d’imagination et veulent un support visuel pour aménager leur jardin.</target>
+      </trans-unit>
+      <trans-unit id="bYHLYi7" resname="Mon aménagement extérieur - Etape 4 - Compte">
+        <source>Mon aménagement extérieur - Etape 4 - Compte</source>
+        <target>Mon aménagement extérieur - Etape 4 - Compte</target>
+      </trans-unit>
+      <trans-unit id="fV61Hh6" resname="Préparation du paiement">
+        <source>Préparation du paiement</source>
+        <target>Préparation du paiement</target>
+      </trans-unit>
+      <trans-unit id="CsPSyzA" resname="Se connecter">
+        <source>Se connecter</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="xDb5n.5" resname="S'enregistrer">
+        <source>S'enregistrer</source>
+        <target>S'enregistrer</target>
+      </trans-unit>
+      <trans-unit id="LXZwzHU" resname="amount_payable">
+        <source>amount_payable</source>
+        <target>Montant à payer :</target>
+      </trans-unit>
+      <trans-unit id="bqNKjDn" resname="next_step">
+        <source>next_step</source>
+        <target>Etape Suivante</target>
+      </trans-unit>
+      <trans-unit id="Y3n9jrO" resname="Mon aménagement extérieur - Etape 3 - Recadrage">
+        <source>Mon aménagement extérieur - Etape 3 - Recadrage</source>
+        <target>Mon aménagement extérieur - Etape 3 - Recadrage</target>
+      </trans-unit>
+      <trans-unit id="kXLwYzb" resname="Recadrage de l'image">
+        <source>Recadrage de l'image</source>
+        <target>Recadrage de l'image</target>
+      </trans-unit>
+      <trans-unit id="sdLhFSR" resname="Utilisez le curseur pour définir la zone de l'image avec laquelle vous souhaitez travailler.">
+        <source>Utilisez le curseur pour définir la zone de l'image avec laquelle vous souhaitez travailler.</source>
+        <target>Utilisez le curseur pour définir la zone de l'image avec laquelle vous souhaitez travailler.</target>
+      </trans-unit>
+      <trans-unit id="Tm5FWTN" resname="Pour passer cette étape sans recadrer, cliquez directement sur étape suivante.">
+        <source>Pour passer cette étape sans recadrer, cliquez directement sur étape suivante.</source>
+        <target>Pour passer cette étape sans recadrer, cliquez directement sur étape suivante.</target>
+      </trans-unit>
+      <trans-unit id="vDAe_XJ" resname="Pivoter">
+        <source>Pivoter</source>
+        <target>Pivoter</target>
+      </trans-unit>
+      <trans-unit id="87pEKP6" resname="Mon aménagement extérieur">
+        <source>Mon aménagement extérieur</source>
+        <target>Mon aménagement extérieur</target>
+      </trans-unit>
+      <trans-unit id="IZHjhE3" resname="Voir les CGU">
+        <source>Voir les CGU</source>
+        <target>Voir les CGU</target>
+      </trans-unit>
+      <trans-unit id="mxE520V" resname="Je débute mon aménagement !">
+        <source>Je débute mon aménagement !</source>
+        <target>Je débute mon aménagement !</target>
+      </trans-unit>
+      <trans-unit id="z7GsDIB" resname="Inscription">
+        <source>Inscription</source>
+        <target>Inscription</target>
+      </trans-unit>
+      <trans-unit id="Ho5TFJz" resname="Précisez-nous vos besoins, nous vous proposerons des choix adaptés">
+        <source>Précisez-nous vos besoins, nous vous proposerons des choix adaptés</source>
+        <target>Précisez-nous vos besoins, nous vous proposerons des choix adaptés</target>
+      </trans-unit>
+      <trans-unit id="cvvMMt7" resname="Chaque espace extérieur est différent : dites-nous en un peu plus sur lui">
+        <source>Chaque espace extérieur est différent : dites-nous en un peu plus sur lui</source>
+        <target>Chaque espace extérieur est différent : dites-nous en un peu plus sur le vôtre</target>
+      </trans-unit>
+      <trans-unit id="_ri_8Ic" resname="Plus de détails">
+        <source>Plus de détails</source>
+        <target>Plus de détails</target>
+      </trans-unit>
+      <trans-unit id="5EHW4Qb" resname="Vous pouvez opter pour une offre de choix plus importante de My Garden Designer si vous le souhaitez">
+        <source>Vous pouvez opter pour une offre de choix plus importante de My Garden Designer si vous le souhaitez</source>
+        <target>Vous pouvez opter pour une offre de choix plus importante de My Garden Designer si vous le souhaitez</target>
+      </trans-unit>
+      <trans-unit id="Ziwg6qI" resname="Voir toutes les offres">
+        <source>Voir toutes les offres</source>
+        <target>Voir toutes les offres</target>
+      </trans-unit>
+      <trans-unit id="ghvYg1l" resname="Photos personnelles">
+        <source>Photos personnelles</source>
+        <target>Photos personnelles</target>
+      </trans-unit>
+      <trans-unit id="SSyhau1" resname="Catalogue de plantes, objets, décors">
+        <source>Catalogue de plantes, objets, décors</source>
+        <target>Catalogue de plantes, objets, décors</target>
+      </trans-unit>
+      <trans-unit id="OMzxT7a" resname="Vous souhaitez l'aide d'un paysagiste">
+        <source>Vous souhaitez l'aide d'un paysagiste</source>
+        <target>Vous souhaitez l'aide d'un paysagiste</target>
+      </trans-unit>
+      <trans-unit id="ShRu..4" resname="Nos différentes offres pour vous aider">
+        <source>Nos différentes offres pour vous aider</source>
+        <target>Nos différentes offres pour vous aider</target>
+      </trans-unit>
+      <trans-unit id="nEPfru5" resname="Je choisis cette offre">
+        <source>Je choisis cette offre</source>
+        <target>Je choisis cette offre</target>
+      </trans-unit>
+      <trans-unit id="0NuLXjZ" resname="Options">
+        <source>Options</source>
+        <target>Options</target>
+      </trans-unit>
+      <trans-unit id="yQRveje" resname="description">
+        <source>description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="gJj77mW" resname="Accès à la banque d'images">
+        <source>Accès à la banque d'images</source>
+        <target>Accès à la banque d'images</target>
+      </trans-unit>
+      <trans-unit id="FaX.9mU" resname="Crédit(s) photo(s)">
+        <source>Crédit(s) photo(s)</source>
+        <target>Crédit(s) photo(s)</target>
+      </trans-unit>
+      <trans-unit id="XEzPlQA" resname="Accès au catalogue de plantes, objets...">
+        <source>Accès au catalogue de plantes, objets...</source>
+        <target>Accès au catalogue de plantes, objets...</target>
+      </trans-unit>
+      <trans-unit id="H2ecHeH" resname="Un paysagiste crée votre extérieur">
+        <source>Un paysagiste crée votre extérieur</source>
+        <target>Un paysagiste crée votre extérieur</target>
+      </trans-unit>
+      <trans-unit id="xGstRAK" resname="Je choisis">
+        <source>Je choisis</source>
+        <target>Je choisis</target>
+      </trans-unit>
+      <trans-unit id="fpIMTh6" resname="Vous pouvez aménager votre propre extérieur ou utiliser un espace de la même catégorie en le sélectionnant">
+        <source>Vous pouvez aménager votre propre extérieur ou utiliser un espace de la même catégorie en le sélectionnant</source>
+        <target>Vous pouvez aménager votre propre extérieur ou utiliser un espace de la même catégorie en le sélectionnant</target>
+      </trans-unit>
+      <trans-unit id="KR7eAzs" resname="J'utilise ma propre photo">
+        <source>J'utilise ma propre photo</source>
+        <target>J'utilise ma propre photo</target>
+      </trans-unit>
+      <trans-unit id="GrzTDIA" resname="Ajouter ma photo">
+        <source>Ajouter ma photo</source>
+        <target>Ajouter ma photo</target>
+      </trans-unit>
+      <trans-unit id="v3jzW0I" resname="10 Mo maximum - Vous pouvez redimensionner votre image via ce site &lt;a&#10;                                href=&quot;https://picresize.com/&quot;&#10;                                target=&quot;_blank&quot;&gt;www.picresize.com&lt;/a&gt; ou en utilisant Paint.">
+        <source>10 Mo maximum - Vous pouvez redimensionner votre image via ce site &lt;a
+                                href="https://picresize.com/"
+                                target="_blank"&gt;www.picresize.com&lt;/a&gt; ou en utilisant Paint.</source>
+        <target><![CDATA[10 Mo maximum - Vous pouvez redimensionner votre image via ce site <a
+                                href="https://picresize.com/"
+                                target="_blank">www.picresize.com</a> ou en utilisant Paint.]]></target>
+      </trans-unit>
+      <trans-unit id="T_lbemC" resname="site_pages">
+        <source>site_pages</source>
+        <target>Pages du site</target>
+      </trans-unit>
+      <trans-unit id="aw0cVYy" resname="sitemap">
+        <source>sitemap</source>
+        <target>Plan du site</target>
+      </trans-unit>
+      <trans-unit id="rqqEGr7" resname="legale_notice">
+        <source>legale_notice</source>
+        <target>Mentions légales</target>
+      </trans-unit>
+      <trans-unit id="MN4YzE6" resname="faq">
+        <source>faq</source>
+        <target>FAQ</target>
+      </trans-unit>
+      <trans-unit id="UdI2H0_" resname="terms">
+        <source>terms</source>
+        <target>CGU</target>
+      </trans-unit>
+      <trans-unit id="II2sfCa" resname="press_area">
+        <source>press_area</source>
+        <target>Espace presse</target>
+      </trans-unit>
+      <trans-unit id="pCYuHJv" resname="about">
+        <source>about</source>
+        <target>A propos</target>
+      </trans-unit>
+      <trans-unit id="n1fWsZn" resname="copyright_website">
+        <source>copyright_website</source>
+        <target><![CDATA[Copyright &copy; %annee% mon jardin ma terrasse - Paysagea Tous droits réservés]]></target>
+      </trans-unit>
+      <trans-unit id="BRsUZXR" resname="my_account">
+        <source>my_account</source>
+        <target>Mon compte</target>
+      </trans-unit>
+      <trans-unit id="TqFAWIF" resname="home">
+        <source>home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="j2EvA83" resname="our_offer">
+        <source>our_offer</source>
+        <target>Notre offre</target>
+      </trans-unit>
+      <trans-unit id="3vU_lfH" resname="blog">
+        <source>blog</source>
+        <target>Blog</target>
+      </trans-unit>
+      <trans-unit id="Vi8bjX1" resname="who_are_you">
+        <source>who_are_you</source>
+        <target>Qui sommes-nous ?</target>
+      </trans-unit>
+      <trans-unit id="vWrgLnR" resname="payment_success_next_step">
+        <source>payment_success_next_step</source>
+        <target>Le paiement a été effectué, vous pouvez maintenant accéder à votre amènagement extérieur en cliquant sur le bouton "Etape suivante".</target>
+      </trans-unit>
+      <trans-unit id="_VbgYgq" resname="payment_fail_next_step">
+        <source>payment_fail_next_step</source>
+        <target><![CDATA[Le paiement a échoué.<br/>Vous pouvez revenir au début de l'étape de paiement en cliquant sur "Etape suivante".]]></target>
+      </trans-unit>
+      <trans-unit id="YqLE5zj" resname="credit_card_payment">
+        <source>credit_card_payment</source>
+        <target>Paiement CB</target>
+      </trans-unit>
+      <trans-unit id="gqVIz5w" resname="loading_information">
+        <source>loading_information</source>
+        <target>Chargement des informations en cours...</target>
+      </trans-unit>
+      <trans-unit id="EnwNyjG" resname="back_payment_choices">
+        <source>back_payment_choices</source>
+        <target>Revenir aux choix paiement</target>
+      </trans-unit>
+      <trans-unit id="BA.9WSX" resname="payment">
+        <source>payment</source>
+        <target>Paiement</target>
+      </trans-unit>
+      <trans-unit id="sE_hcqT" resname="selected_offer">
+        <source>selected_offer</source>
+        <target>L'offre choisie :</target>
+      </trans-unit>
+      <trans-unit id="YZEXj4p" resname="starting_amount">
+        <source>starting_amount</source>
+        <target>Montant de départ :</target>
+      </trans-unit>
+      <trans-unit id="vO8RtqP" resname="promo">
+        <source>promo</source>
+        <target>Promo :</target>
+      </trans-unit>
+      <trans-unit id="k1CHLXE" resname="pay">
+        <source>pay</source>
+        <target>Payer</target>
+      </trans-unit>
+      <trans-unit id="nv_w1Vj" resname="website_footer_description">
+        <source>website_footer_description</source>
+        <target><![CDATA[<span class="text-bold">Monjardin-materrasse.com</span> dévoile un logiciel d'<span class="text-bold">aménagement paysager</span> simple d'utilisation pour la <span class="text-bold">conception d'un jardin</span>, la <span class="text-bold">création d'une terrasse</span> ou l'aménagement d'un balcon. Avec notre <span class="text-bold">logiciel paysagiste</span>, vous pourrez créer un <span class="text-bold">plan de jardin</span> paysager en toute simplicité. Et en plus de notre <span class="text-bold">logiciel pour terrasse</span>, balcon et pour <span class="text-bold">aménager un jardin</span>, en tant que <span class="text-bold">jardiniers paysagistes</span> reconnus, nous vous apportons de nombreux conseils pour l'aménagement de votre jardin, ainsi que des trucs et astuces pour la décoration de votre jardin.]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

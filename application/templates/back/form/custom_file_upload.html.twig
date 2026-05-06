@@ -1,0 +1,20 @@
+{% block mjmt_custom_file_upload_type_widget %}
+
+    {% set filePropertyGetterName = form.vars.filePropertyGetterName %}
+    {% set existingFileWebPath = form.parent.vars['value'].getWebPath() %}
+    {% set existingFile = attribute(form.parent.vars['value'], filePropertyGetterName) %}
+
+    {% if existingFile is not null %}
+        <img style="max-width: 200px;" src="{{ existingFileWebPath }}"/>
+        <p>Photo existante : <a href="{{ existingFileWebPath }}" target="_blank"
+                                style="font-weight: bold;">{{ existingFile }}</a></p>
+    {% endif %}
+
+    {% if existingFile is not null %}
+        <p>Remplacer par une nouvelle photo</p>
+    {% else %}
+        <p>Ajouter une nouvelle photo</p>
+    {% endif %}
+
+    {{ form_widget(form) }}
+{% endblock %}

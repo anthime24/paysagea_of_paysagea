@@ -1,0 +1,174 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block content %}
+    <div id="page-inscription-client" class="content-center container-fluid">
+        <h1 class="green">{% trans %}Préparation du paiement{% endtrans %}</h1>
+
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div id="bloc-steps" class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h3>1) Inscription / Connection</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div>
+                            <h3 class="active position-relative">
+                                2) Mode de paiement
+                                <img class="logo-paiement" src="{{ asset('/front/images/paiement/logo-paiement.jpg') }}">
+                            </h3>
+
+                            <div class="step-content">
+
+                                {{ form_errors(form) }}
+
+                                <div class="row">
+                                    {% for child in form.paymentMethod %}
+                                        <div class="col-md-6 text-center">
+                                            <label class="form-check-label">
+                                                {{ form_widget(child, {'attr': {'class': 'form-check-input'}}) }}
+                                                {{ form_label(child, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bloc-summary" class="col-md-5">
+                <div class="bloc-title">
+                    Récapitulatif
+                </div>
+
+                <table class="table">
+                    <tbody>
+
+                    {% if offer %}
+                        <tr>
+                            <th>Offre choisie</th>
+                            <td>{{ offer.getNom() }}</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if publicPrice >= 0 and promotion %}
+                        <tr>
+                            <th>Montant de départ</th>
+                            <td>{{ publicPrice | number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if priceToPay > 0 %}
+                        <tr>
+                            <th>Montant à payer</th>
+                            <td>{{ priceToPay | number_format(2, ',', ' ') }} €</td>
+                        </tr>
+                    {% endif %}
+
+                    {% if promotion %}
+                        <tr>
+                            <th>Code promo</th>
+                            <td>{{ promotion }}</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+
+                <button class="button-payment-next" type="submit">
+                    <span>{% trans %}Payer{% endtrans %}</span>
+                </button>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    {#    <div id="page-client-offer-payment" class="content-center container-fluid"> #}
+    {#        <a class="pull-right button-validate-mini" #}
+    {#           href="{{ path('mjmt_front_client') }}"><span>{% trans %}Revenir au tableau de bord{% endtrans %}</span></a> #}
+    {#        <h1 class="green">{% trans %}Paiement{% endtrans %}</h1> #}
+
+    {#        <div class="row"> #}
+    {#            <div class="col-md-12 col-sm-12 col-xs-12"> #}
+    {#                {{ form_start(form) }} #}
+    {#                <div class="recapitulatif-paiement"> #}
+    {#                    {% if offer %} #}
+    {#                        <div> #}
+    {#                            <span class="label-etape5-generale">{% trans %}L'offre choisie :{% endtrans %} </span> #}
+    {#                            <span id="nom-offre-dynamique">{{ offer.getNom() }}</span> #}
+    {#                        </div> #}
+    {#                    {% endif %} #}
+
+    {#                    {% if publicPrice >= 0 and promotion %} #}
+    {#                        <div> #}
+    {#                            <label class="label-etape5-generale">{% trans %}Montant de départ :{% endtrans %} </label> #}
+    {#                            <span id="input-montant-payer">{{ publicPrice }}€</span> #}
+    {#                        </div> #}
+    {#                    {% endif %} #}
+    {#                    {% if priceToPay >= 0 %} #}
+    {#                        <div> #}
+    {#                            <label class="label-etape5-generale">{% trans %}Montant à payer :{% endtrans %} </label> #}
+    {#                            <span id="input-montant-payer">{{ priceToPay }}€</span> #}
+    {#                        </div> #}
+    {#                    {% endif %} #}
+    {#                    {% if promotion %} #}
+    {#                        <div> #}
+    {#                            <label class="label-etape5-generale">{% trans %}Promo :{% endtrans %} </label> #}
+    {#                            <span id="input-promo-offerte"> {{ promotion }}</span> #}
+    {#                        </div> #}
+    {#                    {% endif %} #}
+    {#                </div> #}
+
+    {#                <div class="clear"></div> #}
+
+    {#                <div class="border-dotted-horizontale"></div> #}
+
+    {#                {% for flashMessage in app.session.flashbag.get('warning') %} #}
+    {#                    <p class="flash-message">{{ flashMessage }}</p> #}
+    {#                {% endfor %} #}
+
+    {#                {% if priceToPay > 0 %} #}
+    {#                    <div id="etape5-recapitulatif-paiement" class="recapitulatif-paiement"> #}
+    {#                        {{ form_row(form.paymentMethod) }} #}
+    {#                        #}{#                            <p> #}
+    {#                        #}{#                                <input type="radio" name="mode_paiement" id="mode-paiement-paypal" value="paypal" required="true"> #}
+    {#                        #}{#                                <label for="mode-paiement-paypal"> #}
+    {#                        #}{#                                    <img src="{{ asset('/front/images/paiement/icon-paypal.png') }}"/> #}
+    {#                        #}{#                                    <span class="input-mode-paiement">PayPal</span> #}
+    {#                        #}{#                                </label> #}
+    {#                        #}{#                            </p> #}
+    {#                        #}{#                            <p> #}
+    {#                        #}{#                                <input type="radio" name="mode_paiement" id="mode-paiement-carte" value="bancaire" required="true"> #}
+    {#                        #}{#                                <label for="mode-paiement-carte"> #}
+    {#                        #}{#                                    <img src="{{ asset('/front/images/paiement/icon-visa.png') }}"/> #}
+    {#                        #}{#                                    <img src="{{ asset('/front/images/paiement/icon-mastercard.png') }}"/> #}
+    {#                        #}{#                                    <img src="{{ asset('/front/images/paiement/icon-cb.png') }}"/> #}
+    {#                        #}{#                                    <span class="input-mode-paiement">{% trans %}Carte bancaire{% endtrans %}</span> #}
+    {#                        #}{#                                </label> #}
+    {#                        #}{#                            </p> #}
+    {#                        #}{#                            <p> #}
+    {#                        #}{#                                <input type="radio" name="mode_paiement" id="mode-paiement-carte-stripe" value="stripe" required="true"> #}
+    {#                        #}{#                                <label for="mode-paiement-carte-stripe"> #}
+    {#                        #}{#                                    <img src="{{ asset('/front/images/paiement/icon-visa.png') }}"/> #}
+    {#                        #}{#                                    <img src="{{ asset('/front/images/paiement/icon-mastercard.png') }}"/> #}
+    {#                        #}{#                                    <img src="{{ asset('/front/images/paiement/icon-cb.png') }}"/> #}
+    {#                        #}{#                                    <span class="input-mode-paiement">{% trans %}Carte bancaire{% endtrans %}</span> #}
+    {#                        #}{#                                </label> #}
+    {#                        #}{#                            </p> #}
+    {#                    </div> #}
+    {#                {% endif %} #}
+
+    {#                <br/> #}
+
+    {#                <button class="button-validate" type="submit"><span>{% trans %}Payer{% endtrans %}</span></button> #}
+    {#                {{ form_end(form) }} #}
+    {#            </div> #}
+    {#        </div> #}
+    {#    </div> #}
+{% endblock %}

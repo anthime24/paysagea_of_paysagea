@@ -1,0 +1,9 @@
+{% if (entite.getNomVernaculaire()) %}
+    {% set titre = entite.getNomVernaculaire() %}
+{% else %}
+    {% set titre = entite.getNom() %}
+{% endif %}
+
+{% set contenu = 'informations-entite' %}
+
+{% include 'application/layout/layout_popin.html.twig' with {'titre': titre, 'contenu': contenu} %}

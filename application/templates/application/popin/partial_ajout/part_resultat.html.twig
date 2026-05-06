@@ -1,0 +1,84 @@
+{% if ( accesCompletPlantesObjets==false ) and ( entite.getGratuit()==false ) %}
+    <div class="resultat-entite" id="entite-{{ entite.getId() }}">
+        <img src="{{ asset('application/images/icone/informations.png') }}"
+             id="resultat-entite-infos-loupe-{{ entite.getId() }}" class="resultat-entite-infos-loupe"
+             original-title="Plus d'informations"/>
+        {% if entite.getMarque() %}
+            <img src="{{ entite.getMarque().getWebPath() | imagine_filter('thumb_app_entite_marque_apercu') }}"
+                 id="resultat-entite-marque-{{ entite.getId() }}" class="resultat-entite-marque"
+                 alt="{{ entite.getMarque().getNom() }}"/>
+        {% endif %}
+        <a href="{{ path('mjmt_application_ajout_html_entite', {'entiteId': entite.getId()}) }}"
+           class="resultat-entite-ajout-indisponible">
+            <div class="resultat-entite-photo">
+                <img src="{% if entite.getPhotoPrincipale() %}{{ entite.getPhotoPrincipale().getWebPath()| imagine_filter('thumb_app_resultat_filtre') }}{% endif %}"
+                     onmousedown="return false" onmousemove="return false"/>
+            </div>
+
+            {# Affichage du nom vernaculaire & nom normal #}
+            {% if entite.getNomVernaculaire() %}
+                <h2 class="resultat-entite-nom">{{ entite.getNomVernaculaire()|truncate(30, true, '...') }}</h2>
+                {% if entite.getNom() %}<p>{{ entite.getNom() }}</p>{% endif %}
+            {% else %}
+                {% if entite.getNom() %}<h2 class="resultat-entite-nom">{{ entite.getNom() }}</h2>{% endif %}
+            {% endif %}
+            {# Si il y a ensoleillements, on l'affiche #}
+            {% set ensoleillements = 0 %}{% for soleil in entite.getEnsoleillements() %}{% set ensoleillements = 1 %}{% endfor %}
+            {% if ensoleillements==1 %}<span class="resultat-ensoleillement">
+                ({% for soleil in entite.getEnsoleillements() %}{% if loop.first %}{% else %}, {% endif %}{{ soleil.getNom() }}{% endfor %}
+                )</span><br/>{% endif %}
+
+            <span class="resultat-prix">
+                    {% if entite.getEntiteType().getId() == 1 %}
+                        {{ entite.getHauteurPotAvecUnite() }}
+                    {% else %}
+                        {{ entite.getDimensions() }}
+                    {% endif %}
+                {% if entite.getPrixMini() %}{{ entite.getPrixMini() }} €{% endif %}
+            </span>
+            <div class="resultat-entite-grisage-non-gratuit"></div>
+        </a>
+    </div>
+{% else %}
+    <div class="resultat-entite" id="entite-{{ entite.getId() }}">
+        <a href="{{ path('mjmt_application_ma_selection_description', {'entiteId': entite.getId()}) }}"
+           class="resultat-entite-infos" onclick="return openPopinInfosEntite(this);">
+            <img src="{{ asset('application/images/icone/informations.png') }}"
+                 id="resultat-entite-infos-loupe-{{ entite.getId() }}" class="resultat-entite-infos-loupe"
+                 original-title="Plus d'informations"/>
+        </a>
+        {% if entite.getMarque() %}
+            <img src="{{ entite.getMarque().getWebPath() | imagine_filter('thumb_app_entite_marque_apercu') }}"
+                 id="resultat-entite-marque-{{ entite.getMarque().getId() }}" class="resultat-entite-marque"/>
+        {% endif %}
+        <a href="{{ path('mjmt_application_ajout_html_entite', {'entiteId': entite.getId()}) }}"
+           class="resultat-entite-ajout">
+            <div class="resultat-entite-photo">
+                <img src="{% if entite.getPhotoPrincipale() %}{{ entite.getPhotoPrincipale().getWebPath()| imagine_filter('thumb_app_resultat_filtre') }}{% endif %}"
+                     alt="{{ entite.getNom() }}" onmousedown="return false" onmousemove="return false"/>
+            </div>
+            {# Affichage du nom vernaculaire & nom normal #}
+            {% if entite.getNomVernaculaire() %}
+                <h2 class="resultat-entite-nom">{{ entite.getNomVernaculaire()|truncate(30, true, '...') }}</h2>
+                {% if entite.getNom() %}<p>{{ entite.getNom() }}</p>{% endif %}
+            {% else %}
+                {% if entite.getNom() %}<h2 class="resultat-entite-nom">{{ entite.getNom() }}</h2>{% endif %}
+            {% endif %}
+            {# Si il y a ensoleillements, on l'affiche #}
+            {% set ensoleillements = 0 %}{% for soleil in entite.getEnsoleillements() %}{% set ensoleillements = 1 %}{% endfor %}
+            {% if ensoleillements==1 %}<span class="resultat-ensoleillement">
+                ({% for soleil in entite.getEnsoleillements() %}{% if loop.first %}{% else %}, {% endif %}{{ soleil.getNom() }}{% endfor %}
+                )</span><br/>{% endif %}
+
+
+            <span class="resultat-prix">
+                {% if entite.getEntiteType().getId() == 1 %}
+                    {{ entite.getHauteurPotAvecUnite() }}
+                {% else %}
+                    {{ entite.getDimensions() }}
+                {% endif %}
+                {% if entite.getPrixMini() %}{{ entite.getPrixMini() }} €{% endif %}
+            </span>
+        </a>
+    </div>
+{% endif %}

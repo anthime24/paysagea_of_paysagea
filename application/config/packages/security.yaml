@@ -1,0 +1,90 @@
+security:
+    encoders:
+        App\Back\Sonata\UserBundle\Entity\User:
+            algorithm: sha512
+            encode_as_base64: false
+            iterations: 1
+        App\Core\Entity\Client:
+            algorithm: sha512
+            encode_as_base64: false
+            iterations: 1
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+        client_provider:
+            entity: { class: App\Core\Entity\Client, property: email }
+
+    role_hierarchy:
+        ROLE_ADMIN:       [ROLE_USER, ROLE_APPLICATION, ROLE_SONATA_ADMIN]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_SONATA_ADMIN, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT, ROLE_SONATA_PAGE_ADMIN_BLOCK_EDIT]
+
+        SONATA:
+            # if you are not using acl then this line must be uncommented
+            - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT
+            - ROLE_SONATA_PAGE_ADMIN_BLOCK_EDIT
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        # This firewall is used to handle the admin login area
+        # This part is handled by the Sonata User Bundle
+        admin:
+            pattern:      /admin(.*)
+            context:        user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     sonata_user_admin_security_login
+                use_forward:    false
+                check_path:     sonata_user_admin_security_check
+                failure_path:   null
+                default_target_path: admin_app_core_creation_list
+                always_use_default_target_path: true
+            logout:
+                path:           sonata_user_admin_security_logout
+                target:         sonata_user_admin_security_login
+            anonymous:    true
+
+        client:
+            pattern:    ^/(client|application|)(.*)
+            anonymous: ~
+            provider: client_provider
+            stateless: false
+            form_login:
+                login_path:     mjmt_front_client_login
+            logout:
+                path:           mjmt_front_client_logout
+                target:         mjmt_front_client_login
+            guard:
+                authenticators:
+                    - App\Front\Security\LoginFormAuthenticator
+
+        main:
+            anonymous:    true
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/client/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client/login-check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client/mot-de-passe-oublie, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client/inscription/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client/retour-app, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/client, role: ROLE_APPLICATION }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/request$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/send-email, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/application/displayScreenshot, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

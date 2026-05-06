@@ -1,0 +1,7 @@
+{% if admin.isGranted('EDIT', object) and admin.hasRoute('duplicate') %}
+    <a href="{{ admin.generateObjectUrl('duplicate', object) }}" class="btn btn-sm btn-default edit_link"
+       title="Dupliquer">
+        <i class="fa fa-copy" aria-hidden="true"></i>
+        Dupliquer
+    </a>
+{% endif %}

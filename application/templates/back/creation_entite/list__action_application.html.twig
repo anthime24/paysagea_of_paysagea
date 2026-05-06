@@ -1,0 +1,7 @@
+{% if admin.hasRoute('application') %}
+    <a href="{{ admin.generateObjectUrl('application', object) }}" class="btn view_link btn-small" title="Application"
+       target="_blank">
+        <i class="icon-zoom-in"></i>
+        Application
+    </a>
+{% endif %}

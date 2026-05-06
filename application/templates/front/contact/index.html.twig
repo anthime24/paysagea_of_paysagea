@@ -1,0 +1,38 @@
+{% extends 'front/layout/layout.html.twig' %}
+
+{% block title %}
+    {% trans %}Contact{% endtrans %}
+{% endblock %}
+
+{% block content %}
+    <div id="page-contact" class="content-center container-fluid">
+        <h1 class="green">{% trans %}Contact{% endtrans %}</h1>
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-dismissible alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{% trans %}Merci.{% endtrans %}</strong>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('danger') %}
+            <div class="alert alert-dismissible alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{% trans %}Erreur !{% endtrans %}</strong>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="button-validate" type="submit"><span>{% trans %}Envoyer{% endtrans %}</span></button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
