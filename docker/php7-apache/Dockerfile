@@ -6,7 +6,7 @@ ENV APACHE_DOCUMENT_ROOT=${APACHE_ROOT}public
 ENV LOG_PATH=${APACHE_ROOT}var/log
 ENV CACHE_PATH=${APACHE_ROOT}var/cache
 ENV VENDOR_PATH=${APACHE_ROOT}vendor
-ENV COMPOSER_AUTH='{"github-oauth": {"github.com": ""}}'
+# ENV COMPOSER_AUTH='{"github-oauth": {"github.com": ""}}'
 ENV COMPOSER_VENDOR_DIR=${VENDOR_PATH}
 
 RUN apt-get update && apt-get install -y \
@@ -66,19 +66,19 @@ RUN echo 'alias lla="ls -la"' >> ~/.bashrc \
     && echo 'alias ll="ls -l"' >> ~/.bashrc
 
 # Add installation file
-COPY ./application/package.json ./application/yarn.lock ${APACHE_ROOT}
-ENV NODE_OPTIONS=--openssl-legacy-provider
-RUN yarn install
+# COPY ./application/package.json ./application/yarn.lock ${APACHE_ROOT}
+# ENV NODE_OPTIONS=--openssl-legacy-provider
+# RUN yarn install
 
 # Add source code in webserver root dir
-COPY ./application/ ${APACHE_ROOT}
+# COPY ./application/ ${APACHE_ROOT}
 
 WORKDIR ${APACHE_ROOT}
 
 # Build application
 ENV COMPOSER_ALLOW_SUPERUSER=1
-RUN COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --prefer-dist --no-interaction --no-cache \
-    && php bin/console assets:install --symlink public
+# RUN COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --prefer-dist --no-interaction --no-cache \
+#     && php bin/console assets:install --symlink public
 
 RUN if [ "$APP_ENV" = "preprod" -o "$APP_ENV" = "prod" ]; then \
     yarn ${APP_ENV} \
@@ -86,4 +86,4 @@ RUN if [ "$APP_ENV" = "preprod" -o "$APP_ENV" = "prod" ]; then \
     && sed -ri -e 's!\$\{APACHE_LOG_DIR\}!${LOG_PATH}!g' /etc/apache2/sites-available/000-default.conf; \
   fi
 
-RUN chmod a+x chmod.sh
+# RUN chmod a+x chmod.sh

@@ -5,7 +5,7 @@ services:
         restart: always
         container_name: "mygardendesigner_paysagea_php"
         networks:
-            - tkwtraefik_tkwtraefik-net
+#            - tkwtraefik_tkwtraefik-net
             - mygardendesigner-net
         depends_on:
             - db
@@ -21,7 +21,7 @@ services:
             - TZ=Europe/Paris
         networks:
             - mygardendesigner-net
-            - tkwphpmyadmin_tkwphpmyadmin-net
+#            - tkwphpmyadmin_tkwphpmyadmin-net
 
     gisdb:
         image: postgis/postgis:9.6-2.5
@@ -38,7 +38,7 @@ volumes:
 
 networks:
     mygardendesigner-net:
-    tkwtraefik_tkwtraefik-net:
-        external: true
-    tkwphpmyadmin_tkwphpmyadmin-net:
-        external: true
+#    tkwtraefik_tkwtraefik-net:
+#        external: true
+#    tkwphpmyadmin_tkwphpmyadmin-net:
+#        external: true
