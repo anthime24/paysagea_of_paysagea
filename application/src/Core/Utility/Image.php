@@ -57,6 +57,39 @@ class Image
         return $im;
     }
 
+    public static function isHeic($filepath)
+    {
+        $ext = strtolower(pathinfo($filepath, PATHINFO_EXTENSION));
+        if (in_array($ext, ['heic', 'heif'])) {
+            return true;
+        }
+
+        if (function_exists('mime_content_type')) {
+            $mime = mime_content_type($filepath);
+            if (in_array($mime, ['image/heic', 'image/heif', 'image/x-heic'])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static function convertHeicToJpeg($filepath)
+    {
+        $jpegPath = preg_replace('/\.(heic|heif)$/i', '.jpg', $filepath);
+
+        exec('heif-convert ' . escapeshellarg($filepath) . ' ' . escapeshellarg($jpegPath) . ' 2>&1', $output, $returnCode);
+
+        if ($returnCode === 0 && file_exists($jpegPath)) {
+            if ($jpegPath !== $filepath) {
+                @unlink($filepath);
+            }
+            return $jpegPath;
+        }
+
+        return false;
+    }
+
     public static function saveImageFromAny($resource, $previousPath, $filepath)
     {
         $status = null;

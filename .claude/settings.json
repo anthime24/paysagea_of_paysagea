@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep -l \"accept\\\\|mime\")",
+      "Bash(xargs grep -l \"createCropedImage\\\\|createRenderedImage\")",
+      "Bash(xargs grep -l \"photo\\\\|upload\\\\|file\")",
+      "Bash(xargs grep -l \"heic\\\\|heif\\\\|HEIC\\\\|HEIF\")",
+      "Bash(cd \"d:\\\\Paysagea_Fusion\\\\Paysagea\\\\application\" && grep -r \"mimeTypes\\\\|acceptFileTypes\\\\|image/jpeg\\\\|image/png\\\\|image/gif\" src/ --include=\"*.php\" 2>nul)",
+      "Bash(xargs grep -l \"accept\\\\|FileType\\\\|upload\")"
+    ],
+    "additionalDirectories": [
+      "d:\\Paysagea_Fusion\\Paysagea\\application"
+    ]
+  }
+}

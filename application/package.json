@@ -19,6 +19,7 @@
     "dependencies": {
         "@symfony/webpack-encore": "0.28.2",
         "fabric": "^3.5.1",
+        "heic2any": "^0.0.4",
         "html2canvas": "^1.0.0-rc.5",
         "jquery": "^1.11.3",
         "jquery-ui": "^1.10.4",

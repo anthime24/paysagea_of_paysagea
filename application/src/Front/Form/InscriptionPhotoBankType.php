@@ -33,9 +33,12 @@ class InscriptionPhotoBankType extends AbstractType
                     "image/png",
                     "image/jpg",
                     "image/jpeg",
-                    "image/gif"
+                    "image/gif",
+                    "image/heic",
+                    "image/heif",
+                    "image/x-heic"
                 ],
-                "mimeTypesMessage" => "Veuillez envoyer une image au format png, jpg, jpeg ou gif, de 10 mégas octets maximum"
+                "mimeTypesMessage" => "Veuillez envoyer une image au format png, jpg, jpeg, gif ou heic (iPhone), de 10 mégas octets maximum"
             ])]))
             ->add(
                 'nom',

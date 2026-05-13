@@ -90,7 +90,7 @@ class BanquePhoto
      *
      * @Assert\File(
      *     maxSize = "10242k",
-     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/jpeg", "image/png"},
+     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/jpeg", "image/png", "image/heic", "image/heif", "image/x-heic"},
      * )
      */
     private $file;
@@ -725,12 +725,34 @@ class BanquePhoto
         if (!$this->getId()) {
             $this->getFile()->move($this->getTmpUploadRootDir(), $this->getPhoto());
             $tmpAbsolutePath = $this->getTmpAbsolutePath();
+
+            if (!empty($tmpAbsolutePath) && file_exists($tmpAbsolutePath) && Image::isHeic($tmpAbsolutePath)) {
+                $converted = Image::convertHeicToJpeg($tmpAbsolutePath);
+                if ($converted) {
+                    $newPhoto = $this->getNom() . '.jpg';
+                    $this->setPhoto($newPhoto);
+                    $this->setType('image/jpeg');
+                    $tmpAbsolutePath = $this->getTmpAbsolutePath();
+                }
+            }
+
             $imageSize = !empty($tmpAbsolutePath) && file_exists($tmpAbsolutePath) ? getimagesize(
                 $tmpAbsolutePath
             ) : null;
         } else {
             $this->getFile()->move($this->getUploadRootDir(), $this->getPhoto());
             $absolutePath = $this->getAbsolutePath();
+
+            if (!empty($absolutePath) && file_exists($absolutePath) && Image::isHeic($absolutePath)) {
+                $converted = Image::convertHeicToJpeg($absolutePath);
+                if ($converted) {
+                    $newPhoto = $this->getNom() . '.jpg';
+                    $this->setPhoto($newPhoto);
+                    $this->setType('image/jpeg');
+                    $absolutePath = $this->getAbsolutePath();
+                }
+            }
+
             $imageSize = !empty($absolutePath) && file_exists($absolutePath) ? getimagesize($absolutePath) : null;
         }
 

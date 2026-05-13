@@ -25,7 +25,8 @@ RUN apt-get update && apt-get install -y \
         wget \
         nano \
         libc-client-dev \
-        libkrb5-dev
+        libkrb5-dev \
+        libheif-examples
 
 RUN rm -r /var/lib/apt/lists/*
 

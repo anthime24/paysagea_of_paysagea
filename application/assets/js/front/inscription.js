@@ -1,4 +1,5 @@
 import {transObject} from '../translations/translation';
+import heic2any from 'heic2any';
 
 var geocoder;
 var addresspickerMap;
@@ -87,7 +88,41 @@ jQuery(document).ready(function () {
                 changeProjectType();
             })
             .on('change', '#mjmt_front_inscription_project_banquePhoto_file', function () {
-                if (jQuery(this).val() !== '') {
+                if (jQuery(this).val() === '') {
+                    return;
+                }
+
+                var input = this;
+                var file = input.files[0];
+
+                if (file && isHeicFile(file)) {
+                    var $input = jQuery(input);
+                    $input.prop('disabled', true);
+                    jQuery('.heic-converting-notice').remove();
+                    $input.after('<span class="heic-converting-notice" style="font-size:0.85em;color:#666;margin-left:8px;">Conversion en cours...</span>');
+
+                    heic2any({ blob: file, toType: 'image/jpeg', quality: 0.92 })
+                        .then(function (convertedBlob) {
+                            var newName = file.name.replace(/\.(heic|heif)$/i, '.jpg');
+                            var convertedFile = new File([convertedBlob], newName, { type: 'image/jpeg' });
+
+                            var dt = new DataTransfer();
+                            dt.items.add(convertedFile);
+                            input.files = dt.files;
+
+                            jQuery('.heic-converting-notice').remove();
+                            $input.prop('disabled', false);
+
+                            jQuery('#mjmt_front_inscription_project_banquePhotos_placeholder').prop('checked', true);
+                            jQuery('.tick-choix-ok').remove();
+                        })
+                        .catch(function () {
+                            jQuery('.heic-converting-notice').remove();
+                            $input.prop('disabled', false);
+                            jQuery('#mjmt_front_inscription_project_banquePhotos_placeholder').prop('checked', true);
+                            jQuery('.tick-choix-ok').remove();
+                        });
+                } else {
                     jQuery('#mjmt_front_inscription_project_banquePhotos_placeholder').prop('checked', true);
                     jQuery('.tick-choix-ok').remove();
                 }
@@ -219,6 +254,13 @@ function loadPhoto() {
             jQuery(this).append('<img class="image-a-choisir" src="' + jQuery(this).find('input').attr('data-photo-web-path') + '" />');
         }
     });
+}
+
+function isHeicFile(file) {
+    if (file.type === 'image/heic' || file.type === 'image/heif' || file.type === 'image/x-heic') {
+        return true;
+    }
+    return /\.(heic|heif)$/i.test(file.name);
 }
 
 function updateSelectedPhoto() {
